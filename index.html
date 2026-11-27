@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title id="t-title">GetForce SEO — SEO и GEO для бизнеса | Чтобы вас находили в Google и ИИ</title>
-<meta id="m-desc" name="description" content="Техническое SEO и генеративная оптимизация (GEO) для бизнеса — индексация в Google, Bing, Yandex и цитирование в ChatGPT и Perplexity. Сначала проверено на нашем собственном сайте.">
+<title id="t-title">GetForce SEO — SEO и GEO для бизнеса</title>
+<meta id="m-desc" name="description" content="Техническое SEO и GEO для бизнеса: индексация в Google, Bing, Yandex и цитирование в ChatGPT и Perplexity. Проверено на своём сайте.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://seo.getforce.org/">
 
@@ -69,66 +69,132 @@
 <script defer src="/_vercel/insights/script.js"></script>
 
 <style>
-:root{--bg:#0b0b12;--card:#14141f;--card2:#191927;--line:#2a2a3d;--text:#f4f4f8;--muted:#b0b0c4;--accent:#7c5cff;--accent2:#34e0b4;--wa:#25d366}
+:root{--bg:#0b0b12;--card:#14141f;--card2:#191927;--line:#2a2a3d;--line2:#34344a;--text:#f4f4f8;--muted:#b0b0c4;--accent:#7c5cff;--accent-b:#34e0b4;--accent2:#34e0b4;--wa:#25d366;--grad:linear-gradient(135deg,#7c5cff,#34e0b4)}
 *{box-sizing:border-box;margin:0}
 html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--text);font:16px/1.6 Inter,-apple-system,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased}
+body{
+  background-color:var(--bg);color:var(--text);font:16px/1.6 Inter,-apple-system,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased;
+  background-image:radial-gradient(circle at 1px 1px, rgba(255,255,255,.045) 1px, transparent 0);
+  background-size:26px 26px;
+}
 h1,h2,h3{font-family:Manrope,Inter,sans-serif}
 a{color:inherit;text-decoration:none}
 .wrap{max-width:1080px;margin:0 auto;padding:0 20px}
-section{padding:72px 0}
-.eyebrow{display:inline-block;padding:6px 14px;border:1px solid var(--line);border-radius:99px;color:var(--muted);font-size:14px}
+section{padding:72px 0;position:relative}
+.eyebrow{display:inline-block;padding:6px 14px;border:1px solid var(--line2);border-radius:99px;color:var(--muted);font-size:14px;background:rgba(124,92,255,.08)}
 
-header.site{position:sticky;top:0;z-index:40;background:rgba(11,11,18,.85);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s cubic-bezier(.2,.7,.3,1),transform .7s cubic-bezier(.2,.7,.3,1)}
+.reveal.in{opacity:1;transform:none}
+
+header.site{position:sticky;top:0;z-index:40;background:rgba(11,11,18,.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
 header.site .wrap{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;gap:16px}
 .brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:18px}
-.brand .dot{width:28px;height:28px;border-radius:8px;background:var(--accent);display:inline-flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0}
+.brand .dot{width:28px;height:28px;border-radius:8px;background:var(--grad);display:inline-flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;box-shadow:0 0 18px rgba(124,92,255,.5)}
 .brand small{color:var(--muted);font-weight:600;font-size:13px;margin-left:6px}
 .header-right{display:flex;align-items:center;gap:14px}
 .langs{display:flex;gap:4px;border:1px solid var(--line);border-radius:10px;padding:3px}
-.langs button{background:transparent;border:0;color:var(--muted);font:inherit;font-weight:700;font-size:13px;padding:6px 10px;border-radius:7px;cursor:pointer}
-.langs button.active{background:var(--accent);color:#fff}
-.btn{display:inline-block;padding:12px 22px;border-radius:12px;font-weight:700;border:1px solid var(--line);transition:transform .15s,filter .15s,border-color .15s;cursor:pointer}
+.langs button{background:transparent;border:0;color:var(--muted);font:inherit;font-weight:700;font-size:13px;padding:6px 10px;border-radius:7px;cursor:pointer;transition:color .15s}
+.langs button.active{background:var(--grad);color:#0b0b12}
+.btn{display:inline-block;padding:12px 24px;border-radius:12px;font-weight:700;border:1px solid var(--line2);transition:transform .18s cubic-bezier(.2,.7,.3,1),box-shadow .18s,border-color .18s,filter .18s;cursor:pointer}
 .btn:hover{transform:translateY(-2px)}
-.btn.primary{background:var(--wa);border-color:var(--wa);color:#06220f}
+.btn.primary{background:var(--grad);border-color:transparent;color:#06220f;box-shadow:0 8px 24px -8px rgba(52,224,180,.55)}
+.btn.primary:hover{box-shadow:0 12px 28px -6px rgba(52,224,180,.7);filter:brightness(1.05)}
 .btn.ghost{color:var(--text)}
+.btn.ghost:hover{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent) inset}
 
-.hero{padding:64px 0 40px;text-align:center}
-.hero h1{font-size:clamp(34px,5.6vw,60px);line-height:1.08;letter-spacing:-.03em;max-width:880px;margin:18px auto 16px}
-.hero h1 em{font-style:normal;color:var(--accent)}
+.hero{padding:72px 0 44px;text-align:center;overflow:hidden}
+.hero::before{content:"";position:absolute;top:-260px;left:50%;transform:translateX(-50%);width:1000px;height:640px;background:radial-gradient(circle,rgba(124,92,255,.32),transparent 62%);filter:blur(10px);pointer-events:none;z-index:0}
+.hero::after{content:"";position:absolute;top:-120px;left:50%;transform:translateX(-50%);width:700px;height:420px;background:radial-gradient(circle,rgba(52,224,180,.22),transparent 65%);filter:blur(10px);pointer-events:none;z-index:0}
+.hero>*{position:relative;z-index:1}
+.hero h1{font-size:clamp(34px,5.6vw,62px);line-height:1.07;letter-spacing:-.03em;max-width:880px;margin:20px auto 16px}
+.hero h1 em{font-style:normal;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
 .hero p.lead{color:var(--muted);font-size:19px;max-width:620px;margin:0 auto}
 .hero .cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:28px}
+
+.trust{padding:30px 0 10px}
+.trust .label{text-align:center;color:var(--muted);font-size:13px;letter-spacing:.04em;text-transform:uppercase;margin-bottom:16px}
+.trust-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.trust-badge{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:99px;padding:8px 16px;color:var(--muted);font-size:14px;font-weight:600;background:var(--card);transition:border-color .2s,color .2s,transform .2s}
+.trust-badge:hover{border-color:var(--line2);color:var(--text);transform:translateY(-2px)}
+.trust-badge svg{width:16px;height:16px;opacity:.85}
+
+.scan{background:var(--card);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.scan-box{max-width:720px;margin:0 auto;text-align:center}
+.scan h2{font-size:clamp(24px,3.4vw,32px);margin-bottom:10px}
+.scan p.sub{color:var(--muted);font-size:16px;margin-bottom:26px}
+.scan-form{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+.scan-form input{flex:1;min-width:220px;max-width:420px;padding:13px 18px;border-radius:12px;border:1px solid var(--line2);background:var(--card2);color:var(--text);font:inherit;font-size:15px}
+.scan-form input:focus{outline:2px solid var(--accent);outline-offset:1px}
+.scan-form button{background:var(--grad);border:0;color:#06220f;font-weight:700;padding:13px 24px;border-radius:12px;cursor:pointer;font-size:15px;transition:filter .15s,transform .15s}
+.scan-form button:hover{filter:brightness(1.06);transform:translateY(-1px)}
+.scan-form button:disabled{opacity:.6;cursor:default;transform:none}
+.scan-results{margin-top:28px;text-align:left;display:none}
+.scan-results.show{display:block}
+.scan-score{display:flex;align-items:center;gap:14px;margin-bottom:18px}
+.scan-score .num{font-family:Manrope;font-size:36px;font-weight:800;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.scan-score .lbl{color:var(--muted);font-size:14px}
+.scan-list{display:grid;gap:10px}
+.scan-row{display:flex;align-items:center;gap:12px;background:var(--card2);border:1px solid var(--line);border-radius:12px;padding:12px 16px}
+.scan-row .ico{width:22px;height:22px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800}
+.scan-row.pass .ico{background:rgba(52,224,180,.18);color:var(--accent-b)}
+.scan-row.warn .ico{background:rgba(255,209,102,.18);color:#ffd166}
+.scan-row.fail .ico{background:rgba(255,107,107,.18);color:#ff6b6b}
+.scan-row .txt{flex:1}
+.scan-row .label{font-weight:700;font-size:14px}
+.scan-row .detail{color:var(--muted);font-size:13px}
+.scan-cta{margin-top:22px;text-align:center}
+.scan-error{color:#ff6b6b;margin-top:16px;font-size:14px;display:none}
+.scan-error.show{display:block}
+.scan-loading{display:none;color:var(--muted);margin-top:18px;font-size:14px}
+.scan-loading.show{display:block}
 
 .problem{background:var(--card);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .problem .grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start}
 .problem h2{font-size:clamp(24px,3.2vw,34px);margin-bottom:14px}
 .problem p{color:var(--muted);font-size:17px}
 .stat-row{display:flex;gap:28px;margin-top:24px;flex-wrap:wrap}
-.stat{background:var(--card2);border:1px solid var(--line);border-radius:14px;padding:18px 20px;flex:1;min-width:160px}
-.stat b{display:block;font-family:Manrope;font-size:28px;color:var(--accent2)}
+.stat{background:var(--card2);border:1px solid var(--line);border-radius:14px;padding:18px 20px;flex:1;min-width:160px;transition:border-color .2s,transform .2s}
+.stat:hover{border-color:var(--line2);transform:translateY(-3px)}
+.stat b{display:block;font-family:Manrope;font-size:30px;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
 .stat span{color:var(--muted);font-size:14px}
 
 .proof h2{font-size:clamp(26px,3.6vw,38px);text-align:center;margin-bottom:8px}
 .proof p.sub{text-align:center;color:var(--muted);max-width:640px;margin:0 auto 40px}
 .proof-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
-.proof-card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px}
-.proof-card .tag{display:inline-block;background:var(--accent2);color:#06241c;font-weight:700;font-size:12px;padding:3px 10px;border-radius:99px;margin-bottom:10px}
+.proof-card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px;transition:border-color .2s,transform .2s,box-shadow .2s}
+.proof-card:hover{border-color:var(--line2);transform:translateY(-4px);box-shadow:0 16px 32px -20px rgba(124,92,255,.5)}
+.proof-card .tag{display:inline-block;background:var(--grad);color:#06241c;font-weight:700;font-size:12px;padding:3px 10px;border-radius:99px;margin-bottom:10px}
 .proof-card h3{font-size:18px;margin-bottom:8px}
 .proof-card p{color:var(--muted);font-size:15px}
+
+.case2{background:linear-gradient(180deg,var(--card) 0%,var(--bg) 100%)}
+.case2-box{border:1px solid var(--line2);border-radius:20px;padding:36px;background:var(--card2);position:relative;overflow:hidden}
+.case2-box::before{content:"";position:absolute;top:-140px;right:-100px;width:360px;height:360px;background:radial-gradient(circle,rgba(52,224,180,.2),transparent 65%);pointer-events:none}
+.case2-head{display:flex;align-items:center;gap:12px;margin-bottom:6px;flex-wrap:wrap}
+.case2-head .eyebrow{margin-bottom:0}
+.case2 h2{font-size:clamp(24px,3.4vw,32px);margin:14px 0 10px}
+.case2 p.lede{color:var(--muted);font-size:17px;max-width:640px;margin-bottom:24px}
+.case2-shots{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.case2-shots figure{margin:0;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff}
+.case2-shots img{display:block;width:100%;height:auto}
+.case2-shots figcaption{padding:10px 14px;color:var(--muted);font-size:13px;background:var(--card)}
 
 .services{background:var(--card)}
 .services h2{text-align:center;font-size:clamp(26px,3.6vw,38px);margin-bottom:40px}
 .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.svc-card{background:var(--card2);border:1px solid var(--line);border-radius:16px;padding:24px}
-.svc-card h3{font-size:17px;margin-bottom:10px;color:var(--accent2)}
+.svc-card{background:var(--card2);border:1px solid var(--line);border-radius:16px;padding:24px;transition:border-color .2s,transform .2s}
+.svc-card:hover{border-color:var(--line2);transform:translateY(-3px)}
+.svc-card h3{font-size:17px;margin-bottom:10px;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
 .svc-card ul{padding-left:18px;color:var(--muted);font-size:14px;line-height:1.7}
 
 .pricing h2{text-align:center;font-size:clamp(26px,3.6vw,38px);margin-bottom:10px}
 .pricing p.sub{text-align:center;color:var(--muted);max-width:620px;margin:0 auto 44px}
 .plans{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.plan{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:28px}
-.plan.featured{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent) inset}
-.plan .badge{color:var(--accent);font-weight:700;font-size:13px;margin-bottom:8px}
+.plan{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:28px;transition:border-color .2s,transform .2s}
+.plan:hover{border-color:var(--line2);transform:translateY(-3px)}
+.plan.featured{border:1px solid transparent;background:linear-gradient(var(--card),var(--card)) padding-box,var(--grad) border-box;box-shadow:0 20px 40px -24px rgba(124,92,255,.6)}
+.plan.featured:hover{transform:translateY(-5px)}
+.plan .badge{color:var(--accent-b);font-weight:700;font-size:13px;margin-bottom:8px}
 .plan h3{font-size:20px;margin-bottom:4px}
 .plan .price{font-family:Manrope;font-size:34px;margin:14px 0 2px}
 .plan .price span{font-size:15px;color:var(--muted);font-family:Inter}
@@ -153,9 +219,10 @@ footer a{color:var(--muted)}
 footer a:hover{color:var(--text)}
 
 @media (max-width:780px){
-  .problem .grid,.proof-grid,.svc-grid,.plans{grid-template-columns:1fr}
+  .problem .grid,.proof-grid,.svc-grid,.plans,.case2-shots{grid-template-columns:1fr}
   section{padding:52px 0}
   header.site .wrap{flex-wrap:wrap}
+  .hero::before,.hero::after{width:600px;height:400px}
 }
 </style>
 </head>
@@ -186,6 +253,40 @@ footer a:hover{color:var(--text)}
     </div>
   </section>
 
+  <div class="trust wrap">
+    <div class="label" data-i18n="trust.label">Видимость там, где вас ищут</div>
+    <div class="trust-row">
+      <span class="trust-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>Google</span>
+      <span class="trust-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>Bing</span>
+      <span class="trust-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>Yandex</span>
+      <span class="trust-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>ChatGPT</span>
+      <span class="trust-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Perplexity</span>
+    </div>
+  </div>
+
+  <section class="scan wrap reveal">
+    <div class="scan-box">
+      <h2 data-i18n="scan.h2">Бесплатная проверка сайта за 60 секунд</h2>
+      <p class="sub" data-i18n="scan.sub">Введите адрес сайта — проверим title, meta description, structured data, robots.txt, доступ для ИИ-краулеров и sitemap.</p>
+      <form class="scan-form" id="scan-form">
+        <input type="text" id="scan-url" data-i18n-ph="scan.placeholder" placeholder="example.com" autocomplete="off" />
+        <button type="submit" id="scan-btn" data-i18n="scan.button">Сканировать</button>
+      </form>
+      <p class="scan-loading" id="scan-loading" data-i18n="scan.loading">Проверяем...</p>
+      <p class="scan-error" id="scan-error"></p>
+      <div class="scan-results" id="scan-results">
+        <div class="scan-score">
+          <div class="num" id="scan-score-num">0/8</div>
+          <div class="lbl" data-i18n="scan.score_label">пройдено проверок</div>
+        </div>
+        <div class="scan-list" id="scan-list"></div>
+        <div class="scan-cta">
+          <a class="btn primary" id="scan-cta-link" href="#" data-i18n="scan.cta" target="_blank" rel="noopener">Получить полный аудит и список исправлений — $299</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="problem">
     <div class="wrap grid">
       <div>
@@ -204,32 +305,32 @@ footer a:hover{color:var(--text)}
     <h2 data-i18n="proof.h2">Сначала мы проверили это на себе</h2>
     <p class="sub" data-i18n="proof.sub">Прежде чем предлагать эту услугу, мы провели аудит и всё исправили на getforce.org — нашей собственной образовательной платформе. Вот что именно мы нашли и сделали — и это можно проверить публичными инструментами.</p>
     <div class="proof-grid">
-      <div class="proof-card">
+      <div class="proof-card reveal">
         <span class="tag" data-i18n="proof.c1.tag">Баг индексации</span>
         <h3 data-i18n="proof.c1.h3">Нашли баг, блокировавший Bing от 8 из 9 подстраниц</h3>
         <p data-i18n="proof.c1.p">Одностраничное приложение незаметно отдавало title и canonical главной страницы на каждом маршруте. JS-рендеринг Google это маскировал; сырой HTML-краулер Bing видел каждую страницу как дубликат главной и отказывался её индексировать. Исправили через пре-рендеринг точного HTML для каждого маршрута — подтверждено вживую и через Live URL в Bing Webmaster Tools.</p>
       </div>
-      <div class="proof-card">
+      <div class="proof-card reveal">
         <span class="tag" data-i18n="proof.c2.tag">Дублирующийся контент</span>
         <h3 data-i18n="proof.c2.h3">7 страниц с одним и тем же описанием на 201 символ</h3>
         <p data-i18n="proof.c2.p">Семь разных страниц — от формы заявки до политики конфиденциальности — отдавали одно и то же слишком длинное описание, которое Bing пометил как ошибку. Заменили на семь уникальных, корректных по длине описаний и перепроверили через Live URL тест Bing.</p>
       </div>
-      <div class="proof-card">
+      <div class="proof-card reveal">
         <span class="tag" data-i18n="proof.c3.tag">Автоматизация</span>
         <h3 data-i18n="proof.c3.h3">Автоматизировали индексацию в трёх поисковых системах</h3>
         <p data-i18n="proof.c3.p">Настроили безопасную, доступную только для чтения интеграцию с Google Search Console, которая автоматически пересылает sitemap и сообщает статус индексации, интеграцию IndexNow для мгновенных пингов Bing/Yandex о новом контенте, и подтвердили владение сайтом в Google Search Console, Bing Webmaster Tools и Yandex Webmaster.</p>
       </div>
-      <div class="proof-card">
+      <div class="proof-card reveal">
         <span class="tag" data-i18n="proof.c4.tag">GEO / структурированные данные</span>
         <h3 data-i18n="proof.c4.h3">Структурированные данные, рассчитанные на ИИ, а не только на Google</h3>
         <p data-i18n="proof.c4.p">Добавили схему Organization, Course и настоящую FAQPage — реальные вопросы из наших цен и политик, без воды — чтобы у ИИ-систем были точные, цитируемые факты вместо необходимости угадывать из текста.</p>
       </div>
-      <div class="proof-card">
+      <div class="proof-card reveal">
         <span class="tag" data-i18n="proof.c5.tag">Доступ для краулеров</span>
         <h3 data-i18n="proof.c5.h3">Нашли собственный robots.txt, тихо блокировавший ИИ-краулеров</h3>
         <p data-i18n="proof.c5.p">Добавили явные разрешения для GPTBot, ChatGPT-User, OAI-SearchBot, Google-Extended, PerplexityBot и ClaudeBot — краулеров, которых многие стандартные robots.txt блокируют по умолчанию, и никто этого не замечает.</p>
       </div>
-      <div class="proof-card">
+      <div class="proof-card reveal">
         <span class="tag" data-i18n="proof.c6.tag">Локальный поиск</span>
         <h3 data-i18n="proof.c6.h3">Настроили и верифицировали Google Business Profile</h3>
         <p data-i18n="proof.c6.p">Настроили как сервис с зоной обслуживания, с точной категорией, описанием и контактами, чтобы локальный поиск и запросы «рядом со мной» показывали бизнес напрямую, вместе с органической выдачей сайта.</p>
@@ -237,10 +338,30 @@ footer a:hover{color:var(--text)}
     </div>
   </section>
 
+  <section class="case2 wrap reveal">
+    <div class="case2-box">
+      <div class="case2-head">
+        <span class="eyebrow" data-i18n="case2.eyebrow">Второй независимый кейс</span>
+      </div>
+      <h2 data-i18n="case2.h2">LegalFeeAudit: запущен в понедельник — уже на первой странице Google</h2>
+      <p class="lede" data-i18n="case2.lede">Это не наш образовательный сайт — отдельный продукт GetForce, юридический сервис в США. Тот же технический подход с первого дня: структурированные данные, корректный robots.txt и sitemap, верификация в Search Console. Результат — реальные скриншоты поиска Google, сделанные сегодня.</p>
+      <div class="case2-shots">
+        <figure>
+          <img src="/case-studies/legalfeeaudit-serp-brand.png" alt="Google search results for 'legal fee audit' showing legalfeeaudit.com ranking on page 1" loading="lazy" />
+          <figcaption data-i18n="case2.cap1">Запрос «legal fee audit» — сайт на первой странице дважды</figcaption>
+        </figure>
+        <figure>
+          <img src="/case-studies/legalfeeaudit-serp.png" alt="Google search results for a long-tail legal fee dispute query showing legalfeeaudit.com ranking on page 1" loading="lazy" />
+          <figcaption data-i18n="case2.cap2">Конкретный запрос по теме — тоже первая страница, рядом с госсайтами штата</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
   <section class="services wrap">
     <h2 data-i18n="services.h2">Что входит</h2>
     <div class="svc-grid">
-      <div class="svc-card">
+      <div class="svc-card reveal">
         <h3 data-i18n="services.c1.h3">Техническое SEO</h3>
         <ul>
           <li data-i18n="services.c1.i1">Аудит индексации и краулинга</li>
@@ -249,7 +370,7 @@ footer a:hover{color:var(--text)}
           <li data-i18n="services.c1.i4">Аудит title и meta description</li>
         </ul>
       </div>
-      <div class="svc-card">
+      <div class="svc-card reveal">
         <h3 data-i18n="services.c2.h3">GEO (видимость для ИИ)</h3>
         <ul>
           <li data-i18n="services.c2.i1">Структурированные данные (JSON-LD) под ваш реальный контент</li>
@@ -258,7 +379,7 @@ footer a:hover{color:var(--text)}
           <li data-i18n="services.c2.i4">Проверка контента на «цитируемость»</li>
         </ul>
       </div>
-      <div class="svc-card">
+      <div class="svc-card reveal">
         <h3 data-i18n="services.c3.h3">Настройка в нескольких системах</h3>
         <ul>
           <li data-i18n="services.c3.i1">Верификация и автоматизация Google Search Console</li>
@@ -274,7 +395,7 @@ footer a:hover{color:var(--text)}
     <h2 data-i18n="pricing.h2">Цены</h2>
     <p class="sub" data-i18n="pricing.sub">Фиксированные, понятные пакеты — без расплывчатых ежемесячных абонементов без результата. Итоговая цена зависит от размера сайта и стека.</p>
     <div class="plans">
-      <div class="plan">
+      <div class="plan reveal">
         <div class="badge" data-i18n="pricing.p1.badge">РАЗОВО</div>
         <h3 data-i18n="pricing.p1.h3">SEO/GEO аудит</h3>
         <div class="price">$299</div>
@@ -286,7 +407,7 @@ footer a:hover{color:var(--text)}
         </ul>
         <a class="btn ghost" data-i18n="pricing.p1.cta" href="https://wa.me/996700264555?text=Hi!%20I%27d%20like%20the%20SEO%2FGEO%20Audit.">Начать с аудита</a>
       </div>
-      <div class="plan featured">
+      <div class="plan featured reveal">
         <div class="badge" data-i18n="pricing.p2.badge">РАЗОВО · САМЫЙ ПОПУЛЯРНЫЙ</div>
         <h3 data-i18n="pricing.p2.h3">Запуск и автоматизация</h3>
         <div class="price">$1,200</div>
@@ -299,7 +420,7 @@ footer a:hover{color:var(--text)}
         </ul>
         <a class="btn primary" data-i18n="pricing.p2.cta" href="https://wa.me/996700264555?text=Hi!%20I%27d%20like%20the%20Launch%20%26%20Automate%20package.">Начать</a>
       </div>
-      <div class="plan">
+      <div class="plan reveal">
         <div class="badge" data-i18n="pricing.p3.badge">ЕЖЕМЕСЯЧНО</div>
         <h3 data-i18n="pricing.p3.h3">Абонемент на рост</h3>
         <div class="price">$349<span data-i18n="pricing.p3.suffix">/мес</span></div>
@@ -359,6 +480,32 @@ footer a:hover{color:var(--text)}
 
 <script>
 var I18N = {
+  ru: {
+    scan: {
+      error_invalid: "Введите корректный адрес сайта.",
+      error_fetch: "Не удалось открыть этот сайт. Проверьте адрес и попробуйте снова.",
+      checks: {
+        title: "Title тег",
+        description: "Meta описание",
+        canonical: "Canonical тег",
+        structured_data: "Структурированные данные (JSON-LD)",
+        robots: "robots.txt",
+        ai_crawlers: "Доступ для ИИ-краулеров",
+        sitemap: "Sitemap",
+        lang: "Атрибут языка"
+      },
+      detail: {
+        title_ok: "{n} символов", title_missing: "Отсутствует",
+        desc_ok: "{n} символов", desc_missing: "Отсутствует",
+        canonical_yes: "Есть", canonical_no: "Отсутствует",
+        structured_yes: "{types}", structured_no: "Не найдено",
+        robots_yes: "Найден", robots_no: "Отсутствует",
+        ai_ok: "Не заблокирован", ai_blocked: "Заблокирован: {bots}",
+        sitemap_yes: "Найдено {n} URL", sitemap_no: "Не найден",
+        lang_yes: "{v}", lang_no: "Отсутствует"
+      }
+    }
+  },
   en: {
     nav: { cta: "Get an Audit" },
     hero: {
@@ -412,10 +559,49 @@ var I18N = {
       p: "Start with the $299 audit. No long-term commitment, no vague retainer — just a clear, prioritized list of exactly what's holding your site back.",
       cta: "Message us on WhatsApp"
     },
+    trust: { label: "Visible wherever people search" },
+    scan: {
+      h2: "Free 60-second website scan",
+      sub: "Enter a website URL — we'll check title, meta description, structured data, robots.txt, AI-crawler access, and sitemap.",
+      placeholder: "example.com",
+      button: "Scan",
+      loading: "Scanning...",
+      score_label: "checks passed",
+      cta: "Get the full audit and fix list — $299",
+      error_invalid: "Please enter a valid website address.",
+      error_fetch: "Could not reach that site. Check the URL and try again.",
+      checks: {
+        title: "Title tag",
+        description: "Meta description",
+        canonical: "Canonical tag",
+        structured_data: "Structured data (JSON-LD)",
+        robots: "robots.txt",
+        ai_crawlers: "AI crawler access",
+        sitemap: "Sitemap",
+        lang: "Language attribute"
+      },
+      detail: {
+        title_ok: "{n} characters", title_missing: "Missing",
+        desc_ok: "{n} characters", desc_missing: "Missing",
+        canonical_yes: "Present", canonical_no: "Missing",
+        structured_yes: "{types}", structured_no: "None found",
+        robots_yes: "Found", robots_no: "Missing",
+        ai_ok: "Not blocked", ai_blocked: "Blocked: {bots}",
+        sitemap_yes: "{n} URLs found", sitemap_no: "Not found",
+        lang_yes: "{v}", lang_no: "Missing"
+      }
+    },
+    case2: {
+      eyebrow: "A second, independent case",
+      h2: "LegalFeeAudit: launched Monday — already on Google's first page",
+      lede: "Not our own education site — a separate GetForce product, a US legal service. Same technical approach from day one: structured data, correct robots.txt and sitemap, Search Console verification. The result is real Google search screenshots, taken today.",
+      cap1: "Query “legal fee audit” — the site appears on page 1 twice",
+      cap2: "A specific topic query — also page 1, next to state government sites"
+    },
     footer: { by: "GetForce SEO — a service by" },
     meta: {
-      title: "GetForce SEO — SEO & GEO for Businesses | Get Found by Google and AI",
-      desc: "Technical SEO and Generative Engine Optimization (GEO) for businesses — get indexed by Google, Bing, Yandex, and cited by ChatGPT and Perplexity. Built and proven on our own site first.",
+      title: "GetForce SEO — SEO & GEO for Businesses",
+      desc: "Technical SEO & GEO for businesses: indexed by Google, Bing, Yandex, cited by ChatGPT. Proven on our own site first.",
       ogTitle: "GetForce SEO — Get Found by Google. And ChatGPT.",
       ogDesc: "Technical SEO + Generative Engine Optimization for businesses. We proved it on our own site first — see the real results."
     },
@@ -481,10 +667,49 @@ var I18N = {
       p: "$299 аудиттен баштаңыз. Узак мөөнөттүк милдеттенме жок, бүдөмүк абонемент жок — так, приоритеттештирилген, сайтыңызды эмне тосуп жатканынын тизмеси гана.",
       cta: "WhatsApp'ка жазыңыз"
     },
+    trust: { label: "Сиз издеген жерлердин баарында көрүнүктүү" },
+    scan: {
+      h2: "Сайтты 60 секундда бекер текшерүү",
+      sub: "Сайттын дарегин жазыңыз — title, meta description, структураланган маалымат, robots.txt, ИИ-краулерлер үчүн жетүү жана sitemap текшеребиз.",
+      placeholder: "example.com",
+      button: "Текшерүү",
+      loading: "Текшерилүүдө...",
+      score_label: "текшерүү өттү",
+      cta: "Толук аудит жана оңдоо тизмесин алуу — $299",
+      error_invalid: "Сайттын туура дарегин жазыңыз.",
+      error_fetch: "Бул сайтка жетүү мүмкүн болбоду. Даректи текшерип, кайра аракет кылыңыз.",
+      checks: {
+        title: "Title теги",
+        description: "Meta сыпаттама",
+        canonical: "Canonical тег",
+        structured_data: "Структураланган маалымат (JSON-LD)",
+        robots: "robots.txt",
+        ai_crawlers: "ИИ краулерлер үчүн жетүү",
+        sitemap: "Sitemap",
+        lang: "Тил атрибуту"
+      },
+      detail: {
+        title_ok: "{n} белги", title_missing: "Жок",
+        desc_ok: "{n} белги", desc_missing: "Жок",
+        canonical_yes: "Бар", canonical_no: "Жок",
+        structured_yes: "{types}", structured_no: "Табылган жок",
+        robots_yes: "Табылды", robots_no: "Жок",
+        ai_ok: "Бөгөттөлгөн эмес", ai_blocked: "Бөгөттөлгөн: {bots}",
+        sitemap_yes: "{n} URL табылды", sitemap_no: "Табылган жок",
+        lang_yes: "{v}", lang_no: "Жок"
+      }
+    },
+    case2: {
+      eyebrow: "Экинчи, көз карандысыз кейс",
+      h2: "LegalFeeAudit: дүйшөмбүдө иштеп чыккан — Google'дун биринчи барагында эле",
+      lede: "Бул биздин билим берүү сайтыбыз эмес — GetForce'тун өзүнчө продукту, АКШдагы юридикалык кызмат. Биринчи күндөн эле так ошол эле техникалык ыкма: структураланган маалымат, туура robots.txt жана sitemap, Search Console'до текшерүү. Жыйынтык — бүгүн тартылган чыныгы Google издөө скриншоттору.",
+      cap1: "«legal fee audit» суроосу — сайт биринчи баракта эки жолу көрүнөт",
+      cap2: "Так теманы боюнча суроо — ал да биринчи барак, штаттын мамлекеттик сайттарынын жанында"
+    },
     footer: { by: "GetForce SEO — GetForce'тун кызматы" },
     meta: {
-      title: "GetForce SEO — Бизнес үчүн SEO жана GEO | Google жана ИИде табылыңыз",
-      desc: "Бизнес үчүн техникалык SEO жана генеративдик оптимизация (GEO) — Google, Bing, Yandex'те индекстелүү жана ChatGPT, Perplexity'де цитата кылынуу. Алгач өзүбүздүн сайтта текшерилген.",
+      title: "GetForce SEO — Бизнес үчүн SEO жана GEO",
+      desc: "Бизнес үчүн техникалык SEO жана GEO: Google, Bing, Yandex индекстелүү, ChatGPT цитата. Өз сайтта текшерилген.",
       ogTitle: "GetForce SEO — Google жана ChatGPT'де табылыңыз.",
       ogDesc: "Бизнес үчүн техникалык SEO жана GEO. Алгач өзүбүздө текшердик — чыныгы жыйынтыктарды көрүңүз."
     },
@@ -532,6 +757,10 @@ var I18N = {
         var v = getDeep(dict, el.getAttribute('data-i18n-html'));
         if (v != null) el.innerHTML = v;
       });
+      document.querySelectorAll('[data-i18n-ph]').forEach(function(el) {
+        var v = getDeep(dict, el.getAttribute('data-i18n-ph'));
+        if (v != null) el.setAttribute('placeholder', v);
+      });
       document.getElementById('t-title').textContent = dict.meta.title;
       document.getElementById('m-desc').setAttribute('content', dict.meta.desc);
       document.getElementById('og-title').setAttribute('content', dict.meta.ogTitle);
@@ -557,6 +786,110 @@ var I18N = {
   try { saved = localStorage.getItem('seo_getforce_lang'); } catch (e) {}
   if (saved && saved !== 'ru') applyLang(saved);
   else document.documentElement.setAttribute('data-current-lang', 'ru');
+
+  window.__getScanDict = function() {
+    var lang = document.documentElement.getAttribute('data-current-lang') || 'ru';
+    return (I18N[lang] && I18N[lang].scan) || I18N.ru.scan;
+  };
+})();
+
+(function(){
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(function(el) { io.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el) { el.classList.add('in'); });
+  }
+})();
+
+(function(){
+  var form = document.getElementById('scan-form');
+  var input = document.getElementById('scan-url');
+  var btn = document.getElementById('scan-btn');
+  var loading = document.getElementById('scan-loading');
+  var errorEl = document.getElementById('scan-error');
+  var results = document.getElementById('scan-results');
+  var scoreNum = document.getElementById('scan-score-num');
+  var list = document.getElementById('scan-list');
+  var ctaLink = document.getElementById('scan-cta-link');
+
+  function fmt(tpl, vars) {
+    return tpl.replace(/\{(\w+)\}/g, function(_, k) { return vars[k] != null ? vars[k] : ''; });
+  }
+
+  function renderCheck(dict, c) {
+    var label = dict.checks[c.id] || c.id;
+    var detail = '';
+    switch (c.id) {
+      case 'title':
+        detail = c.status === 'fail' ? dict.detail.title_missing : fmt(dict.detail.title_ok, { n: c.meta.length });
+        break;
+      case 'description':
+        detail = c.status === 'fail' ? dict.detail.desc_missing : fmt(dict.detail.desc_ok, { n: c.meta.length });
+        break;
+      case 'canonical':
+        detail = c.meta.present ? dict.detail.canonical_yes : dict.detail.canonical_no;
+        break;
+      case 'structured_data':
+        detail = c.meta.types && c.meta.types.length ? fmt(dict.detail.structured_yes, { types: c.meta.types.join(', ') }) : dict.detail.structured_no;
+        break;
+      case 'robots':
+        detail = c.meta.present ? dict.detail.robots_yes : dict.detail.robots_no;
+        break;
+      case 'ai_crawlers':
+        detail = c.meta.blocked && c.meta.blocked.length ? fmt(dict.detail.ai_blocked, { bots: c.meta.blocked.join(', ') }) : dict.detail.ai_ok;
+        break;
+      case 'sitemap':
+        detail = c.meta.present ? fmt(dict.detail.sitemap_yes, { n: c.meta.count }) : dict.detail.sitemap_no;
+        break;
+      case 'lang':
+        detail = c.meta.value ? fmt(dict.detail.lang_yes, { v: c.meta.value }) : dict.detail.lang_no;
+        break;
+    }
+    var icon = c.status === 'pass' ? '✓' : c.status === 'warn' ? '!' : '✕';
+    return '<div class="scan-row ' + c.status + '"><div class="ico">' + icon + '</div><div class="txt"><div class="label">' + label + '</div><div class="detail">' + detail + '</div></div></div>';
+  }
+
+  if (form) {
+    form.addEventListener('submit', async function(ev) {
+      ev.preventDefault();
+      var dict = window.__getScanDict();
+      var url = (input.value || '').trim();
+      errorEl.classList.remove('show');
+      results.classList.remove('show');
+      if (!url) {
+        errorEl.textContent = dict.error_invalid;
+        errorEl.classList.add('show');
+        return;
+      }
+      btn.disabled = true;
+      loading.classList.add('show');
+      try {
+        var res = await fetch('/api/audit?url=' + encodeURIComponent(url));
+        var data = await res.json();
+        if (data.error) {
+          errorEl.textContent = dict.error_fetch;
+          errorEl.classList.add('show');
+        } else {
+          scoreNum.textContent = data.score + '/' + data.total;
+          list.innerHTML = data.checks.map(function(c) { return renderCheck(dict, c); }).join('');
+          var waText = encodeURIComponent('Hi! I just scanned ' + data.url + ' (scored ' + data.score + '/' + data.total + ') and want the full SEO/GEO audit.');
+          ctaLink.href = 'https://wa.me/996700264555?text=' + waText;
+          results.classList.add('show');
+        }
+      } catch (e) {
+        errorEl.textContent = dict.error_fetch;
+        errorEl.classList.add('show');
+      } finally {
+        btn.disabled = false;
+        loading.classList.remove('show');
+      }
+    });
+  }
 })();
 </script>
 
