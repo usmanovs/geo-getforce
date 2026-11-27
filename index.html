@@ -19,10 +19,10 @@
 <meta id="tw-desc" name="twitter:description" content="Техническое SEO и GEO для бизнеса. Сначала мы проверили всё на себе — вот реальные результаты.">
 <meta name="twitter:image" content="https://ai.getforce.dev/og-image.png">
 
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%237c5cff'/><path d='M9 8h14v4H14v3h8v4h-8v5h-5z' fill='white'/></svg>">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%233d5ba9'/><path d='M9 8h14v4H14v3h8v4h-8v5h-5z' fill='white'/></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <script type="application/ld+json">
 {
@@ -69,144 +69,183 @@
 <script defer src="/_vercel/insights/script.js"></script>
 
 <style>
-:root{--bg:#0b0b12;--card:#14141f;--card2:#191927;--line:#2a2a3d;--line2:#34344a;--text:#f4f4f8;--muted:#b0b0c4;--accent:#7c5cff;--accent-b:#34e0b4;--accent2:#34e0b4;--wa:#25d366;--grad:linear-gradient(135deg,#7c5cff,#34e0b4)}
+:root{
+  --bg:#f6f7fa;--card:#ffffff;--card2:#eef0fa;--line:#e3e5ef;--line2:#d2d6e6;
+  --text:#15171f;--muted:#666b7d;--accent:#3d5ba9;--accent-dark:#2c447f;--accent-soft:#eaedf9;
+  --good:#1f9d6b;--warn:#b7791f;--bad:#d64545;--radius:16px
+}
 *{box-sizing:border-box;margin:0}
 html{scroll-behavior:smooth}
 body{
-  background-color:var(--bg);color:var(--text);font:16px/1.6 Inter,-apple-system,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased;
-  background-image:radial-gradient(circle at 1px 1px, rgba(255,255,255,.045) 1px, transparent 0);
+  background-color:var(--bg);color:var(--text);font:16px/1.6 Manrope,-apple-system,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased;
+  background-image:radial-gradient(circle at 1px 1px, rgba(61,91,169,.08) 1px, transparent 0);
   background-size:26px 26px;
 }
-h1,h2,h3{font-family:Manrope,Inter,sans-serif}
+h1,h2,h3{font-family:Outfit,Manrope,sans-serif;color:var(--text);letter-spacing:-.01em}
 a{color:inherit;text-decoration:none}
-.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
 section{padding:72px 0;position:relative}
-.eyebrow{display:inline-block;padding:6px 14px;border:1px solid var(--line2);border-radius:99px;color:var(--muted);font-size:14px;background:rgba(124,92,255,.08)}
+.eyebrow{display:inline-block;padding:6px 14px;border:1px solid var(--line2);border-radius:99px;color:var(--accent);font-size:13px;font-weight:700;background:var(--accent-soft)}
 
 .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s cubic-bezier(.2,.7,.3,1),transform .7s cubic-bezier(.2,.7,.3,1)}
 .reveal.in{opacity:1;transform:none}
 
-header.site{position:sticky;top:0;z-index:40;background:rgba(11,11,18,.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+header.site{position:sticky;top:0;z-index:40;background:rgba(246,247,250,.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
 header.site .wrap{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;gap:16px}
-.brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:18px}
-.brand .dot{width:28px;height:28px;border-radius:8px;background:var(--grad);display:inline-flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;box-shadow:0 0 18px rgba(124,92,255,.5)}
-.brand small{color:var(--muted);font-weight:600;font-size:13px;margin-left:6px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:18px;font-family:Outfit,sans-serif}
+.brand .dot{width:28px;height:28px;border-radius:8px;background:var(--accent);display:inline-flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;color:#fff}
+.brand small{color:var(--muted);font-weight:700;font-size:13px;margin-left:6px}
+.nav-links{display:flex;gap:22px;font-weight:600;font-size:14px;color:var(--muted)}
+.nav-links a:hover{color:var(--text)}
 .header-right{display:flex;align-items:center;gap:14px}
-.langs{display:flex;gap:4px;border:1px solid var(--line);border-radius:10px;padding:3px}
+.langs{display:flex;gap:4px;border:1px solid var(--line);border-radius:10px;padding:3px;background:#fff}
 .langs button{background:transparent;border:0;color:var(--muted);font:inherit;font-weight:700;font-size:13px;padding:6px 10px;border-radius:7px;cursor:pointer;transition:color .15s}
-.langs button.active{background:var(--grad);color:#0b0b12}
-.btn{display:inline-block;padding:12px 24px;border-radius:12px;font-weight:700;border:1px solid var(--line2);transition:transform .18s cubic-bezier(.2,.7,.3,1),box-shadow .18s,border-color .18s,filter .18s;cursor:pointer}
+.langs button.active{background:var(--accent);color:#fff}
+.btn{display:inline-block;padding:12px 24px;border-radius:999px;font-weight:700;border:1px solid var(--line2);transition:transform .18s cubic-bezier(.2,.7,.3,1),box-shadow .18s,border-color .18s,filter .18s;cursor:pointer;background:#fff}
 .btn:hover{transform:translateY(-2px)}
-.btn.primary{background:var(--grad);border-color:transparent;color:#06220f;box-shadow:0 8px 24px -8px rgba(52,224,180,.55)}
-.btn.primary:hover{box-shadow:0 12px 28px -6px rgba(52,224,180,.7);filter:brightness(1.05)}
-.btn.ghost{color:var(--text)}
-.btn.ghost:hover{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent) inset}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:#fff;box-shadow:0 10px 24px -10px rgba(61,91,169,.6)}
+.btn.primary:hover{background:var(--accent-dark);border-color:var(--accent-dark)}
+.btn.ghost{color:var(--text);background:transparent;border-color:var(--line2)}
+.btn.ghost:hover{border-color:var(--accent);color:var(--accent)}
+.link-arrow{display:inline-flex;align-items:center;gap:6px;font-weight:700;color:var(--accent)}
+.link-arrow:hover{text-decoration:underline}
 
-.hero{padding:72px 0 44px;text-align:center;overflow:hidden}
-.hero::before{content:"";position:absolute;top:-260px;left:50%;transform:translateX(-50%);width:1000px;height:640px;background:radial-gradient(circle,rgba(124,92,255,.32),transparent 62%);filter:blur(10px);pointer-events:none;z-index:0}
-.hero::after{content:"";position:absolute;top:-120px;left:50%;transform:translateX(-50%);width:700px;height:420px;background:radial-gradient(circle,rgba(52,224,180,.22),transparent 65%);filter:blur(10px);pointer-events:none;z-index:0}
-.hero>*{position:relative;z-index:1}
-.hero h1{font-size:clamp(34px,5.6vw,62px);line-height:1.07;letter-spacing:-.03em;max-width:880px;margin:20px auto 16px}
-.hero h1 em{font-style:normal;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
-.hero p.lead{color:var(--muted);font-size:19px;max-width:620px;margin:0 auto}
-.hero .cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:28px}
+.hero{padding:56px 0 24px}
+.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center}
+.hero h1{font-size:clamp(32px,4.8vw,54px);line-height:1.08;letter-spacing:-.03em;margin:18px 0 16px;font-weight:700}
+.hero h1 .accent-line{display:block;color:var(--accent)}
+.hero p.lead{color:var(--muted);font-size:18px;max-width:520px;margin:0 0 24px}
+.hero .cta{display:flex;align-items:center;gap:20px;flex-wrap:wrap;margin-bottom:14px}
+.hero .fine-print{color:var(--muted);font-size:13px}
+.hero-chart{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:24px;box-shadow:0 24px 48px -32px rgba(21,23,31,.25)}
+.hero-chart .chart-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:14px}
+.hero-chart .chart-head b{font-family:Outfit;font-size:15px}
+.hero-chart svg{width:100%;height:auto;display:block}
+.hero-chart .chart-cap{color:var(--muted);font-size:12px;margin-top:10px;text-align:right}
 
-.trust{padding:30px 0 10px}
-.trust .label{text-align:center;color:var(--muted);font-size:13px;letter-spacing:.04em;text-transform:uppercase;margin-bottom:16px}
+.trust{padding:28px 0 8px}
+.trust .label{text-align:center;color:var(--muted);font-size:12px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:16px;font-weight:700}
 .trust-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-.trust-badge{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:99px;padding:8px 16px;color:var(--muted);font-size:14px;font-weight:600;background:var(--card);transition:border-color .2s,color .2s,transform .2s}
-.trust-badge:hover{border-color:var(--line2);color:var(--text);transform:translateY(-2px)}
+.trust-badge{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:99px;padding:8px 16px;color:var(--muted);font-size:14px;font-weight:700;background:var(--card);transition:border-color .2s,color .2s,transform .2s}
+.trust-badge:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
 .trust-badge svg{width:16px;height:16px;opacity:.85}
 
-.scan{background:var(--card);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.scan{background:var(--card2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .scan-box{max-width:720px;margin:0 auto;text-align:center}
 .scan h2{font-size:clamp(24px,3.4vw,32px);margin-bottom:10px}
 .scan p.sub{color:var(--muted);font-size:16px;margin-bottom:26px}
 .scan-form{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
-.scan-form input{flex:1;min-width:220px;max-width:420px;padding:13px 18px;border-radius:12px;border:1px solid var(--line2);background:var(--card2);color:var(--text);font:inherit;font-size:15px}
+.scan-form input{flex:1;min-width:220px;max-width:420px;padding:13px 18px;border-radius:12px;border:1px solid var(--line2);background:#fff;color:var(--text);font:inherit;font-size:15px}
 .scan-form input:focus{outline:2px solid var(--accent);outline-offset:1px}
-.scan-form button{background:var(--grad);border:0;color:#06220f;font-weight:700;padding:13px 24px;border-radius:12px;cursor:pointer;font-size:15px;transition:filter .15s,transform .15s}
-.scan-form button:hover{filter:brightness(1.06);transform:translateY(-1px)}
+.scan-form button{background:var(--accent);border:0;color:#fff;font-weight:700;padding:13px 24px;border-radius:999px;cursor:pointer;font-size:15px;transition:filter .15s,transform .15s}
+.scan-form button:hover{filter:brightness(1.08);transform:translateY(-1px)}
 .scan-form button:disabled{opacity:.6;cursor:default;transform:none}
 .scan-results{margin-top:28px;text-align:left;display:none}
 .scan-results.show{display:block}
 .scan-score{display:flex;align-items:center;gap:14px;margin-bottom:18px}
-.scan-score .num{font-family:Manrope;font-size:36px;font-weight:800;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.scan-score .num{font-family:Outfit;font-size:36px;font-weight:800;color:var(--accent)}
 .scan-score .lbl{color:var(--muted);font-size:14px}
 .scan-list{display:grid;gap:10px}
-.scan-row{display:flex;align-items:center;gap:12px;background:var(--card2);border:1px solid var(--line);border-radius:12px;padding:12px 16px}
+.scan-row{display:flex;align-items:center;gap:12px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 16px}
 .scan-row .ico{width:22px;height:22px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800}
-.scan-row.pass .ico{background:rgba(52,224,180,.18);color:var(--accent-b)}
-.scan-row.warn .ico{background:rgba(255,209,102,.18);color:#ffd166}
-.scan-row.fail .ico{background:rgba(255,107,107,.18);color:#ff6b6b}
+.scan-row.pass .ico{background:#e4f6ee;color:var(--good)}
+.scan-row.warn .ico{background:#fbf0dc;color:var(--warn)}
+.scan-row.fail .ico{background:#fbe6e6;color:var(--bad)}
 .scan-row .txt{flex:1}
 .scan-row .label{font-weight:700;font-size:14px}
 .scan-row .detail{color:var(--muted);font-size:13px}
 .scan-cta{margin-top:22px;text-align:center}
-.scan-error{color:#ff6b6b;margin-top:16px;font-size:14px;display:none}
+.scan-error{color:var(--bad);margin-top:16px;font-size:14px;display:none}
 .scan-error.show{display:block}
 .scan-loading{display:none;color:var(--muted);margin-top:18px;font-size:14px}
 .scan-loading.show{display:block}
 
-.problem{background:var(--card);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.problem .grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start}
-.problem h2{font-size:clamp(24px,3.2vw,34px);margin-bottom:14px}
+.problem .grid{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:start}
+.problem h2{font-size:clamp(26px,3.4vw,38px);margin-bottom:16px;line-height:1.15}
+.problem h2 .accent-line{display:block;color:var(--accent)}
 .problem p{color:var(--muted);font-size:17px}
-.stat-row{display:flex;gap:28px;margin-top:24px;flex-wrap:wrap}
-.stat{background:var(--card2);border:1px solid var(--line);border-radius:14px;padding:18px 20px;flex:1;min-width:160px;transition:border-color .2s,transform .2s}
-.stat:hover{border-color:var(--line2);transform:translateY(-3px)}
-.stat b{display:block;font-family:Manrope;font-size:30px;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
-.stat span{color:var(--muted);font-size:14px}
+.stat-rows{margin-top:28px}
+.stat-row2{display:flex;align-items:baseline;gap:18px;padding:16px 0;border-top:1px solid var(--line)}
+.stat-row2:last-child{border-bottom:1px solid var(--line)}
+.stat-row2 b{font-family:Outfit;font-size:30px;color:var(--accent);white-space:nowrap}
+.stat-row2 span{color:var(--muted);font-size:15px}
+.flow-card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:26px;box-shadow:0 24px 48px -32px rgba(21,23,31,.2)}
+.flow-card .flow-label{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:700;margin-bottom:6px}
+.flow-card .flow-q{font-weight:700;font-size:16px;margin-bottom:14px}
+.flow-pills{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+.flow-pill{border:1px solid var(--line2);border-radius:99px;padding:6px 14px;font-size:13px;font-weight:600;color:var(--muted)}
+.flow-pill.active{background:var(--accent-soft);border-color:var(--accent);color:var(--accent)}
+.flow-arrow{color:var(--line2);margin:6px 0;font-size:16px}
+.flow-note{border-top:1px solid var(--line);margin-top:12px;padding-top:12px;font-size:13px;color:var(--muted)}
 
 .proof h2{font-size:clamp(26px,3.6vw,38px);text-align:center;margin-bottom:8px}
 .proof p.sub{text-align:center;color:var(--muted);max-width:640px;margin:0 auto 40px}
 .proof-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
-.proof-card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px;transition:border-color .2s,transform .2s,box-shadow .2s}
-.proof-card:hover{border-color:var(--line2);transform:translateY(-4px);box-shadow:0 16px 32px -20px rgba(124,92,255,.5)}
-.proof-card .tag{display:inline-block;background:var(--grad);color:#06241c;font-weight:700;font-size:12px;padding:3px 10px;border-radius:99px;margin-bottom:10px}
+.proof-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:24px;transition:border-color .2s,transform .2s,box-shadow .2s}
+.proof-card:hover{border-color:var(--accent);transform:translateY(-4px);box-shadow:0 16px 32px -20px rgba(61,91,169,.35)}
+.proof-card .tag{display:inline-block;background:var(--accent-soft);color:var(--accent);font-weight:700;font-size:12px;padding:3px 10px;border-radius:99px;margin-bottom:10px}
 .proof-card h3{font-size:18px;margin-bottom:8px}
 .proof-card p{color:var(--muted);font-size:15px}
 
-.case2{background:linear-gradient(180deg,var(--card) 0%,var(--bg) 100%)}
-.case2-box{border:1px solid var(--line2);border-radius:20px;padding:36px;background:var(--card2);position:relative;overflow:hidden}
-.case2-box::before{content:"";position:absolute;top:-140px;right:-100px;width:360px;height:360px;background:radial-gradient(circle,rgba(52,224,180,.2),transparent 65%);pointer-events:none}
+.case2{background:var(--card2)}
+.case2-box{border:1px solid var(--line);border-radius:22px;padding:36px;background:#fff}
 .case2-head{display:flex;align-items:center;gap:12px;margin-bottom:6px;flex-wrap:wrap}
 .case2-head .eyebrow{margin-bottom:0}
 .case2 h2{font-size:clamp(24px,3.4vw,32px);margin:14px 0 10px}
-.case2 p.lede{color:var(--muted);font-size:17px;max-width:640px;margin-bottom:24px}
+.case2 p.lede{color:var(--muted);font-size:17px;max-width:680px;margin-bottom:24px}
 .case2-shots{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.case2-shots figure{margin:0;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff}
-.case2-shots img{display:block;width:100%;height:auto}
-.case2-shots figcaption{padding:10px 14px;color:var(--muted);font-size:13px;background:var(--card)}
+.browser-frame{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#fff;box-shadow:0 18px 36px -28px rgba(21,23,31,.3)}
+.browser-bar{display:flex;align-items:center;gap:6px;padding:10px 12px;background:#f1f2f8;border-bottom:1px solid var(--line)}
+.browser-bar .dot2{width:9px;height:9px;border-radius:50%;background:#d6d8e4}
+.browser-frame img{display:block;width:100%;height:auto}
+.browser-frame figcaption{padding:10px 14px;color:var(--muted);font-size:13px;background:#fafafd;border-top:1px solid var(--line)}
 
-.services{background:var(--card)}
+.services{background:#fff}
 .services h2{text-align:center;font-size:clamp(26px,3.6vw,38px);margin-bottom:40px}
 .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.svc-card{background:var(--card2);border:1px solid var(--line);border-radius:16px;padding:24px;transition:border-color .2s,transform .2s}
-.svc-card:hover{border-color:var(--line2);transform:translateY(-3px)}
-.svc-card h3{font-size:17px;margin-bottom:10px;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.svc-card{background:var(--card2);border:1px solid var(--line);border-radius:var(--radius);padding:24px;transition:border-color .2s,transform .2s}
+.svc-card:hover{border-color:var(--accent);transform:translateY(-3px)}
+.svc-card h3{font-size:17px;margin-bottom:10px;color:var(--accent)}
 .svc-card ul{padding-left:18px;color:var(--muted);font-size:14px;line-height:1.7}
+
+.guarantee h2{font-size:clamp(26px,3.6vw,38px);margin-bottom:10px;line-height:1.15}
+.guarantee h2 .accent-line{display:block;color:var(--accent)}
+.guarantee p.sub{color:var(--muted);font-size:17px;max-width:640px;margin-bottom:36px}
+.g-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-bottom:40px}
+.g-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:24px}
+.g-card h3{font-size:17px;margin-bottom:8px}
+.g-card p{color:var(--muted);font-size:14px;margin-bottom:14px}
+.g-proof{border-top:1px solid var(--line);padding-top:12px;display:flex;align-items:center;justify-content:space-between;font-size:13px}
+.g-proof .pill-status{background:var(--accent-soft);color:var(--accent);font-weight:700;padding:3px 10px;border-radius:99px;font-size:11px}
+.not-included{border:1px solid var(--line);border-radius:var(--radius);padding:28px;background:#fff}
+.not-included .ni-label{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:700;margin-bottom:18px}
+.ni-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.ni-item{display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center}
+.ni-item .ni-ico{width:40px;height:40px;border-radius:50%;background:var(--card2);display:flex;align-items:center;justify-content:center;color:var(--muted)}
+.ni-item span{font-size:13px;color:var(--muted);font-weight:600}
 
 .pricing h2{text-align:center;font-size:clamp(26px,3.6vw,38px);margin-bottom:10px}
 .pricing p.sub{text-align:center;color:var(--muted);max-width:620px;margin:0 auto 44px}
 .plans{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.plan{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:28px;transition:border-color .2s,transform .2s}
-.plan:hover{border-color:var(--line2);transform:translateY(-3px)}
-.plan.featured{border:1px solid transparent;background:linear-gradient(var(--card),var(--card)) padding-box,var(--grad) border-box;box-shadow:0 20px 40px -24px rgba(124,92,255,.6)}
-.plan.featured:hover{transform:translateY(-5px)}
-.plan .badge{color:var(--accent-b);font-weight:700;font-size:13px;margin-bottom:8px}
+.plan{background:#fff;border:1px solid var(--line);border-radius:20px;padding:28px;transition:border-color .2s,transform .2s}
+.plan:hover{border-color:var(--accent);transform:translateY(-3px)}
+.plan.featured{border:2px solid var(--accent);box-shadow:0 20px 40px -24px rgba(61,91,169,.4)}
+.plan .badge{color:var(--accent);font-weight:700;font-size:13px;margin-bottom:8px;text-transform:uppercase;letter-spacing:.04em}
 .plan h3{font-size:20px;margin-bottom:4px}
-.plan .price{font-family:Manrope;font-size:34px;margin:14px 0 2px}
-.plan .price span{font-size:15px;color:var(--muted);font-family:Inter}
+.plan .price{font-family:Outfit;font-size:34px;margin:14px 0 2px;font-weight:700}
+.plan .price span{font-size:15px;color:var(--muted);font-family:Manrope}
 .plan ul{padding-left:18px;color:var(--muted);font-size:14px;line-height:1.8;margin:18px 0 22px}
 .plan .btn{width:100%;text-align:center}
 
-.faq{background:var(--card)}
-.faq h2{text-align:center;font-size:clamp(26px,3.6vw,38px);margin-bottom:36px}
-.faq-item{border-bottom:1px solid var(--line);padding:20px 0}
-.faq-item summary{cursor:pointer;font-weight:700;font-size:17px;list-style:none;display:flex;justify-content:space-between;align-items:center}
+.faq{background:#fff}
+.faq-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:48px}
+.faq-left h2{font-size:clamp(28px,4vw,40px);line-height:1.15;margin-bottom:14px}
+.faq-left h2 .accent-line{display:block;color:var(--accent)}
+.faq-left p{color:var(--muted);font-size:16px}
+.faq-item{border-bottom:1px solid var(--line);padding:18px 0}
+.faq-item summary{cursor:pointer;font-weight:700;font-size:16px;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px}
 .faq-item summary::-webkit-details-marker{display:none}
-.faq-item summary::after{content:"+";color:var(--accent);font-size:22px}
+.faq-item summary::after{content:"+";color:var(--accent);font-size:22px;flex-shrink:0}
 .faq-item[open] summary::after{content:"\2212"}
 .faq-item p{color:var(--muted);margin-top:12px;font-size:15px}
 
@@ -214,15 +253,20 @@ header.site .wrap{display:flex;align-items:center;justify-content:space-between;
 .final h2{font-size:clamp(28px,4vw,42px);margin-bottom:14px}
 .final p{color:var(--muted);font-size:17px;max-width:520px;margin:0 auto 28px}
 
-footer{border-top:1px solid var(--line);padding:32px 0;color:var(--muted);font-size:14px;text-align:center}
+footer{border-top:1px solid var(--line);padding:40px 0;color:var(--muted);font-size:14px;background:var(--card2)}
+.footer-grid{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px}
 footer a{color:var(--muted)}
-footer a:hover{color:var(--text)}
+footer a:hover{color:var(--accent)}
 
+@media (max-width:900px){
+  .hero-grid,.problem .grid,.faq-grid{grid-template-columns:1fr}
+  .ni-grid{grid-template-columns:repeat(2,1fr)}
+}
 @media (max-width:780px){
-  .problem .grid,.proof-grid,.svc-grid,.plans,.case2-shots{grid-template-columns:1fr}
+  .proof-grid,.svc-grid,.plans,.case2-shots,.g-grid{grid-template-columns:1fr}
   section{padding:52px 0}
   header.site .wrap{flex-wrap:wrap}
-  .hero::before,.hero::after{width:600px;height:400px}
+  .nav-links{display:none}
 }
 </style>
 </head>
@@ -231,6 +275,11 @@ footer a:hover{color:var(--text)}
 <header class="site">
   <div class="wrap">
     <a href="/" class="brand"><span class="dot">G</span>GetForce <small>SEO</small></a>
+    <nav class="nav-links">
+      <a href="#proof" data-i18n="nav.proof">Доказательства</a>
+      <a href="#pricing" data-i18n="nav.pricing">Цены</a>
+      <a href="#faq-anchor" data-i18n="nav.faq">Вопросы</a>
+    </nav>
     <div class="header-right">
       <div class="langs" role="group" aria-label="Language">
         <button type="button" data-lang="ru" class="active">RU</button>
@@ -244,12 +293,32 @@ footer a:hover{color:var(--text)}
 
 <main>
   <section class="hero wrap">
-    <span class="eyebrow" data-i18n="hero.eyebrow">SEO и GEO для бизнеса</span>
-    <h1 data-i18n-html="hero.h1">Чтобы вас нашли в Google. <em>И в ChatGPT.</em></h1>
-    <p class="lead" data-i18n="hero.lead">Поиск разделился на два: люди всё ещё гуглят, но всё чаще спрашивают ChatGPT, Perplexity и AI Overviews. Мы делаем так, чтобы ваш бизнес был виден и там, и там — и сначала проверили весь процесс на себе.</p>
-    <div class="cta">
-      <a class="btn primary" data-i18n="hero.cta_audit" href="https://wa.me/996700264555?text=Hi!%20I%27d%20like%20an%20SEO%2FGEO%20audit%20for%20my%20business.">Получить аудит — $299</a>
-      <a class="btn ghost" data-i18n="hero.cta_proof" href="#proof">Посмотреть доказательства</a>
+    <div class="hero-grid">
+      <div>
+        <span class="eyebrow" data-i18n="hero.eyebrow">SEO и GEO для бизнеса</span>
+        <h1 data-i18n-html="hero.h1">Вас находят в Google.<span class="accent-line">А в ChatGPT?</span></h1>
+        <p class="lead" data-i18n="hero.lead">Когда клиент спрашивает ИИ, кого выбрать, он называет три-пять брендов. Мы делаем технический GEO и SEO так, чтобы среди них был и ваш.</p>
+        <div class="cta">
+          <a class="btn primary" data-i18n="hero.cta_audit" href="https://wa.me/996700264555?text=Hi!%20I%27d%20like%20an%20SEO%2FGEO%20audit%20for%20my%20business.">Получить аудит — $299</a>
+          <a class="link-arrow" data-i18n="hero.cta_proof" href="#scan">↓ Бесплатное сканирование сайта</a>
+        </div>
+        <p class="fine-print" data-i18n="hero.fine_print">60 секунд, без обязательств. Сканирование — бесплатно.</p>
+      </div>
+      <div class="hero-chart">
+        <div class="chart-head">
+          <b data-i18n="hero.chart_title">Видимость для ИИ-поиска</b>
+        </div>
+        <svg viewBox="0 0 320 140" preserveAspectRatio="none">
+          <line x1="0" y1="35" x2="320" y2="35" stroke="#eceefa" stroke-width="1"/>
+          <line x1="0" y1="70" x2="320" y2="70" stroke="#eceefa" stroke-width="1"/>
+          <line x1="0" y1="105" x2="320" y2="105" stroke="#eceefa" stroke-width="1"/>
+          <polyline points="0,115 60,112 120,100 180,78 240,48 320,15" fill="none" stroke="#3d5ba9" stroke-width="3" stroke-linecap="round" stroke-dasharray="6 5"/>
+          <polyline points="0,118 60,116 120,113 180,110 240,106 320,102" fill="none" stroke="#d2d6e6" stroke-width="2.5" stroke-linecap="round"/>
+          <circle cx="320" cy="15" r="5" fill="#3d5ba9"/>
+          <circle cx="0" cy="118" r="4" fill="#d2d6e6"/>
+        </svg>
+        <div class="chart-cap" data-i18n="hero.chart_cap">* Иллюстрация, без реальных цифр</div>
+      </div>
     </div>
   </section>
 
@@ -264,7 +333,7 @@ footer a:hover{color:var(--text)}
     </div>
   </div>
 
-  <section class="scan wrap reveal">
+  <section class="scan wrap reveal" id="scan">
     <div class="scan-box">
       <h2 data-i18n="scan.h2">Бесплатная проверка сайта за 60 секунд</h2>
       <p class="sub" data-i18n="scan.sub">Введите адрес сайта — проверим title, meta description, structured data, robots.txt, доступ для ИИ-краулеров и sitemap.</p>
@@ -287,16 +356,36 @@ footer a:hover{color:var(--text)}
     </div>
   </section>
 
-  <section class="problem">
-    <div class="wrap grid">
+  <section class="problem wrap">
+    <div class="grid">
       <div>
-        <h2 data-i18n="problem.h2">Большинство «SEO-дружественных» сайтов всё ещё невидимы для ИИ</h2>
-        <p data-i18n="problem.p">Стандартные SEO-чек-листы не ловят самое важное сейчас: ИИ-краулеры случайно заблокированы в robots.txt, нет структурированных данных для цитирования ИИ-системами, дублирующиеся или слишком длинные мета-описания, одностраничные приложения, которые отдают одинаковый контент на все URL. Сайт может выглядеть нормально для человека — и быть невидимым для систем, которые сейчас определяют добрую половину всех переходов.</p>
+        <h2 data-i18n-html="problem.h2">Поиск по ссылкам<span class="accent-line">больше не всё.</span></h2>
+        <p data-i18n="problem.p">Google ранжирует страницы. ИИ выбирает три-пять имён и цитирует их. Вы можете быть вторыми в Google и отсутствовать в ответе ИИ — потому что он также опирается на сайты-сравнения, каталоги, отзывы и статьи.</p>
+        <div class="stat-rows">
+          <div class="stat-row2"><b>9</b><span data-i18n="problem.stat1">страниц исправлены с «заблокировано» на индексируемые — на нашем же сайте</span></div>
+          <div class="stat-row2"><b>3</b><span data-i18n="problem.stat2">поисковые системы верифицированы: Google, Bing, Yandex</span></div>
+          <div class="stat-row2"><b>7</b><span data-i18n="problem.stat3">дублирующихся мета-описаний найдено и исправлено</span></div>
+        </div>
       </div>
-      <div class="stat-row">
-        <div class="stat"><b>9</b><span data-i18n="problem.stat1">страниц исправлены с «заблокировано» на индексируемые — на нашем же сайте</span></div>
-        <div class="stat"><b>3</b><span data-i18n="problem.stat2">поисковые системы верифицированы: Google, Bing, Yandex</span></div>
-        <div class="stat"><b>7</b><span data-i18n="problem.stat3">дублирующихся мета-описаний найдено и исправлено</span></div>
+      <div class="flow-card">
+        <div class="flow-label" data-i18n="problem.flow_q_label">ВОПРОС</div>
+        <div class="flow-q" data-i18n="problem.flow_q">«Какое SEO/GEO агентство выбрать в Кыргызстане?»</div>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-label" data-i18n="problem.flow_pages_label">СТРАНИЦЫ, КОТОРЫЕ ОН ЧИТАЕТ</div>
+        <div class="flow-pills">
+          <span class="flow-pill active" data-i18n="problem.flow_your_site">Ваш сайт</span>
+          <span class="flow-pill" data-i18n="problem.flow_compare">Сайты-сравнения</span>
+          <span class="flow-pill" data-i18n="problem.flow_reviews">Отзывы</span>
+          <span class="flow-pill" data-i18n="problem.flow_forums">Форумы</span>
+        </div>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-label" data-i18n="problem.flow_answer_label">ОТВЕТ</div>
+        <div class="flow-pills">
+          <span class="flow-pill" data-i18n="problem.flow_brand_a">Конкурент А</span>
+          <span class="flow-pill" data-i18n="problem.flow_brand_b">Конкурент Б</span>
+          <span class="flow-pill active" data-i18n="problem.flow_you">Вы?</span>
+        </div>
+        <div class="flow-note" data-i18n="problem.flow_note">Проверьте сами: спросите ChatGPT вопрос вашего клиента, не называя свой бренд.</div>
       </div>
     </div>
   </section>
@@ -346,11 +435,13 @@ footer a:hover{color:var(--text)}
       <h2 data-i18n="case2.h2">LegalFeeAudit: запущен в понедельник — уже на первой странице Google</h2>
       <p class="lede" data-i18n="case2.lede">Это не наш образовательный сайт — отдельный продукт GetForce, юридический сервис в США. Тот же технический подход с первого дня: структурированные данные, корректный robots.txt и sitemap, верификация в Search Console. Результат — реальные скриншоты поиска Google, сделанные сегодня.</p>
       <div class="case2-shots">
-        <figure>
+        <figure class="browser-frame">
+          <div class="browser-bar"><span class="dot2"></span><span class="dot2"></span><span class="dot2"></span></div>
           <img src="/case-studies/legalfeeaudit-serp-brand.png" alt="Google search results for 'legal fee audit' showing legalfeeaudit.com ranking on page 1" loading="lazy" />
           <figcaption data-i18n="case2.cap1">Запрос «legal fee audit» — сайт на первой странице дважды</figcaption>
         </figure>
-        <figure>
+        <figure class="browser-frame">
+          <div class="browser-bar"><span class="dot2"></span><span class="dot2"></span><span class="dot2"></span></div>
           <img src="/case-studies/legalfeeaudit-serp.png" alt="Google search results for a long-tail legal fee dispute query showing legalfeeaudit.com ranking on page 1" loading="lazy" />
           <figcaption data-i18n="case2.cap2">Конкретный запрос по теме — тоже первая страница, рядом с госсайтами штата</figcaption>
         </figure>
@@ -387,6 +478,37 @@ footer a:hover{color:var(--text)}
           <li data-i18n="services.c3.i3">Верификация в Yandex Webmaster</li>
           <li data-i18n="services.c3.i4">Мгновенные пинги IndexNow</li>
         </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="guarantee wrap">
+    <h2 data-i18n-html="guarantee.h2_html">Что мы гарантируем.<span class="accent-line">И как это держим.</span></h2>
+    <p class="sub" data-i18n="guarantee.sub">Никто не может гарантировать позицию или трафик: Google и ИИ меняют правила без предупреждения.</p>
+    <div class="g-grid">
+      <div class="g-card reveal">
+        <h3 data-i18n="guarantee.c1.h3">Вся работа задокументирована</h3>
+        <p data-i18n="guarantee.c1.p">Каждое исправление и каждый файл — с датой, в отчёте, который вы можете проверить сами.</p>
+        <div class="g-proof"><span data-i18n="guarantee.c1.example">robots.txt обновлён</span><span class="pill-status" data-i18n="guarantee.c1.status">ПРИМЕНЕНО</span></div>
+      </div>
+      <div class="g-card reveal">
+        <h3 data-i18n="guarantee.c2.h3">Ничего необратимого</h3>
+        <p data-i18n="guarantee.c2.p">Каждое изменение можно откатить. Доступы к Search Console и аккаунтам остаются вашими.</p>
+        <div class="g-proof"><span data-i18n="guarantee.c2.example">Изменение canonical</span><span class="pill-status" data-i18n="guarantee.c2.status">ОБРАТИМО</span></div>
+      </div>
+      <div class="g-card reveal">
+        <h3 data-i18n="guarantee.c3.h3">3 месяца, потом помесячно</h3>
+        <p data-i18n="guarantee.c3.p">Потому что измерение ничего не говорит раньше. После — уведомление за месяц.</p>
+        <div class="g-proof"><span data-i18n="guarantee.c3.example">Без долгого контракта</span><span class="pill-status" data-i18n="guarantee.c3.status">ПОМЕСЯЧНО</span></div>
+      </div>
+    </div>
+    <div class="not-included reveal">
+      <div class="ni-label" data-i18n="guarantee.ni_label">НЕ ВХОДИТ</div>
+      <div class="ni-grid">
+        <div class="ni-item"><div class="ni-ico">💰</div><span data-i18n="guarantee.ni1">Платная реклама</span></div>
+        <div class="ni-item"><div class="ni-ico">📱</div><span data-i18n="guarantee.ni2">Соцсети</span></div>
+        <div class="ni-item"><div class="ni-ico">📸</div><span data-i18n="guarantee.ni3">Фото и визуалы</span></div>
+        <div class="ni-item"><div class="ni-ico">💻</div><span data-i18n="guarantee.ni4">Веб-разработка</span></div>
       </div>
     </div>
   </section>
@@ -435,32 +557,39 @@ footer a:hover{color:var(--text)}
     </div>
   </section>
 
-  <section class="faq wrap">
-    <h2 data-i18n="faq.h2">Частые вопросы</h2>
-    <details class="faq-item" open>
-      <summary data-i18n="faq.q1.q">В чём разница между SEO и GEO?</summary>
-      <p data-i18n="faq.q1.a">SEO делает так, чтобы ваш бизнес находили в Google и Bing. GEO (Generative Engine Optimization) делает так, чтобы ИИ-системы вроде ChatGPT, Perplexity и AI Overviews цитировали и рекомендовали ваш бизнес. Они пересекаются — чистые структурированные данные и доступные для краулинга страницы помогают обоим — но GEO добавляет то, что упускает обычное SEO: например, что ИИ-краулеры случайно не заблокированы, и что контент сформулирован так, чтобы его можно было процитировать напрямую.</p>
-    </details>
-    <details class="faq-item">
-      <summary data-i18n="faq.q2.q">Откуда я знаю, что это реально работает?</summary>
-      <p data-i18n="faq.q2.a">Мы провели этот же процесс на своём собственном сайте getforce.org, прежде чем предлагать его кому-либо ещё. Это описано выше: структурный баг, незаметно блокировавший все подстраницы от Bing, дублирующиеся мета-описания на семи страницах, отсутствие структурированных данных — всё найдено и исправлено, с подтверждением до/после через Google Search Console, Bing Webmaster Tools и Yandex Webmaster.</p>
-    </details>
-    <details class="faq-item">
-      <summary data-i18n="faq.q3.q">Сколько ждать результата?</summary>
-      <p data-i18n="faq.q3.a">Технические исправления (индексация, структурированные данные, доступ для краулеров) обычно видны в Search Console и Webmaster Tools в течение от нескольких дней до пары недель — вы убираете блокировки, а не ждёте построения новых позиций с нуля. Рост позиций и трафика за счёт контента и авторитетности занимает дольше — обычно 2-3 месяца до заметного тренда.</p>
-    </details>
-    <details class="faq-item">
-      <summary data-i18n="faq.q4.q">Вы работаете с бизнесами за пределами Кыргызстана?</summary>
-      <p data-i18n="faq.q4.a">Да. Техническая часть — структурированные данные, автоматизация Search Console, доступ для краулеров — применима к любому сайту независимо от локации. Настройка локального поиска (например, Google Business Profile) наиболее полезна для бизнесов с физическим присутствием или зоной обслуживания.</p>
-    </details>
-    <details class="faq-item">
-      <summary data-i18n="faq.q5.q">А если сайт делали не вы?</summary>
-      <p data-i18n="faq.q5.a">Это нормально — у большинства клиентов уже есть сайты на своём стеке (WordPress, Shopify, свой код, Lovable — что угодно). Аудит начинается с изучения вашего реального кода или вывода сайта, а не шаблонного чек-листа.</p>
-    </details>
-    <details class="faq-item">
-      <summary data-i18n="faq.q6.q">Вы гарантируете конкретные позиции в выдаче?</summary>
-      <p data-i18n="faq.q6.a">Ни один уважающий себя SEO-провайдер не может гарантировать конкретную позицию — поисковики это не продают. Что мы гарантируем — это устранение технических блокировок (ошибки краулинга, баги индексации, отсутствие схемы) и настройку мониторинга, который это доказывает, с документированными доказательствами до/после, как показано выше.</p>
-    </details>
+  <section class="faq wrap" id="faq-anchor">
+    <div class="faq-grid">
+      <div class="faq-left">
+        <h2 data-i18n-html="faq.h2_html">Перед тем как начать.<span class="accent-line">Ваши вопросы, наши ответы.</span></h2>
+        <p data-i18n="faq.sub">Остался вопрос? Напишите в WhatsApp — ответим лично.</p>
+      </div>
+      <div class="faq-right">
+        <details class="faq-item" open>
+          <summary data-i18n="faq.q1.q">В чём разница между SEO и GEO?</summary>
+          <p data-i18n="faq.q1.a">SEO делает так, чтобы ваш бизнес находили в Google и Bing. GEO (Generative Engine Optimization) делает так, чтобы ИИ-системы вроде ChatGPT, Perplexity и AI Overviews цитировали и рекомендовали ваш бизнес. Они пересекаются — чистые структурированные данные и доступные для краулинга страницы помогают обоим — но GEO добавляет то, что упускает обычное SEO: например, что ИИ-краулеры случайно не заблокированы, и что контент сформулирован так, чтобы его можно было процитировать напрямую.</p>
+        </details>
+        <details class="faq-item">
+          <summary data-i18n="faq.q2.q">Откуда я знаю, что это реально работает?</summary>
+          <p data-i18n="faq.q2.a">Мы провели этот же процесс на своём собственном сайте getforce.org, прежде чем предлагать его кому-либо ещё. Это описано выше: структурный баг, незаметно блокировавший все подстраницы от Bing, дублирующиеся мета-описания на семи страницах, отсутствие структурированных данных — всё найдено и исправлено, с подтверждением до/после через Google Search Console, Bing Webmaster Tools и Yandex Webmaster.</p>
+        </details>
+        <details class="faq-item">
+          <summary data-i18n="faq.q3.q">Сколько ждать результата?</summary>
+          <p data-i18n="faq.q3.a">Технические исправления (индексация, структурированные данные, доступ для краулеров) обычно видны в Search Console и Webmaster Tools в течение от нескольких дней до пары недель — вы убираете блокировки, а не ждёте построения новых позиций с нуля. Рост позиций и трафика за счёт контента и авторитетности занимает дольше — обычно 2-3 месяца до заметного тренда.</p>
+        </details>
+        <details class="faq-item">
+          <summary data-i18n="faq.q4.q">Вы работаете с бизнесами за пределами Кыргызстана?</summary>
+          <p data-i18n="faq.q4.a">Да. Техническая часть — структурированные данные, автоматизация Search Console, доступ для краулеров — применима к любому сайту независимо от локации. Настройка локального поиска (например, Google Business Profile) наиболее полезна для бизнесов с физическим присутствием или зоной обслуживания.</p>
+        </details>
+        <details class="faq-item">
+          <summary data-i18n="faq.q5.q">А если сайт делали не вы?</summary>
+          <p data-i18n="faq.q5.a">Это нормально — у большинства клиентов уже есть сайты на своём стеке (WordPress, Shopify, свой код, Lovable — что угодно). Аудит начинается с изучения вашего реального кода или вывода сайта, а не шаблонного чек-листа.</p>
+        </details>
+        <details class="faq-item">
+          <summary data-i18n="faq.q6.q">Вы гарантируете конкретные позиции в выдаче?</summary>
+          <p data-i18n="faq.q6.a">Ни один уважающий себя SEO-провайдер не может гарантировать конкретную позицию — поисковики это не продают. Что мы гарантируем — это устранение технических блокировок (ошибки краулинга, баги индексации, отсутствие схемы) и настройку мониторинга, который это доказывает, с документированными доказательствами до/после, как показано выше.</p>
+        </details>
+      </div>
+    </div>
   </section>
 
   <section class="final wrap">
@@ -471,10 +600,9 @@ footer a:hover{color:var(--text)}
 </main>
 
 <footer>
-  <div class="wrap">
-    <span data-i18n="footer.by">GetForce SEO — услуга от</span> <a href="https://getforce.org/">GetForce</a> ·
-    <a href="mailto:info@getforce.org">info@getforce.org</a> ·
-    <a href="https://wa.me/996700264555">WhatsApp</a>
+  <div class="wrap footer-grid">
+    <div><span data-i18n="footer.by">GetForce SEO — услуга от</span> <a href="https://getforce.org/">GetForce</a></div>
+    <div><a href="mailto:info@getforce.org">info@getforce.org</a> · <a href="https://wa.me/996700264555">WhatsApp</a></div>
   </div>
 </footer>
 
@@ -507,20 +635,35 @@ var I18N = {
     }
   },
   en: {
-    nav: { cta: "Get an Audit" },
+    nav: { cta: "Get an Audit", proof: "Proof", pricing: "Pricing", faq: "FAQ" },
     hero: {
       eyebrow: "SEO + GEO for businesses",
-      h1: 'Get found by Google. <em>And ChatGPT.</em>',
-      lead: "Search is splitting in two: people still Google you, but they're increasingly asking ChatGPT, Perplexity, and AI Overviews instead. We make sure your business shows up in both — and we proved the whole process on our own site first.",
+      h1: 'You’re found on Google.<span class="accent-line">On ChatGPT?</span>',
+      lead: "When a customer asks AI who to choose, it names three to five brands. We do the technical GEO and SEO so yours is one of them.",
       cta_audit: "Get an Audit — $299",
-      cta_proof: "See the proof"
+      cta_proof: "↓ Free website scan",
+      fine_print: "60 seconds, no commitment. The scan is free.",
+      chart_title: "Visibility in AI search",
+      chart_cap: "* Illustration, not real figures"
     },
     problem: {
-      h2: 'Most "SEO-friendly" sites are still invisible to AI',
-      p: "Standard SEO checklists don't catch the failures that matter most right now: AI crawlers quietly blocked in robots.txt, no structured data for AI engines to cite, duplicate or oversized metadata, single-page apps that serve the same content to every URL. Your site can look fine to a human and still be invisible to the systems now mediating half of all discovery.",
+      h2: 'Ranking in search<span class="accent-line">is no longer enough.</span>',
+      p: "Google ranks pages. An AI picks three to five names and cites them. You can be second on Google and missing from its answer, because it also leans on comparison sites, directories, reviews and forums.",
       stat1: "pages fixed from blocked to indexable on our own site",
       stat2: "search engines verified: Google, Bing, Yandex",
-      stat3: "duplicate meta descriptions found and corrected"
+      stat3: "duplicate meta descriptions found and corrected",
+      flow_q_label: "THE QUESTION",
+      flow_q: "“Which SEO/GEO agency should I choose?”",
+      flow_pages_label: "THE PAGES IT READS",
+      flow_your_site: "Your site",
+      flow_compare: "Comparison sites",
+      flow_reviews: "Reviews",
+      flow_forums: "Forums",
+      flow_answer_label: "THE ANSWER",
+      flow_brand_a: "Competitor A",
+      flow_brand_b: "Competitor B",
+      flow_you: "You?",
+      flow_note: "Try it yourself: ask ChatGPT your customer's question, without naming your brand."
     },
     proof: {
       h2: "We ran this on ourselves first",
@@ -538,6 +681,15 @@ var I18N = {
       c2: { h3: "GEO (AI visibility)", i1: "Structured data (JSON-LD) for your real content", i2: "Genuine FAQ schema AI engines can cite", i3: "AI-crawler allowlisting (GPTBot, ClaudeBot, PerplexityBot…)", i4: "Content checked for direct quotability" },
       c3: { h3: "Multi-engine setup", i1: "Google Search Console verification & automation", i2: "Bing Webmaster Tools verification", i3: "Yandex Webmaster verification", i4: "IndexNow instant re-crawl pings" }
     },
+    guarantee: {
+      h2_html: 'What we guarantee.<span class="accent-line">And how we keep it.</span>',
+      sub: "Nobody can guarantee a ranking or traffic: Google and AIs change their rules without warning.",
+      c1: { h3: "The work, documented", p: "Every optimisation and every file change, dated, in a report you can check yourself.", example: "robots.txt updated", status: "APPLIED" },
+      c2: { h3: "Nothing irreversible", p: "Every change can be undone. Your Search Console and accounts stay yours.", example: "Canonical change", status: "REVERSIBLE" },
+      c3: { h3: "3 months, then monthly", p: "Because a measurement tells you nothing before then. After that, one month's notice is enough.", example: "No long lock-in", status: "MONTHLY" },
+      ni_label: "NOT INCLUDED",
+      ni1: "Paid ads", ni2: "Social media", ni3: "Photos & visuals", ni4: "Web development"
+    },
     pricing: {
       h2: "Pricing",
       sub: "Flat, scoped pricing — no vague monthly retainers with no deliverables. Final quote depends on site size and stack.",
@@ -546,7 +698,8 @@ var I18N = {
       p3: { badge: "MONTHLY", h3: "Growth Retainer", suffix: "/mo", i1: "Ongoing indexing & ranking monitoring", i2: "Monthly reporting (plain-language, not jargon)", i3: "New FAQ/content additions as your business changes", i4: "Directory & local listing upkeep", cta: "Talk to us" }
     },
     faq: {
-      h2: "Frequently asked questions",
+      h2_html: 'Before you sign.<span class="accent-line">Your questions, our answers.</span>',
+      sub: "Another question? Message us on WhatsApp — we'll answer personally.",
       q1: { q: "What's the difference between SEO and GEO?", a: "SEO gets your business found on Google and Bing search results. GEO (Generative Engine Optimization) gets your business cited and recommended by AI answer engines like ChatGPT, Perplexity, and Google's AI Overviews. They overlap — clean structured data and crawlable pages help both — but GEO adds things SEO alone misses, like making sure AI crawlers aren't accidentally blocked and that your content is phrased in a way these engines can quote directly." },
       q2: { q: "How do I know this actually works?", a: "We ran this exact process on our own site, getforce.org, before offering it to anyone else. It's documented above: a structural bug that was silently blocking every subpage from Bing, duplicate meta descriptions across seven pages, missing structured data — all found and fixed, with before/after verification through Google Search Console, Bing Webmaster Tools, and Yandex Webmaster." },
       q3: { q: "How long until I see results?", a: "Technical fixes (indexing, structured data, crawler access) typically show up in Search Console and Webmaster Tools within days to a couple of weeks, since you're removing blockers rather than waiting on new rankings to build. Ranking and traffic growth from content and authority work takes longer — typically 2-3 months to show a clear trend." },
@@ -615,20 +768,35 @@ var I18N = {
     ]
   },
   ky: {
-    nav: { cta: "Аудит алуу" },
+    nav: { cta: "Аудит алуу", proof: "Далилдер", pricing: "Баалар", faq: "Суроолор" },
     hero: {
       eyebrow: "Бизнес үчүн SEO жана GEO",
-      h1: 'Google издөөсүндө табылыңыз. <em>Жана ChatGPT’де да.</em>',
-      lead: "Издөө эки бөлүккө бөлүндү: адамдар дагы эле Google’до издешет, бирок көбүнчө ChatGPT, Perplexity жана AI Overviews’тен сурашат. Биз сиздин бизнести эки жерде тең көрүнүктүү кылабыз — жана бул процессти алгач өзүбүздө сынап көрдүк.",
+      h1: 'Google’до табылат.<span class="accent-line">ChatGPT’дечи?</span>',
+      lead: "Кардар ИИ'ден кимди тандоону сураганда, ал үч-беш брендди атайт. Биз техникалык GEO жана SEO кылабыз, ошондуктан алардын арасында сиз да болосуз.",
       cta_audit: "Аудит алуу — $299",
-      cta_proof: "Далилдерди көрүү"
+      cta_proof: "↓ Бекер сайт текшерүү",
+      fine_print: "60 секунд, милдеттенме жок. Текшерүү — бекер.",
+      chart_title: "ИИ издөөсүндөгү көрүнүктүүлүк",
+      chart_cap: "* Иллюстрация, чыныгы сандар эмес"
     },
     problem: {
-      h2: "«SEO-ылайыктуу» көпчүлүк сайттар дагы эле ИИ үчүн көрүнбөйт",
-      p: "Стандарттуу SEO текшерүү тизмелери эң маанилүү нерселерди байкабайт: robots.txt'та туш келди бөгөттөлгөн ИИ-краулерлер, ИИ системалары цитата кыла турган структураланган маалыматтын жоктугу, кайталанган же өтө узун мета-сыпаттамалар, бардык URL'ге бирдей мазмунду берген бир баракчалуу тиркемелер. Сайт адам үчүн жакшы көрүнүшү мүмкүн, бирок азыр табылуунун жарымын аныктаган системалар үчүн көрүнбөй калышы мүмкүн.",
+      h2: '«SEO-ылайыктуу» көпчүлүк сайттар<span class="accent-line">дагы эле ИИ үчүн көрүнбөйт.</span>',
+      p: "Google барактарды даражалайт. ИИ үч-беш атты тандап, аларды цитата кылат. Сиз Google'до экинчи болуп, ИИнин жообунда жок болушуңуз мүмкүн — анткени ал ошондой эле салыштыруу сайттарына, каталогдорго, пикирлерге жана форумдарга таянат.",
       stat1: "барак өзүбүздүн сайтта «бөгөттөлгөндөн» индекстелүүчүгө оңдолду",
       stat2: "издөө системасы текшерилди: Google, Bing, Yandex",
-      stat3: "кайталанган мета-сыпаттама табылып, оңдолду"
+      stat3: "кайталанган мета-сыпаттама табылып, оңдолду",
+      flow_q_label: "СУРОО",
+      flow_q: "«Кайсы SEO/GEO агенттигин тандасам болот?»",
+      flow_pages_label: "ЭЭ ОКУГАН БАРАКТАР",
+      flow_your_site: "Сиздин сайт",
+      flow_compare: "Салыштыруу сайттары",
+      flow_reviews: "Пикирлер",
+      flow_forums: "Форумдар",
+      flow_answer_label: "ЖООП",
+      flow_brand_a: "Атаандаш А",
+      flow_brand_b: "Атаандаш Б",
+      flow_you: "Сиз?",
+      flow_note: "Өзүңүз текшериңиз: брендиңизди атабай туруп, ChatGPT'тен кардарыңыздын суроосун сураңыз."
     },
     proof: {
       h2: "Биз муну алгач өзүбүздө сынадык",
@@ -646,6 +814,15 @@ var I18N = {
       c2: { h3: "GEO (ИИ үчүн көрүнүктүүлүк)", i1: "Сиздин чыныгы мазмунуңуз үчүн структураланган маалымат (JSON-LD)", i2: "ИИ системалары цитата кыла турган чыныгы FAQ схемасы", i3: "ИИ краулерлерге уруксат берүү (GPTBot, ClaudeBot, PerplexityBot...)", i4: "Мазмундун «цитата кылынуучулугун» текшерүү" },
       c3: { h3: "Көп системада орнотуу", i1: "Google Search Console текшерүү жана автоматташтыруу", i2: "Bing Webmaster Tools текшерүү", i3: "Yandex Webmaster текшерүү", i4: "IndexNow дароо кайра кыдыруу сигналдары" }
     },
+    guarantee: {
+      h2_html: 'Биз эмнени гарантиялайбыз.<span class="accent-line">Жана муну кантип сактайбыз.</span>',
+      sub: "Эч ким позицияны же трафикти гарантиялай албайт: Google жана ИИ эрежелерин эскертүүсүз өзгөртөт.",
+      c1: { h3: "Иш толук документтештирилген", p: "Ар бир оптимизация жана файл өзгөрүүсү — дата менен, өзүңүз текшере турган отчётто.", example: "robots.txt жаңыртылды", status: "КОЛДОНУЛДУ" },
+      c2: { h3: "Эч нерсе кайтарылгыс эмес", p: "Ар бир өзгөртүүнү кайтарууга болот. Search Console жана аккаунттарыңыз сиздики бойдон калат.", example: "Canonical өзгөртүү", status: "КАЙТАРЫЛУУЧУ" },
+      c3: { h3: "3 ай, андан кийин ай сайын", p: "Анткени ченөө андан мурун эч нерсе көрсөтпөйт. Андан кийин бир айлык эскертүү жетиштүү.", example: "Узак келишим жок", status: "АЙ САЙЫН" },
+      ni_label: "КИРБЕЙТ",
+      ni1: "Акы төлөнүүчү жарнама", ni2: "Социалдык тармактар", ni3: "Сүрөт жана визуалдар", ni4: "Веб-иштеп чыгуу"
+    },
     pricing: {
       h2: "Баалар",
       sub: "Так жана белгилүү пакеттер — натыйжасыз бүдөмүк айлык абонемент жок. Акыркы баа сайттын көлөмүнө жана технологиясына жараша аныкталат.",
@@ -654,7 +831,8 @@ var I18N = {
       p3: { badge: "АЙ САЙЫН", h3: "Өсүү абонементи", suffix: "/ай", i1: "Индекстелүү жана позицияларды үзгүлтүксүз көзөмөлдөө", i2: "Жаргонсуз, жөнөкөй тилде айлык отчёт", i3: "Бизнесиңиз өзгөргөн сайын FAQ'га жаңы суроолорду кошуу", i4: "Каталогдорду жана локалдык тизмелерди колдоо", cta: "Биз менен сүйлөшүңүз" }
     },
     faq: {
-      h2: "Көп берилүүчү суроолор",
+      h2_html: 'Колго алуудан мурун.<span class="accent-line">Суроолоруңуз, жоопторубуз.</span>',
+      sub: "Дагы суроо барбы? WhatsApp'ка жазыңыз — өзүбүз жооп беребиз.",
       q1: { q: "SEO менен GEO'нун айырмасы эмне?", a: "SEO сиздин бизнести Google жана Bing издөө жыйынтыктарында таптырат. GEO (Generative Engine Optimization) ChatGPT, Perplexity жана Google'дун AI Overviews сыяктуу ИИ системалары сиздин бизнести цитата кылып, сунуштоосун камсыз кылат. Алар кесилишет — таза структураланган маалымат жана краулинг кылууга боло турган барактар экөөнө тең жардам берет — бирок GEO SEO жалгыз өзү өткөрүп жиберген нерселерди кошот: мисалы, ИИ краулерлер туш келди бөгөттөлбөшү жана мазмун ал системалар түздөн-түз цитата кыла турган түрдө жазылышы." },
       q2: { q: "Бул чындап иштейрин кайдан билем?", a: "Биз бул процессти башка бирөөгө сунуштоодон мурун так ушул эле getforce.org сайтыбызда жүргүздүк. Бул жогоруда документтештирилген: Bing'ден бардык подбарактарды унчукпай бөгөттөп жаткан структуралык ката, жети баракта кайталанган мета-сыпаттамалар, структураланган маалыматтын жоктугу — баары табылып, оңдолду, Google Search Console, Bing Webmaster Tools жана Yandex Webmaster аркылуу мурунку/кийинки ырастоо менен." },
       q3: { q: "Натыйжаны канча күттүрөт?", a: "Техникалык оңдоолор (индекстелүү, структураланган маалымат, краулерлер үчүн жетүү) адатта Search Console жана Webmaster Tools'то бир нече күндөн бир нече жумага чейин көрүнөт — сиз жаңыдан позиция курууну күтпөй, тоскоолдуктарды алып салып жатасыз. Мазмун жана беделдин эсебинен позиция жана трафиктин өсүшү көбүрөөк убакыт алат — адатта так тенденция көрүнгөнгө чейин 2-3 ай." },
