@@ -1,0 +1,535 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GetForce SEO — Admin</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0f1117;--card:#171a23;--card2:#1b1f29;--line:#262b36;--line2:#3a4150;
+  --text:#eef0f5;--muted:#9aa2b3;--accent:#6d8ee0;--accent-dark:#587bc9;--accent-soft:rgba(109,142,224,.16);
+  --good:#3ddc97;--good-bg:rgba(61,220,151,.15);--warn:#e3b24a;--warn-bg:rgba(227,178,74,.15);
+  --bad:#ff6b6b;--bad-bg:rgba(255,107,107,.15);--radius:16px
+}
+*{box-sizing:border-box;margin:0}
+body{background:var(--bg);color:var(--text);font:15px/1.6 Manrope,-apple-system,"Segoe UI",sans-serif;min-height:100vh}
+h1,h2,h3{font-family:Outfit,Manrope,sans-serif}
+button,input,textarea,select{font:inherit;color:inherit}
+a{color:inherit}
+.wrap{max-width:1100px;margin:0 auto;padding:0 20px}
+.hide{display:none !important}
+
+/* Login */
+.login-screen{min-height:100vh;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.login-screen::before{content:"";position:absolute;top:-20%;left:-10%;width:70%;height:70%;background:rgba(109,142,224,.18);filter:blur(100px);border-radius:50%}
+.login-screen::after{content:"";position:absolute;bottom:-20%;right:-10%;width:70%;height:70%;background:rgba(155,109,224,.14);filter:blur(100px);border-radius:50%}
+.login-card{position:relative;z-index:1;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:36px;max-width:380px;width:100%}
+.login-card h1{font-size:22px;margin-bottom:6px}
+.login-card p.sub{color:var(--muted);font-size:14px;margin-bottom:24px}
+.field{margin-bottom:14px}
+.field label{display:block;font-size:13px;color:var(--muted);margin-bottom:6px;font-weight:600}
+.field input{width:100%;padding:11px 14px;border-radius:10px;border:1px solid var(--line2);background:var(--card2);color:var(--text)}
+.field input:focus{outline:2px solid var(--accent);outline-offset:1px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:11px 20px;border-radius:10px;font-weight:700;border:1px solid var(--line2);background:var(--card2);cursor:pointer;transition:filter .15s,transform .15s}
+.btn:hover{transform:translateY(-1px)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:#06101f;width:100%}
+.btn.primary:hover{filter:brightness(1.08)}
+.btn.ghost{background:transparent}
+.btn:disabled{opacity:.6;cursor:default;transform:none}
+.mode-toggle{text-align:center;margin-top:14px;font-size:13px;color:var(--muted)}
+.mode-toggle button{background:none;border:0;color:var(--accent);font-weight:700;cursor:pointer;padding:0}
+.msg{font-size:13px;margin-top:10px;display:none}
+.msg.show{display:block}
+.msg.error{color:var(--bad)}
+.msg.success{color:var(--good)}
+
+/* Not authorized */
+.unauth{min-height:100vh;display:flex;align-items:center;justify-content:center}
+.unauth .login-card{text-align:center}
+
+/* Dashboard */
+header.admin-top{position:sticky;top:0;z-index:30;background:rgba(15,17,23,.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+header.admin-top .wrap{display:flex;align-items:center;gap:12px;padding:14px 20px}
+header.admin-top h1{font-size:17px;flex:1}
+.dash{padding:32px 0 80px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:28px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px}
+.stat .lbl{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:700;margin-bottom:6px}
+.stat .val{font-family:Outfit;font-size:26px;font-weight:800}
+.stat .val.accent{color:var(--accent)}
+
+.client-bar{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 18px;display:flex;align-items:center;gap:14px;margin-bottom:28px;flex-wrap:wrap}
+.client-bar .lbl{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.client-bar select{flex:1;min-width:180px;padding:10px 12px;border-radius:10px;border:1px solid var(--line2);background:var(--card2);color:var(--text)}
+.client-meta{color:var(--muted);font-size:13px}
+
+.section-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+.section-head h2{font-size:19px}
+.empty{border:1px dashed var(--line2);border-radius:16px;padding:40px 20px;text-align:center;color:var(--muted)}
+.empty .btn{margin-top:14px}
+
+.category{background:var(--card);border:1px solid var(--line);border-radius:16px;margin-bottom:14px;overflow:hidden}
+.category-head{display:flex;align-items:center;gap:10px;padding:14px 18px;cursor:pointer}
+.category-head .chev{color:var(--muted);transition:transform .15s}
+.category-head.open .chev{transform:rotate(180deg)}
+.category-head .title{font-weight:700;flex:1}
+.category-head .count{background:var(--card2);color:var(--muted);font-size:12px;font-weight:700;padding:2px 9px;border-radius:99px}
+.category-head .del{color:var(--muted);background:none;border:0;cursor:pointer;padding:4px}
+.category-head .del:hover{color:var(--bad)}
+.category-body{padding:0 18px 16px;display:none}
+.category-body.open{display:block}
+.item-row{display:flex;align-items:center;gap:10px;padding:10px 0;border-top:1px solid var(--line)}
+.item-row .title{flex:1;background:none;border:0;color:var(--text);font:inherit;padding:4px 0}
+.item-row .title:focus{outline:none;border-bottom:1px solid var(--accent)}
+.status-badge{border:0;border-radius:99px;font-size:12px;font-weight:700;padding:4px 12px;cursor:pointer}
+.status-badge.todo{background:var(--card2);color:var(--muted)}
+.status-badge.in_progress{background:var(--warn-bg);color:var(--warn)}
+.status-badge.done{background:var(--good-bg);color:var(--good)}
+.item-row .del{color:var(--muted);background:none;border:0;cursor:pointer;padding:4px}
+.item-row .del:hover{color:var(--bad)}
+.add-item-row{padding-top:10px}
+.add-item-row .btn{font-size:13px;padding:8px 14px}
+
+@media (max-width:700px){
+  .stats{grid-template-columns:repeat(2,1fr)}
+}
+</style>
+</head>
+<body>
+
+<div id="loading" style="min-height:100vh;display:flex;align-items:center;justify-content:center;color:var(--muted)">Loading…</div>
+
+<div id="login-screen" class="login-screen hide">
+  <div class="login-card">
+    <h1>GetForce SEO — Admin</h1>
+    <p class="sub" id="login-sub">Sign in with your GetForce admin account.</p>
+    <form id="login-form">
+      <div class="field">
+        <label>Email</label>
+        <input type="email" id="login-email" required autocomplete="email" />
+      </div>
+      <div class="field">
+        <label>Password</label>
+        <input type="password" id="login-password" required autocomplete="current-password" />
+      </div>
+      <button type="submit" class="btn primary" id="login-btn">Sign in</button>
+      <p class="msg" id="login-msg"></p>
+    </form>
+    <div class="mode-toggle">
+      <span id="mode-text">No account yet?</span>
+      <button type="button" id="mode-switch">Create one</button>
+    </div>
+  </div>
+</div>
+
+<div id="unauth-screen" class="unauth hide">
+  <div class="login-card">
+    <h1>Not authorized</h1>
+    <p class="sub">Your account does not have admin access on this project.</p>
+    <button class="btn" id="unauth-signout">Sign out</button>
+  </div>
+</div>
+
+<div id="dashboard" class="hide">
+  <header class="admin-top">
+    <div class="wrap">
+      <h1>GetForce SEO — Admin</h1>
+      <a class="btn ghost" href="/" target="_blank" rel="noopener">↗ Site</a>
+      <button class="btn" id="signout-btn">Sign out</button>
+    </div>
+  </header>
+
+  <div class="dash wrap">
+    <div class="stats">
+      <div class="stat"><div class="lbl">Clients</div><div class="val" id="stat-clients">0</div></div>
+      <div class="stat"><div class="lbl">Categories</div><div class="val" id="stat-categories">0</div></div>
+      <div class="stat"><div class="lbl">Tasks</div><div class="val" id="stat-items">0</div></div>
+      <div class="stat"><div class="lbl">Done</div><div class="val accent" id="stat-done">0</div></div>
+    </div>
+
+    <div class="client-bar">
+      <span class="lbl">Client</span>
+      <select id="client-select"></select>
+      <button class="btn" id="add-client-btn">+ Add client</button>
+      <button class="btn" id="delete-client-btn">Delete client</button>
+    </div>
+
+    <div class="section-head">
+      <h2>SEO/GEO Plan</h2>
+      <button class="btn primary" id="add-category-btn" style="width:auto">+ Add category</button>
+    </div>
+
+    <div id="no-client-empty" class="empty hide">
+      <p>No client selected. Add a client to start building their SEO/GEO plan.</p>
+      <button class="btn primary" id="empty-add-client-btn" style="width:auto">+ Add client</button>
+    </div>
+
+    <div id="categories-list"></div>
+  </div>
+</div>
+
+<script type="module">
+import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
+
+const supabase = createClient(
+  'https://wddvepbocmawvuhkzpuu.supabase.co',
+  'sb_publishable_tL8Uzh72AjHCzxOUCoHjdg_fHpIJJtT'
+);
+
+const $ = (id) => document.getElementById(id);
+const show = (el) => el.classList.remove('hide');
+const hide = (el) => el.classList.add('hide');
+
+let state = {
+  userId: null,
+  clients: [],
+  categories: [],
+  items: [],
+  currentClientId: null,
+};
+
+function log(action, entity_type, entity_id, entity_label, metadata = {}) {
+  return supabase.rpc('log_activity', {
+    _action: action,
+    _entity_type: entity_type,
+    _entity_id: entity_id,
+    _entity_label: entity_label,
+    _metadata: metadata,
+  });
+}
+
+// ---------- Auth ----------
+async function init() {
+  const { data: { session } } = await supabase.auth.getSession();
+  if (!session) {
+    hide($('loading'));
+    show($('login-screen'));
+    return;
+  }
+  state.userId = session.user.id;
+  const { data: roles } = await supabase
+    .from('user_roles')
+    .select('role')
+    .eq('user_id', session.user.id);
+  const isAdmin = !!roles?.some((r) => r.role === 'admin');
+  hide($('loading'));
+  if (!isAdmin) {
+    show($('unauth-screen'));
+    return;
+  }
+  show($('dashboard'));
+  await loadClients();
+}
+
+let authMode = 'signin';
+$('mode-switch').addEventListener('click', () => {
+  authMode = authMode === 'signin' ? 'signup' : 'signin';
+  $('login-btn').textContent = authMode === 'signin' ? 'Sign in' : 'Create account';
+  $('mode-text').textContent = authMode === 'signin' ? 'No account yet?' : 'Already have one?';
+  $('mode-switch').textContent = authMode === 'signin' ? 'Create one' : 'Sign in';
+});
+
+$('login-form').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const email = $('login-email').value.trim();
+  const password = $('login-password').value;
+  const msg = $('login-msg');
+  const btn = $('login-btn');
+  msg.classList.remove('show', 'error', 'success');
+  btn.disabled = true;
+  try {
+    if (authMode === 'signup') {
+      const { error } = await supabase.auth.signUp({ email, password });
+      if (error) throw error;
+      msg.textContent = 'Account created. Check your email to confirm, then sign in.';
+      msg.classList.add('show', 'success');
+    } else {
+      const { error } = await supabase.auth.signInWithPassword({ email, password });
+      if (error) throw error;
+      location.reload();
+    }
+  } catch (err) {
+    msg.textContent = err.message || 'Something went wrong.';
+    msg.classList.add('show', 'error');
+  } finally {
+    btn.disabled = false;
+  }
+});
+
+$('unauth-signout').addEventListener('click', async () => {
+  await supabase.auth.signOut();
+  location.reload();
+});
+$('signout-btn').addEventListener('click', async () => {
+  await supabase.auth.signOut();
+  location.reload();
+});
+
+// ---------- Data loading ----------
+async function loadClients() {
+  const { data } = await supabase.from('seo_clients').select('*').order('order_index');
+  state.clients = data || [];
+  renderClientSelect();
+  if (state.clients.length && !state.currentClientId) {
+    state.currentClientId = state.clients[0].id;
+  }
+  await loadPlan();
+  updateStats();
+}
+
+async function loadPlan() {
+  if (!state.currentClientId) {
+    state.categories = [];
+    state.items = [];
+    renderCategories();
+    return;
+  }
+  const { data: cats } = await supabase
+    .from('seo_plan_categories')
+    .select('*')
+    .eq('client_id', state.currentClientId)
+    .order('order_index');
+  state.categories = cats || [];
+  const catIds = state.categories.map((c) => c.id);
+  if (catIds.length) {
+    const { data: items } = await supabase
+      .from('seo_plan_items')
+      .select('*')
+      .in('category_id', catIds)
+      .order('order_index');
+    state.items = items || [];
+  } else {
+    state.items = [];
+  }
+  renderCategories();
+  updateStats();
+}
+
+function updateStats() {
+  $('stat-clients').textContent = state.clients.length;
+  $('stat-categories').textContent = state.categories.length;
+  $('stat-items').textContent = state.items.length;
+  $('stat-done').textContent = state.items.filter((i) => i.status === 'done').length;
+}
+
+// ---------- Render ----------
+function renderClientSelect() {
+  const sel = $('client-select');
+  sel.innerHTML = state.clients
+    .map((c) => `<option value="${c.id}">${escapeHtml(c.name)}</option>`)
+    .join('');
+  if (state.currentClientId) sel.value = state.currentClientId;
+  const hasClients = state.clients.length > 0;
+  if (hasClients) hide($('no-client-empty')); else show($('no-client-empty'));
+  $('categories-list').style.display = hasClients ? '' : 'none';
+  $('add-category-btn').disabled = !hasClients;
+  $('delete-client-btn').disabled = !hasClients;
+}
+
+function escapeHtml(s) {
+  return String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+}
+
+const openCategories = new Set();
+
+function renderCategories() {
+  const list = $('categories-list');
+  if (state.categories.length === 0) {
+    list.innerHTML = state.clients.length
+      ? '<div class="empty"><p>No plan categories yet. Add one to start (e.g. "Technical SEO", "GEO / Structured data").</p></div>'
+      : '';
+    return;
+  }
+  list.innerHTML = state.categories
+    .map((cat) => {
+      const catItems = state.items.filter((i) => i.category_id === cat.id);
+      const isOpen = openCategories.has(cat.id);
+      return `
+        <div class="category" data-cat="${cat.id}">
+          <div class="category-head ${isOpen ? 'open' : ''}" data-toggle="${cat.id}">
+            <span class="chev">▾</span>
+            <input class="title" data-rename-cat="${cat.id}" value="${escapeHtml(cat.title)}" style="background:none;border:0;color:inherit;font:inherit;font-weight:700;flex:1" />
+            <span class="count">${catItems.length}</span>
+            <button class="del" data-del-cat="${cat.id}" title="Delete category">🗑</button>
+          </div>
+          <div class="category-body ${isOpen ? 'open' : ''}">
+            ${catItems.map((item) => itemRowHtml(item)).join('')}
+            <div class="add-item-row">
+              <button class="btn" data-add-item="${cat.id}">+ Add task</button>
+            </div>
+          </div>
+        </div>`;
+    })
+    .join('');
+  wireCategoryEvents();
+}
+
+function itemRowHtml(item) {
+  return `
+    <div class="item-row" data-item="${item.id}">
+      <input class="title" data-rename-item="${item.id}" value="${escapeHtml(item.title)}" />
+      <button class="status-badge ${item.status}" data-cycle-status="${item.id}">${statusLabel(item.status)}</button>
+      <button class="del" data-del-item="${item.id}" title="Delete">🗑</button>
+    </div>`;
+}
+
+function statusLabel(s) {
+  return s === 'done' ? 'Done' : s === 'in_progress' ? 'In progress' : 'To do';
+}
+function nextStatus(s) {
+  return s === 'todo' ? 'in_progress' : s === 'in_progress' ? 'done' : 'todo';
+}
+
+function wireCategoryEvents() {
+  document.querySelectorAll('[data-toggle]').forEach((el) => {
+    el.addEventListener('click', (e) => {
+      if (e.target.closest('[data-del-cat]') || e.target.closest('[data-rename-cat]')) return;
+      const id = el.getAttribute('data-toggle');
+      if (openCategories.has(id)) openCategories.delete(id);
+      else openCategories.add(id);
+      renderCategories();
+    });
+  });
+  document.querySelectorAll('[data-rename-cat]').forEach((el) => {
+    el.addEventListener('click', (e) => e.stopPropagation());
+    el.addEventListener('change', async (e) => {
+      e.stopPropagation();
+      const id = el.getAttribute('data-rename-cat');
+      const title = el.value.trim() || 'Untitled';
+      await supabase.from('seo_plan_categories').update({ title }).eq('id', id);
+      const cat = state.categories.find((c) => c.id === id);
+      if (cat) cat.title = title;
+      log('update', 'seo_category', id, title);
+    });
+  });
+  document.querySelectorAll('[data-del-cat]').forEach((el) => {
+    el.addEventListener('click', async (e) => {
+      e.stopPropagation();
+      const id = el.getAttribute('data-del-cat');
+      const cat = state.categories.find((c) => c.id === id);
+      if (!confirm(`Delete category "${cat?.title}"? This also deletes all its tasks.`)) return;
+      await supabase.from('seo_plan_categories').delete().eq('id', id);
+      log('delete', 'seo_category', id, cat?.title || '');
+      await loadPlan();
+    });
+  });
+  document.querySelectorAll('[data-rename-item]').forEach((el) => {
+    el.addEventListener('change', async () => {
+      const id = el.getAttribute('data-rename-item');
+      const title = el.value.trim() || 'Untitled';
+      await supabase.from('seo_plan_items').update({ title, updated_at: new Date().toISOString() }).eq('id', id);
+      const item = state.items.find((i) => i.id === id);
+      if (item) item.title = title;
+      log('update', 'seo_item', id, title);
+    });
+  });
+  document.querySelectorAll('[data-cycle-status]').forEach((el) => {
+    el.addEventListener('click', async () => {
+      const id = el.getAttribute('data-cycle-status');
+      const item = state.items.find((i) => i.id === id);
+      if (!item) return;
+      const ns = nextStatus(item.status);
+      item.status = ns;
+      await supabase.from('seo_plan_items').update({ status: ns, updated_at: new Date().toISOString() }).eq('id', id);
+      log(ns === 'done' ? 'complete' : 'update', 'seo_item', id, item.title, { status: ns });
+      renderCategories();
+      updateStats();
+    });
+  });
+  document.querySelectorAll('[data-del-item]').forEach((el) => {
+    el.addEventListener('click', async () => {
+      const id = el.getAttribute('data-del-item');
+      const item = state.items.find((i) => i.id === id);
+      if (!confirm(`Delete task "${item?.title}"?`)) return;
+      await supabase.from('seo_plan_items').delete().eq('id', id);
+      log('delete', 'seo_item', id, item?.title || '');
+      state.items = state.items.filter((i) => i.id !== id);
+      renderCategories();
+      updateStats();
+    });
+  });
+  document.querySelectorAll('[data-add-item]').forEach((el) => {
+    el.addEventListener('click', async () => {
+      const catId = el.getAttribute('data-add-item');
+      const peers = state.items.filter((i) => i.category_id === catId);
+      const order_index = (peers.at(-1)?.order_index ?? -1) + 10;
+      const { data, error } = await supabase
+        .from('seo_plan_items')
+        .insert({ category_id: catId, title: 'New task', status: 'todo', order_index })
+        .select()
+        .single();
+      if (error) return alert(error.message);
+      state.items.push(data);
+      openCategories.add(catId);
+      log('create', 'seo_item', data.id, data.title);
+      renderCategories();
+      updateStats();
+    });
+  });
+}
+
+// ---------- Client controls ----------
+$('client-select').addEventListener('change', async (e) => {
+  state.currentClientId = e.target.value;
+  openCategories.clear();
+  await loadPlan();
+});
+
+async function addClient() {
+  const name = prompt('Client name:');
+  if (!name) return;
+  const website_url = prompt('Website URL (optional):') || null;
+  const order_index = (state.clients.at(-1)?.order_index ?? -1) + 10;
+  const { data, error } = await supabase
+    .from('seo_clients')
+    .insert({ name, website_url, order_index })
+    .select()
+    .single();
+  if (error) return alert(error.message);
+  state.clients.push(data);
+  state.currentClientId = data.id;
+  log('create', 'seo_client', data.id, data.name);
+  renderClientSelect();
+  await loadPlan();
+}
+$('add-client-btn').addEventListener('click', addClient);
+$('empty-add-client-btn').addEventListener('click', addClient);
+
+$('delete-client-btn').addEventListener('click', async () => {
+  const client = state.clients.find((c) => c.id === state.currentClientId);
+  if (!client) return;
+  if (!confirm(`Delete client "${client.name}"? This deletes their entire plan.`)) return;
+  await supabase.from('seo_clients').delete().eq('id', client.id);
+  log('delete', 'seo_client', client.id, client.name);
+  state.clients = state.clients.filter((c) => c.id !== client.id);
+  state.currentClientId = state.clients[0]?.id || null;
+  renderClientSelect();
+  await loadPlan();
+});
+
+$('add-category-btn').addEventListener('click', async () => {
+  if (!state.currentClientId) return;
+  const title = prompt('Category name (e.g. "Technical SEO"):');
+  if (!title) return;
+  const order_index = (state.categories.at(-1)?.order_index ?? -1) + 10;
+  const { data, error } = await supabase
+    .from('seo_plan_categories')
+    .insert({ client_id: state.currentClientId, title, order_index })
+    .select()
+    .single();
+  if (error) return alert(error.message);
+  state.categories.push(data);
+  openCategories.add(data.id);
+  log('create', 'seo_category', data.id, data.title);
+  renderCategories();
+  updateStats();
+});
+
+init();
+</script>
+</body>
+</html>
