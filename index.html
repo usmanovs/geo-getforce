@@ -114,6 +114,9 @@ header.site .wrap{display:flex;align-items:center;justify-content:space-between;
 .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center}
 .hero h1{font-size:clamp(32px,4.8vw,54px);line-height:1.08;letter-spacing:-.03em;margin:18px 0 16px;font-weight:700}
 .hero h1 .accent-line{display:block;color:var(--accent)}
+.hero h1{transition:opacity .35s ease}
+.hero h1.is-swapping{opacity:0}
+@media (prefers-reduced-motion:reduce){.hero h1{transition:none}}
 .hero p.lead{color:var(--muted);font-size:18px;max-width:520px;margin:0 0 24px}
 .hero .cta{display:flex;align-items:center;gap:20px;flex-wrap:wrap;margin-bottom:14px}
 .hero .fine-print{color:var(--muted);font-size:13px}
@@ -296,8 +299,8 @@ footer a:hover{color:var(--accent)}
     <div class="hero-grid">
       <div>
         <span class="eyebrow" data-i18n="hero.eyebrow">SEO и GEO для бизнеса</span>
-        <h1 data-i18n-html="hero.h1">Вас находят в Google.<span class="accent-line">А в ChatGPT?</span></h1>
-        <p class="lead" data-i18n="hero.lead">Когда клиент спрашивает ИИ, кого выбрать, он называет три-пять брендов. Мы делаем технический GEO и SEO так, чтобы среди них был и ваш.</p>
+        <h1 id="hero-h1" data-i18n-html="hero.h1">Ваши конкуренты — на первой странице Google.<span class="accent-line">А вы?</span></h1>
+        <p class="lead" data-i18n="hero.lead">Клиенты выбирают из тех, кого видят первыми — в Google и в ответах ИИ. Мы делаем технический SEO и GEO так, чтобы среди них были и вы.</p>
         <div class="cta">
           <a class="btn primary" data-i18n="hero.cta_audit" href="https://wa.me/996700264555?text=Hi!%20I%27d%20like%20an%20SEO%2FGEO%20audit%20for%20my%20business.">Получить аудит — $299</a>
           <a class="link-arrow" data-i18n="hero.cta_proof" href="#scan">↓ Бесплатное сканирование сайта</a>
@@ -638,8 +641,8 @@ var I18N = {
     nav: { cta: "Get an Audit", proof: "Proof", pricing: "Pricing", faq: "FAQ" },
     hero: {
       eyebrow: "SEO + GEO for businesses",
-      h1: 'You’re found on Google.<span class="accent-line">On ChatGPT?</span>',
-      lead: "When a customer asks AI who to choose, it names three to five brands. We do the technical GEO and SEO so yours is one of them.",
+      h1: 'Your competitors are on page one of Google.<span class="accent-line">Are you?</span>',
+      lead: "Customers choose from the names they see first, on Google and in AI answers. We do the technical SEO and GEO so yours is one of them.",
       cta_audit: "Get an Audit — $299",
       cta_proof: "↓ Free website scan",
       fine_print: "60 seconds, no commitment. The scan is free.",
@@ -771,8 +774,8 @@ var I18N = {
     nav: { cta: "Аудит алуу", proof: "Далилдер", pricing: "Баалар", faq: "Суроолор" },
     hero: {
       eyebrow: "Бизнес үчүн SEO жана GEO",
-      h1: 'Google’до табылат.<span class="accent-line">ChatGPT’дечи?</span>',
-      lead: "Кардар ИИ'ден кимди тандоону сураганда, ал үч-беш брендди атайт. Биз техникалык GEO жана SEO кылабыз, ошондуктан алардын арасында сиз да болосуз.",
+      h1: 'Атаандаштарыңыз Google’дун биринчи бетинде.<span class="accent-line">Сизчи?</span>',
+      lead: "Кардарлар Google’дон жана ИИ жоопторунан биринчи көргөндөрдүн ичинен тандашат. Биз техникалык SEO жана GEO кылабыз — алардын арасында сиз да болушуңуз үчүн.",
       cta_audit: "Аудит алуу — $299",
       cta_proof: "↓ Бекер сайт текшерүү",
       fine_print: "60 секунд, милдеттенме жок. Текшерүү — бекер.",
@@ -1071,5 +1074,48 @@ var I18N = {
 })();
 </script>
 
+<script>
+/* Hero headline: alternates between the Google and the ChatGPT version. */
+(function(){
+  var S = '<span class="accent-line">';
+  var HEADLINES = {
+    ru: ['Ваши конкуренты — на первой странице Google.' + S + 'А вы?</span>',
+         'Ваших конкурентов рекомендует ChatGPT.' + S + 'А вас?</span>'],
+    en: ['Your competitors are on page one of Google.' + S + 'Are you?</span>',
+         'Your competitors are recommended by ChatGPT.' + S + 'Are you?</span>'],
+    ky: ['Атаандаштарыңыз Google’дун биринчи бетинде.' + S + 'Сизчи?</span>',
+         'ChatGPT атаандаштарыңызды сунуштайт.' + S + 'Сиздичи?</span>']
+  };
+  var INTERVAL_MS = 4500, FADE_MS = 350;
+  var h1 = document.getElementById('hero-h1');
+  if (!h1) return;
+  var idx = 0;
+
+  function variants() {
+    return HEADLINES[document.documentElement.getAttribute('data-current-lang')] || HEADLINES.ru;
+  }
+  /* Reserve room for the taller version so the page below does not jump. */
+  function reserveHeight() {
+    var v = variants(), max = 0;
+    h1.style.minHeight = '';
+    for (var i = 0; i < v.length; i++) { h1.innerHTML = v[i]; max = Math.max(max, h1.offsetHeight); }
+    h1.innerHTML = v[idx];
+    h1.style.minHeight = max + 'px';
+  }
+  function swap() {
+    if (document.hidden) return;
+    idx = (idx + 1) % variants().length;
+    h1.classList.add('is-swapping');
+    setTimeout(function(){ h1.innerHTML = variants()[idx]; h1.classList.remove('is-swapping'); }, FADE_MS);
+  }
+
+  reserveHeight();
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(reserveHeight);
+  window.addEventListener('resize', reserveHeight);
+  new MutationObserver(function(){ idx = 0; reserveHeight(); })
+    .observe(document.documentElement, { attributes: true, attributeFilter: ['data-current-lang'] });
+  setInterval(swap, INTERVAL_MS);
+})();
+</script>
 </body>
 </html>
