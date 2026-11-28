@@ -71,14 +71,9 @@ a{color:inherit}
 
 /* Dashboard */
 header.admin-top{position:sticky;top:0;z-index:30;background:var(--header-bg);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-header.admin-top .wrap{display:flex;align-items:center;gap:12px;padding:14px 20px}
+header.admin-top .wrap{display:flex;align-items:center;gap:10px;padding:8px 20px}
 header.admin-top h1{font-size:15px;flex:1}
-.dash{padding:32px 0 80px}
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:28px}
-.stat{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px 18px;box-shadow:var(--shadow)}
-.stat .lbl{font-size:13px;color:var(--muted);font-weight:600;margin-bottom:4px}
-.stat .val{font-family:var(--display);font-size:22px;font-weight:600}
-.stat .val.accent{color:var(--accent)}
+.dash{padding:14px 0 60px}
 
 .client-bar{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 18px;display:flex;align-items:center;gap:14px;margin-bottom:28px;flex-wrap:wrap}
 .client-bar .lbl{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:700}
@@ -113,13 +108,18 @@ header.admin-top h1{font-size:15px;flex:1}
 .add-item-row .btn{font-size:13px;padding:8px 14px}
 
 /* Master material */
-.intro{color:var(--muted);max-width:720px;margin-bottom:24px;font-size:16px}
 .save-state{color:var(--muted);font-size:13px;min-width:70px;text-align:right}
 .btn.small{font-size:13px;padding:7px 12px}
 .btn.danger:hover{border-color:var(--bad);color:var(--bad)}
+header.admin-top .btn{padding:7px 14px;font-size:13px}
+@media (max-width:640px){header.admin-top .wrap{flex-wrap:wrap;row-gap:6px}header.admin-top h1{flex-basis:100%}.save-state{margin-left:auto}header.admin-top a[href="/"]{display:none}}
+.stats{display:flex;flex-wrap:wrap;gap:6px 8px;margin-bottom:12px}
+.stat{display:inline-flex;align-items:baseline;gap:5px;padding:3px 11px;border:1px solid var(--line);border-radius:99px;background:var(--card);color:var(--muted);font-size:13px}
+.stat b{color:var(--text);font-weight:600}
+.stat.ok b{color:var(--accent)}
 .material{display:grid;grid-template-columns:320px 1fr;gap:20px;align-items:start}
 .outline,.editor{background:var(--card);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow)}
-.outline{padding:16px;position:sticky;top:78px;max-height:calc(100vh - 98px);overflow:auto}
+.outline{padding:14px;position:sticky;top:62px;max-height:calc(100vh - 78px);overflow:auto}
 .outline-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
 .outline-head h2{font-size:14px}
 .outline-empty{color:var(--muted);font-size:14px;padding:8px 2px}
@@ -142,7 +142,7 @@ header.admin-top h1{font-size:15px;flex:1}
 .o-lesson .icon-btn{visibility:hidden}
 .o-lesson:hover .icon-btn,.o-lesson.active .icon-btn,.o-lesson:focus-within .icon-btn{visibility:visible}
 .o-add{background:none;border:0;color:var(--accent);font-weight:700;font-size:13px;cursor:pointer;padding:6px 10px}
-.editor{padding:22px;min-height:420px}
+.editor{padding:18px 22px;min-height:420px}
 .editor-empty{color:var(--muted);padding:60px 10px;text-align:center}
 .editor-top{display:flex;align-items:center;gap:12px;margin-bottom:14px;flex-wrap:wrap}
 .crumb{color:var(--muted);font-size:13px;flex:1;min-width:120px}
@@ -246,13 +246,11 @@ body{transition:background-color .2s,color .2s}
   </header>
 
   <div class="dash wrap">
-    <p class="intro">The one teaching material for SEO and GEO. Write it once here, section by section. Work for individual clients will live on a separate implementation page.</p>
-
-    <div class="stats">
-      <div class="stat"><div class="lbl">Sections</div><div class="val" id="stat-sections">0</div></div>
-      <div class="stat"><div class="lbl">Lessons</div><div class="val" id="stat-lessons">0</div></div>
-      <div class="stat"><div class="lbl">Ready</div><div class="val accent" id="stat-ready">0</div></div>
-      <div class="stat"><div class="lbl">Words</div><div class="val" id="stat-words">0</div></div>
+    <div class="stats" aria-label="Material summary" title="The one teaching material for SEO and GEO. Work for individual clients lives on the Client plans page.">
+      <span class="stat"><b id="stat-sections">0</b> <span id="lbl-sections">sections</span></span>
+      <span class="stat"><b id="stat-lessons">0</b> <span id="lbl-lessons">lessons</span></span>
+      <span class="stat ok"><b id="stat-ready">0</b> ready</span>
+      <span class="stat"><b id="stat-words">0</b> <span id="lbl-words">words</span></span>
     </div>
 
     <div class="material">
@@ -454,9 +452,14 @@ const wordCount = (text) => (text.trim().match(/\S+/g) || []).length;
 
 function updateStats() {
   $('stat-sections').textContent = state.sections.length;
+  const plural = (id, n, one, many) => { $(id).textContent = n === 1 ? one : many; };
+  plural('lbl-sections', state.sections.length, 'section', 'sections');
+  plural('lbl-lessons', state.lessons.length, 'lesson', 'lessons');
   $('stat-lessons').textContent = state.lessons.length;
   $('stat-ready').textContent = state.lessons.filter((l) => l.status === 'ready').length;
-  $('stat-words').textContent = state.lessons.reduce((n, l) => n + wordCount(l.content || ''), 0).toLocaleString();
+  const words = state.lessons.reduce((n, l) => n + wordCount(l.content || ''), 0);
+  $('stat-words').textContent = words.toLocaleString();
+  plural('lbl-words', words, 'word', 'words');
 }
 
 // ---------- Outline ----------
