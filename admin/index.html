@@ -796,7 +796,13 @@ function renderMarkdown(source) {
     } else if (bullet || numbered) {
       closePara();
       const tag = bullet ? 'ul' : 'ol';
-      if (list !== tag) { closeList(); out.push(`<${tag}>`); list = tag; }
+      if (list !== tag) {
+        closeList();
+        // Keep the author's numbers when a list resumes after a code block or a paragraph.
+        const first = numbered ? Number(line.match(/^\s*(\d+)/)[1]) : 1;
+        out.push(tag === 'ol' && first > 1 ? `<ol style="counter-reset:step ${first - 1}">` : `<${tag}>`);
+        list = tag;
+      }
       const text = (bullet || numbered)[1];
       const box = bullet && text.match(/^\[( |x)\]\s+(.*)$/i);
       out.push(box
