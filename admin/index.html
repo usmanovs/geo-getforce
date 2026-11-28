@@ -7,17 +7,32 @@
 <meta name="robots" content="noindex, nofollow">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;600&family=Golos+Text:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script>(function(){var t;try{t=localStorage.getItem('seo_getforce_theme')}catch(e){}document.documentElement.setAttribute('data-theme',t==='dark'?'dark':'light')})();</script>
 <style>
 :root{
-  --bg:#0f1117;--card:#171a23;--card2:#1b1f29;--line:#262b36;--line2:#3a4150;
-  --text:#eef0f5;--muted:#9aa2b3;--accent:#6d8ee0;--accent-dark:#587bc9;--accent-soft:rgba(109,142,224,.16);
-  --good:#3ddc97;--good-bg:rgba(61,220,151,.15);--warn:#e3b24a;--warn-bg:rgba(227,178,74,.15);
-  --bad:#ff6b6b;--bad-bg:rgba(255,107,107,.15);--radius:16px
+  --bg:#f1f3f8;--card:#ffffff;--card2:#f1f4fb;--line:#e1e5f0;--line2:#cbd2e4;
+  --text:#0c1433;--muted:#5a637e;--accent:#2a49b8;--accent-dark:#1f3a99;--accent-soft:#e6ebfc;--on-accent:#ffffff;
+  --good:#12805a;--good-bg:#dcf4e9;--good-line:#9ad9bd;--on-good:#ffffff;--warn:#9a6508;--warn-bg:#fbefd6;
+  --bad:#c23535;--bad-bg:#fbe4e4;--radius:16px;
+  --header-bg:rgba(241,243,248,.86);
+  --shadow:0 1px 2px rgba(12,20,51,.05),0 14px 34px -20px rgba(12,20,51,.28);
+  --display:Unbounded,"Golos Text",system-ui,sans-serif;
+  --body:"Golos Text",-apple-system,"Segoe UI",sans-serif;
+  color-scheme:light
+}
+:root[data-theme="dark"]{
+  --bg:#090e24;--card:#111836;--card2:#182149;--line:#252f5c;--line2:#34407a;
+  --text:#edf0fb;--muted:#a0a9c8;--accent:#93a8ff;--accent-dark:#b0c0ff;--accent-soft:#1b2659;--on-accent:#090e24;
+  --good:#4fd1a1;--good-bg:rgba(79,209,161,.14);--good-line:rgba(79,209,161,.4);--on-good:#06231a;--warn:#f0b54a;--warn-bg:rgba(240,181,74,.14);
+  --bad:#ff8080;--bad-bg:rgba(255,128,128,.14);
+  --header-bg:rgba(9,14,36,.86);
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 14px 34px -20px rgba(0,0,0,.8);
+  color-scheme:dark
 }
 *{box-sizing:border-box;margin:0}
-body{background:var(--bg);color:var(--text);font:15px/1.6 Manrope,-apple-system,"Segoe UI",sans-serif;min-height:100vh}
-h1,h2,h3{font-family:Outfit,Manrope,sans-serif}
+body{background:var(--bg);color:var(--text);font:15px/1.6 "Golos Text",-apple-system,"Segoe UI",sans-serif;min-height:100vh}
+h1,h2,h3{font-family:var(--display);font-weight:600;letter-spacing:-.01em}
 button,input,textarea,select{font:inherit;color:inherit}
 a{color:inherit}
 .wrap{max-width:1100px;margin:0 auto;padding:0 20px}
@@ -27,8 +42,8 @@ a{color:inherit}
 .login-screen{min-height:100vh;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
 .login-screen::before{content:"";position:absolute;top:-20%;left:-10%;width:70%;height:70%;background:rgba(109,142,224,.18);filter:blur(100px);border-radius:50%}
 .login-screen::after{content:"";position:absolute;bottom:-20%;right:-10%;width:70%;height:70%;background:rgba(155,109,224,.14);filter:blur(100px);border-radius:50%}
-.login-card{position:relative;z-index:1;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:36px;max-width:380px;width:100%}
-.login-card h1{font-size:22px;margin-bottom:6px}
+.login-card{position:relative;z-index:1;background:var(--card);border:1px solid var(--line);border-radius:22px;padding:36px;max-width:380px;width:100%;box-shadow:var(--shadow)}
+.login-card h1{font-size:18px;margin-bottom:8px}
 .login-card p.sub{color:var(--muted);font-size:14px;margin-bottom:24px}
 .field{margin-bottom:14px}
 .field label{display:block;font-size:13px;color:var(--muted);margin-bottom:6px;font-weight:600}
@@ -36,7 +51,7 @@ a{color:inherit}
 .field input:focus{outline:2px solid var(--accent);outline-offset:1px}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:11px 20px;border-radius:10px;font-weight:700;border:1px solid var(--line2);background:var(--card2);cursor:pointer;transition:filter .15s,transform .15s}
 .btn:hover{transform:translateY(-1px)}
-.btn.primary{background:var(--accent);border-color:var(--accent);color:#06101f;width:100%}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--on-accent);width:100%}
 .btn.primary:hover{filter:brightness(1.08)}
 .btn.ghost{background:transparent}
 .btn:disabled{opacity:.6;cursor:default;transform:none}
@@ -55,14 +70,14 @@ a{color:inherit}
 .unauth .login-card{text-align:center}
 
 /* Dashboard */
-header.admin-top{position:sticky;top:0;z-index:30;background:rgba(15,17,23,.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+header.admin-top{position:sticky;top:0;z-index:30;background:var(--header-bg);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
 header.admin-top .wrap{display:flex;align-items:center;gap:12px;padding:14px 20px}
-header.admin-top h1{font-size:17px;flex:1}
+header.admin-top h1{font-size:15px;flex:1}
 .dash{padding:32px 0 80px}
 .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:28px}
-.stat{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px}
-.stat .lbl{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:700;margin-bottom:6px}
-.stat .val{font-family:Outfit;font-size:26px;font-weight:800}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px 18px;box-shadow:var(--shadow)}
+.stat .lbl{font-size:13px;color:var(--muted);font-weight:600;margin-bottom:4px}
+.stat .val{font-family:var(--display);font-size:22px;font-weight:600}
 .stat .val.accent{color:var(--accent)}
 
 .client-bar{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 18px;display:flex;align-items:center;gap:14px;margin-bottom:28px;flex-wrap:wrap}
@@ -98,15 +113,15 @@ header.admin-top h1{font-size:17px;flex:1}
 .add-item-row .btn{font-size:13px;padding:8px 14px}
 
 /* Master material */
-.intro{color:var(--muted);max-width:720px;margin-bottom:24px}
+.intro{color:var(--muted);max-width:720px;margin-bottom:24px;font-size:16px}
 .save-state{color:var(--muted);font-size:13px;min-width:70px;text-align:right}
 .btn.small{font-size:13px;padding:7px 12px}
 .btn.danger:hover{border-color:var(--bad);color:var(--bad)}
 .material{display:grid;grid-template-columns:320px 1fr;gap:20px;align-items:start}
-.outline,.editor{background:var(--card);border:1px solid var(--line);border-radius:16px}
+.outline,.editor{background:var(--card);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow)}
 .outline{padding:16px;position:sticky;top:78px;max-height:calc(100vh - 98px);overflow:auto}
 .outline-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
-.outline-head h2{font-size:16px}
+.outline-head h2{font-size:14px}
 .outline-empty{color:var(--muted);font-size:14px;padding:8px 2px}
 .o-section{margin-bottom:14px}
 .o-section-head{display:flex;align-items:center;gap:4px}
@@ -119,6 +134,7 @@ header.admin-top h1{font-size:17px;flex:1}
 .o-lesson{display:flex;align-items:center;gap:2px;border-radius:9px;padding-left:6px}
 .o-lesson:hover{background:var(--card2)}
 .o-lesson.active{background:var(--accent-soft)}
+.o-lesson.active .open{color:var(--accent);font-weight:600}
 .o-lesson .open{flex:1;min-width:0;text-align:left;background:none;border:0;cursor:pointer;padding:7px 4px;display:flex;align-items:center;gap:8px;color:var(--text)}
 .o-lesson .open span.t{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .o-lesson .dot{width:8px;height:8px;border-radius:50%;background:var(--line2);flex-shrink:0}
@@ -135,13 +151,13 @@ header.admin-top h1{font-size:17px;flex:1}
 .tabs{display:flex;border:1px solid var(--line2);border-radius:10px;overflow:hidden}
 .tabs button{background:none;border:0;padding:6px 14px;font-weight:700;font-size:13px;color:var(--muted);cursor:pointer}
 .tabs button[aria-selected="true"]{background:var(--card2);color:var(--text)}
-.lesson-title{width:100%;background:none;border:0;border-bottom:1px solid var(--line);font-family:Outfit,Manrope,sans-serif;font-size:24px;font-weight:700;padding:6px 0 12px;margin-bottom:16px;color:var(--text)}
+.lesson-title{width:100%;background:none;border:0;border-bottom:1px solid var(--line);font-family:var(--display);font-size:21px;font-weight:600;letter-spacing:-.01em;padding:6px 0 12px;margin-bottom:16px;color:var(--text)}
 .lesson-title:focus{outline:none;border-bottom-color:var(--accent)}
 .lesson-content{width:100%;min-height:420px;resize:vertical;background:var(--card2);border:1px solid var(--line2);border-radius:12px;padding:16px;line-height:1.65;color:var(--text)}
 .lesson-content:focus{outline:2px solid var(--accent);outline-offset:1px}
 .lesson-preview{min-height:420px;border:1px solid var(--line);border-radius:12px;padding:8px 20px 20px;line-height:1.7}
 .lesson-preview h1,.lesson-preview h2,.lesson-preview h3{margin:20px 0 8px;line-height:1.25}
-.lesson-preview h1{font-size:24px}.lesson-preview h2{font-size:20px}.lesson-preview h3{font-size:17px}
+.lesson-preview h1{font-size:20px}.lesson-preview h2{font-size:17px}.lesson-preview h3{font-size:15px}
 .lesson-preview p{margin:10px 0}
 .lesson-preview ul,.lesson-preview ol{margin:10px 0;padding-left:24px}
 .lesson-preview code{background:var(--card2);border-radius:5px;padding:1px 6px;font-size:.92em}
@@ -156,6 +172,14 @@ header.admin-top h1{font-size:17px;flex:1}
 @media (max-width:700px){
   .stats{grid-template-columns:repeat(2,1fr)}
 }
+/* Light by default, with the same dark switch (and saved choice) as the public site */
+body{transition:background-color .2s,color .2s}
+.theme-toggle{width:38px;height:38px;border-radius:50%;border:1px solid var(--line2);background:var(--card);color:var(--text);display:inline-flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0}
+.theme-toggle:hover{border-color:var(--accent);color:var(--accent)}
+.theme-toggle svg{width:18px;height:18px}
+.theme-toggle .i-sun{display:none}
+[data-theme="dark"] .theme-toggle .i-sun{display:block}
+[data-theme="dark"] .theme-toggle .i-moon{display:none}
 </style>
 </head>
 <body>
@@ -203,6 +227,10 @@ header.admin-top h1{font-size:17px;flex:1}
     <div class="wrap">
       <h1>GetForce SEO — Master material</h1>
       <span class="save-state" id="save-state"></span>
+      <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Dark mode" aria-pressed="false" title="Light / dark">
+        <svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.2A8.5 8.5 0 0 1 9.8 3.5a8.5 8.5 0 1 0 10.7 10.7z"/></svg>
+        <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"/></svg>
+      </button>
       <a class="btn ghost" href="/admin/clients/">Client plans</a>
       <a class="btn ghost" href="/" target="_blank" rel="noopener">↗ Site</a>
       <button class="btn" id="signout-btn">Sign out</button>
@@ -690,6 +718,21 @@ function renderMarkdown(source) {
   closePara(); closeList();
   return out.join('\n');
 }
+
+// Light / dark switch; the choice is shared with the public site.
+(() => {
+  const btn = document.getElementById('theme-toggle');
+  if (!btn) return;
+  const root = document.documentElement;
+  const sync = () => btn.setAttribute('aria-pressed', String(root.getAttribute('data-theme') === 'dark'));
+  btn.addEventListener('click', () => {
+    const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('seo_getforce_theme', next); } catch (e) {}
+    sync();
+  });
+  sync();
+})();
 
 init();
 </script>

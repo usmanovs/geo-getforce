@@ -7,17 +7,32 @@
 <meta name="robots" content="noindex, nofollow">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;600&family=Golos+Text:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script>(function(){var t;try{t=localStorage.getItem('seo_getforce_theme')}catch(e){}document.documentElement.setAttribute('data-theme',t==='dark'?'dark':'light')})();</script>
 <style>
 :root{
-  --bg:#0f1117;--card:#171a23;--card2:#1b1f29;--line:#262b36;--line2:#3a4150;
-  --text:#eef0f5;--muted:#9aa2b3;--accent:#6d8ee0;--accent-soft:rgba(109,142,224,.16);
-  --good:#3ddc97;--good-bg:rgba(61,220,151,.14);--good-line:rgba(61,220,151,.35);
-  --bad:#ff6b6b
+  --bg:#f1f3f8;--card:#ffffff;--card2:#f1f4fb;--line:#e1e5f0;--line2:#cbd2e4;
+  --text:#0c1433;--muted:#5a637e;--accent:#2a49b8;--accent-dark:#1f3a99;--accent-soft:#e6ebfc;--on-accent:#ffffff;
+  --good:#12805a;--good-bg:#dcf4e9;--good-line:#9ad9bd;--on-good:#ffffff;--warn:#9a6508;--warn-bg:#fbefd6;
+  --bad:#c23535;--bad-bg:#fbe4e4;--radius:16px;
+  --header-bg:rgba(241,243,248,.86);
+  --shadow:0 1px 2px rgba(12,20,51,.05),0 14px 34px -20px rgba(12,20,51,.28);
+  --display:Unbounded,"Golos Text",system-ui,sans-serif;
+  --body:"Golos Text",-apple-system,"Segoe UI",sans-serif;
+  color-scheme:light
+}
+:root[data-theme="dark"]{
+  --bg:#090e24;--card:#111836;--card2:#182149;--line:#252f5c;--line2:#34407a;
+  --text:#edf0fb;--muted:#a0a9c8;--accent:#93a8ff;--accent-dark:#b0c0ff;--accent-soft:#1b2659;--on-accent:#090e24;
+  --good:#4fd1a1;--good-bg:rgba(79,209,161,.14);--good-line:rgba(79,209,161,.4);--on-good:#06231a;--warn:#f0b54a;--warn-bg:rgba(240,181,74,.14);
+  --bad:#ff8080;--bad-bg:rgba(255,128,128,.14);
+  --header-bg:rgba(9,14,36,.86);
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 14px 34px -20px rgba(0,0,0,.8);
+  color-scheme:dark
 }
 *{box-sizing:border-box;margin:0}
-body{background:var(--bg);color:var(--text);font:15px/1.6 Manrope,-apple-system,"Segoe UI",sans-serif;min-height:100vh}
-h1,h2,h3{font-family:Outfit,Manrope,sans-serif}
+body{background:var(--bg);color:var(--text);font:15px/1.6 "Golos Text",-apple-system,"Segoe UI",sans-serif;min-height:100vh}
+h1,h2,h3{font-family:var(--display);font-weight:600;letter-spacing:-.01em}
 button,input,textarea,select{font:inherit;color:inherit}
 a{color:inherit}
 .wrap{max-width:1100px;margin:0 auto;padding:0 20px}
@@ -25,7 +40,7 @@ a{color:inherit}
 :focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:10px 18px;border-radius:10px;font-weight:700;border:1px solid var(--line2);background:var(--card2);cursor:pointer;text-decoration:none;white-space:nowrap}
 .btn:hover{border-color:var(--accent)}
-.btn.primary{background:var(--accent);border-color:var(--accent);color:#06101f}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
 .btn.ghost{background:transparent}
 .btn.small{font-size:13px;padding:7px 12px}
 .btn.danger:hover{border-color:var(--bad);color:var(--bad)}
@@ -36,17 +51,17 @@ a{color:inherit}
 .icon-btn:disabled{opacity:.3;cursor:default;background:none}
 
 /* Top bar: title, overall progress, navigation */
-header.top{position:sticky;top:0;z-index:30;background:rgba(15,17,23,.88);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+header.top{position:sticky;top:0;z-index:30;background:var(--header-bg);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
 header.top .wrap{display:flex;align-items:center;gap:14px;padding:12px 20px;flex-wrap:wrap}
-header.top h1{font-size:17px;flex:1;min-width:160px}
+header.top h1{font-size:15px;flex:1;min-width:160px}
 .progress{display:flex;align-items:center;gap:10px;color:var(--muted);font-weight:700;font-size:14px}
-.progress .bar{width:150px;height:8px;border-radius:99px;background:var(--card2);overflow:hidden}
+.progress .bar{width:150px;flex-shrink:0;height:8px;border-radius:99px;background:var(--line);overflow:hidden}
 .progress .bar i{display:block;height:100%;background:var(--good);border-radius:99px;transition:width .25s}
 .progress .pct{color:var(--text)}
 .save-state{color:var(--muted);font-size:13px;min-width:60px;text-align:right}
 
 .page{padding:24px 0 90px}
-.panel{background:var(--card);border:1px solid var(--line);border-radius:18px}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow)}
 
 /* Client picker */
 .client-bar{padding:14px 18px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:18px}
@@ -60,18 +75,18 @@ header.top h1{font-size:17px;flex:1;min-width:160px}
 .tab span.t{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .tab .ring{width:16px;height:16px;border-radius:50%;border:2px solid currentColor;flex-shrink:0;display:inline-flex;align-items:center;justify-content:center;font-size:10px;line-height:1}
 .tab.done{color:var(--good);border-color:var(--good-line);background:var(--good-bg)}
-.tab.active{background:var(--accent);border-color:var(--accent);color:#06101f}
+.tab.active{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
 .tab.add{border-style:dashed;background:none}
 
 /* Section header card */
 .section-card{padding:22px 24px;display:flex;align-items:center;gap:18px;margin-bottom:18px;flex-wrap:wrap}
 .section-card .where{font-size:12px;color:var(--muted);font-weight:700;margin-bottom:2px}
 .section-card .main{flex:1;min-width:220px}
-.section-title{width:100%;background:none;border:0;border-bottom:1px solid transparent;font-family:Outfit,Manrope,sans-serif;font-size:24px;font-weight:700;padding:2px 0}
+.section-title{width:100%;background:none;border:0;border-bottom:1px solid transparent;font-family:var(--display);font-size:21px;font-weight:600;letter-spacing:-.01em;padding:2px 0;color:var(--text)}
 .section-title:focus{outline:none;border-bottom-color:var(--accent)}
 .section-card .from{font-size:13px;color:var(--muted)}
 .done-btn{border:1px solid var(--line2);background:var(--card2);color:var(--muted);border-radius:12px;padding:11px 18px;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;gap:8px}
-.done-btn.done{background:#1f9d57;border-color:#1f9d57;color:#fff}
+.done-btn.done{background:var(--good);border-color:var(--good);color:var(--on-good)}
 
 /* Notes for this client */
 .notes{margin-bottom:18px;overflow:hidden}
@@ -82,11 +97,11 @@ header.top h1{font-size:17px;flex:1;min-width:160px}
 /* Checklist */
 .checklist{padding:20px 24px}
 .checklist-head{display:flex;align-items:center;gap:12px;margin-bottom:8px}
-.checklist-head h2{font-size:18px;flex:1}
+.checklist-head h2{font-size:15px;flex:1}
 .checklist-head .count{color:var(--muted);font-weight:700;font-size:14px}
 .task{border-top:1px solid var(--line);padding:10px 0}
 .task-row{display:flex;align-items:center;gap:10px}
-.check{width:24px;height:24px;border-radius:50%;border:2px solid var(--good);background:none;cursor:pointer;flex-shrink:0;display:inline-flex;align-items:center;justify-content:center;color:#06101f;font-size:13px;font-weight:800;padding:0}
+.check{width:24px;height:24px;border-radius:50%;border:2px solid var(--good);background:none;cursor:pointer;flex-shrink:0;display:inline-flex;align-items:center;justify-content:center;color:var(--on-good);font-size:13px;font-weight:800;padding:0}
 .check.done{background:var(--good)}
 .task-title{flex:1;min-width:0;background:none;border:0;border-bottom:1px solid transparent;padding:4px 0}
 .task-title:focus{outline:none;border-bottom-color:var(--accent)}
@@ -98,7 +113,7 @@ header.top h1{font-size:17px;flex:1;min-width:160px}
 .guide{border:1px solid var(--line);border-radius:12px;padding:4px 18px 14px;line-height:1.7;background:var(--card2)}
 .guide .from{font-size:12px;color:var(--muted);font-weight:700;margin-top:12px}
 .guide h1,.guide h2,.guide h3{margin:16px 0 6px;line-height:1.25}
-.guide h1{font-size:20px}.guide h2{font-size:18px}.guide h3{font-size:16px}
+.guide h1{font-size:18px}.guide h2{font-size:16px}.guide h3{font-size:15px}
 .guide p{margin:8px 0}.guide ul,.guide ol{margin:8px 0;padding-left:22px}
 .guide code{background:var(--card);border-radius:5px;padding:1px 6px;font-size:.92em}
 .guide a{color:var(--accent)}
@@ -116,6 +131,14 @@ header.top h1{font-size:17px;flex:1;min-width:160px}
   .checklist,.section-card{padding:16px}
   .task-detail{margin-left:0}
 }
+/* Light by default, with the same dark switch (and saved choice) as the public site */
+body{transition:background-color .2s,color .2s}
+.theme-toggle{width:38px;height:38px;border-radius:50%;border:1px solid var(--line2);background:var(--card);color:var(--text);display:inline-flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0}
+.theme-toggle:hover{border-color:var(--accent);color:var(--accent)}
+.theme-toggle svg{width:18px;height:18px}
+.theme-toggle .i-sun{display:none}
+[data-theme="dark"] .theme-toggle .i-sun{display:block}
+[data-theme="dark"] .theme-toggle .i-moon{display:none}
 </style>
 </head>
 <body>
@@ -132,6 +155,10 @@ header.top h1{font-size:17px;flex:1;min-width:160px}
         <span class="pct" id="progress-pct">0%</span>
       </div>
       <span class="save-state" id="save-state"></span>
+      <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Dark mode" aria-pressed="false" title="Light / dark">
+        <svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.2A8.5 8.5 0 0 1 9.8 3.5a8.5 8.5 0 1 0 10.7 10.7z"/></svg>
+        <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"/></svg>
+      </button>
       <a class="btn ghost small" href="/admin/">Master material</a>
       <button class="btn small" id="signout-btn">Sign out</button>
     </div>
@@ -690,6 +717,21 @@ function renderMarkdown(source) {
   closePara(); closeList();
   return out.join('\n');
 }
+
+// Light / dark switch; the choice is shared with the public site.
+(() => {
+  const btn = document.getElementById('theme-toggle');
+  if (!btn) return;
+  const root = document.documentElement;
+  const sync = () => btn.setAttribute('aria-pressed', String(root.getAttribute('data-theme') === 'dark'));
+  btn.addEventListener('click', () => {
+    const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('seo_getforce_theme', next); } catch (e) {}
+    sync();
+  });
+  sync();
+})();
 
 init();
 </script>
