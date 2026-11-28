@@ -133,6 +133,45 @@ header.top h1{font-size:15px;flex:1;min-width:160px}
 .guide pre code{background:none;padding:0}
 .guide li.check{list-style:none;margin-left:-20px}
 .guide li.check span{color:var(--accent);margin-right:4px}
+/* Lesson reading view: teaching-material styling */
+.rich{font-size:16px;line-height:1.7;max-width:78ch}
+.rich h1,.rich h2,.rich h3{font-family:var(--display);font-weight:600;letter-spacing:-.01em;line-height:1.3}
+.rich h1{font-size:20px;margin:22px 0 10px}
+.rich h2{font-size:16px;margin:24px 0 10px}
+.rich h3{font-size:15px;margin:18px 0 8px}
+.rich > :first-child{margin-top:0}
+.rich p{margin:10px 0}
+.rich p.goal{font-size:17px;line-height:1.6;background:var(--accent-soft);border-left:4px solid var(--accent);border-radius:12px;padding:14px 18px;margin:0 0 20px}
+.rich strong{font-weight:700}
+.rich ul,.rich ol{list-style:none;padding-left:0;margin:10px 0}
+.rich ul > li{position:relative;padding-left:22px;margin:7px 0}
+.rich ul > li::before{content:"";position:absolute;left:5px;top:.72em;width:6px;height:6px;border-radius:50%;background:var(--accent)}
+.rich ol{counter-reset:step}
+.rich ol > li{counter-increment:step;position:relative;padding-left:38px;margin:10px 0;min-height:26px}
+.rich ol > li::before{content:counter(step);position:absolute;left:0;top:1px;width:26px;height:26px;border-radius:50%;background:var(--accent);color:var(--on-accent);font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center}
+.rich li.check{padding-left:0;margin-left:0;display:flex;gap:10px;align-items:baseline}
+.rich li.check::before{display:none}
+.rich li.check span{color:var(--accent);font-size:17px;line-height:1}
+.rich .blk{border:1px solid var(--line);background:var(--card2);border-radius:14px;padding:14px 18px 8px;margin:18px 0}
+.rich .blk > h2{margin:0 0 6px;font-size:14px;color:var(--accent)}
+.rich .blk > :last-child{margin-bottom:6px}
+.rich .blk-done{background:var(--good-bg);border-color:var(--good-line)}
+.rich .blk-done > h2{color:var(--good)}
+.rich .blk-done ul > li::before{background:var(--good)}
+.rich .blk-avoid{background:var(--bad-bg);border-color:transparent}
+.rich .blk-avoid > h2{color:var(--bad)}
+.rich .blk-avoid ul > li::before{background:var(--bad)}
+.rich .table-wrap{border:1px solid var(--line);border-radius:12px;overflow:auto;margin:14px 0}
+.rich table{font-size:14px}
+.rich th{background:var(--accent-soft);color:var(--text)}
+.rich tbody tr:nth-child(even) td{background:var(--card2)}
+.rich td,.rich th{border-bottom:1px solid var(--line)}
+.rich tbody tr:last-child td{border-bottom:0}
+.rich blockquote,.rich pre{margin:14px 0}
+.rich code{background:var(--card2);border:1px solid var(--line);border-radius:6px;padding:1px 6px;font-size:.9em}
+.rich pre code{border:0;padding:0;background:none}
+.rich .empty-note{color:var(--muted)}
+.lesson-preview.rich{border:0;padding:4px 2px 12px;min-height:360px}
 @media (max-width:640px){
   .progress .bar{width:90px}
   .section-title{font-size:20px}
@@ -464,7 +503,7 @@ function renderTasks() {
         </div>
         ${open ? `
         <div class="task-detail">
-          ${lesson ? `<div class="guide"><div class="from">From the master material${lesson.status === 'ready' ? '' : ' (draft)'}</div>${renderMarkdown(lesson.content || '')}</div>` : ''}
+          ${lesson ? `<div class="guide rich"><div class="from">From the master material${lesson.status === 'ready' ? '' : ' (draft)'}</div>${renderMarkdown(lesson.content || '')}</div>` : ''}
           <textarea class="task-notes" data-notes="${item.id}" aria-label="Notes for this task" placeholder="Notes for this client on this task">${escapeHtml(item.notes || '')}</textarea>
         </div>` : ''}
       </div>`;
@@ -708,8 +747,17 @@ function renderMarkdown(source) {
   const lines = source.split('\n');
   let list = null;
   let para = [];
+  let block = false;
   const closeList = () => { if (list) { out.push(`</${list}>`); list = null; } };
-  const closePara = () => { if (para.length) { out.push(`<p>${para.join('<br>')}</p>`); para = []; } };
+  const closePara = () => {
+    if (!para.length) return;
+    const html = para.join('<br>');
+    out.push(html.startsWith('<strong>Goal:</strong>') ? `<p class="goal">${html}</p>` : `<p>${html}</p>`);
+    para = [];
+  };
+  const closeBlock = () => { if (block) { out.push('</div>'); block = false; } };
+  // Level-2 headings with these names open a coloured box that runs to the next heading.
+  const BLOCKS = [[/^(done when|check yourself)/i, 'done'], [/^avoid/i, 'avoid'], [/^(key points|the rule|rules)\b/i, 'key'], [/^(do|steps|exercises?)\b/i, 'do']];
   const cells = (row) => row.trim().replace(/^\|/, '').replace(/\|$/, '').split('|').map((c) => c.trim());
   for (let n = 0; n < lines.length; n++) {
     const line = lines[n].trimEnd();
@@ -736,7 +784,11 @@ function renderMarkdown(source) {
     const numbered = line.match(/^\s*\d+[.)]\s+(.*)$/);
     if (heading) {
       closePara(); closeList();
-      out.push(`<h${heading[1].length}>${renderInline(heading[2])}</h${heading[1].length}>`);
+      const level = heading[1].length;
+      if (level <= 2) closeBlock();
+      const kind = level === 2 ? (BLOCKS.find(([re]) => re.test(heading[2])) || [])[1] : null;
+      if (kind) { out.push(`<div class="blk blk-${kind}">`); block = true; }
+      out.push(`<h${level}>${renderInline(heading[2])}</h${level}>`);
     } else if (bullet || numbered) {
       closePara();
       const tag = bullet ? 'ul' : 'ol';
@@ -753,7 +805,7 @@ function renderMarkdown(source) {
       para.push(renderInline(line));
     }
   }
-  closePara(); closeList();
+  closePara(); closeList(); closeBlock();
   return out.join('\n');
 }
 
