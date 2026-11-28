@@ -1,0 +1,697 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GetForce SEO — Client plans</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0f1117;--card:#171a23;--card2:#1b1f29;--line:#262b36;--line2:#3a4150;
+  --text:#eef0f5;--muted:#9aa2b3;--accent:#6d8ee0;--accent-soft:rgba(109,142,224,.16);
+  --good:#3ddc97;--good-bg:rgba(61,220,151,.14);--good-line:rgba(61,220,151,.35);
+  --bad:#ff6b6b
+}
+*{box-sizing:border-box;margin:0}
+body{background:var(--bg);color:var(--text);font:15px/1.6 Manrope,-apple-system,"Segoe UI",sans-serif;min-height:100vh}
+h1,h2,h3{font-family:Outfit,Manrope,sans-serif}
+button,input,textarea,select{font:inherit;color:inherit}
+a{color:inherit}
+.wrap{max-width:1100px;margin:0 auto;padding:0 20px}
+.hide{display:none !important}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:10px 18px;border-radius:10px;font-weight:700;border:1px solid var(--line2);background:var(--card2);cursor:pointer;text-decoration:none;white-space:nowrap}
+.btn:hover{border-color:var(--accent)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:#06101f}
+.btn.ghost{background:transparent}
+.btn.small{font-size:13px;padding:7px 12px}
+.btn.danger:hover{border-color:var(--bad);color:var(--bad)}
+.btn:disabled{opacity:.5;cursor:default}
+.icon-btn{background:none;border:0;color:var(--muted);cursor:pointer;padding:4px 6px;border-radius:6px;line-height:1;font-size:13px}
+.icon-btn:hover{color:var(--text);background:var(--card2)}
+.icon-btn.del:hover{color:var(--bad)}
+.icon-btn:disabled{opacity:.3;cursor:default;background:none}
+
+/* Top bar: title, overall progress, navigation */
+header.top{position:sticky;top:0;z-index:30;background:rgba(15,17,23,.88);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+header.top .wrap{display:flex;align-items:center;gap:14px;padding:12px 20px;flex-wrap:wrap}
+header.top h1{font-size:17px;flex:1;min-width:160px}
+.progress{display:flex;align-items:center;gap:10px;color:var(--muted);font-weight:700;font-size:14px}
+.progress .bar{width:150px;height:8px;border-radius:99px;background:var(--card2);overflow:hidden}
+.progress .bar i{display:block;height:100%;background:var(--good);border-radius:99px;transition:width .25s}
+.progress .pct{color:var(--text)}
+.save-state{color:var(--muted);font-size:13px;min-width:60px;text-align:right}
+
+.page{padding:24px 0 90px}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:18px}
+
+/* Client picker */
+.client-bar{padding:14px 18px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:18px}
+.client-bar label{font-size:13px;color:var(--muted);font-weight:700}
+.client-bar select{flex:1;min-width:180px;padding:10px 12px;border-radius:10px;border:1px solid var(--line2);background:var(--card2)}
+.client-bar .site{color:var(--accent);font-size:13px;font-weight:600}
+
+/* Section tabs */
+.tabs{display:flex;gap:10px;overflow-x:auto;padding:4px 2px 12px;margin-bottom:8px}
+.tab{flex-shrink:0;display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:12px;border:1px solid var(--line2);background:var(--card);font-weight:700;cursor:pointer;color:var(--muted);max-width:240px}
+.tab span.t{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.tab .ring{width:16px;height:16px;border-radius:50%;border:2px solid currentColor;flex-shrink:0;display:inline-flex;align-items:center;justify-content:center;font-size:10px;line-height:1}
+.tab.done{color:var(--good);border-color:var(--good-line);background:var(--good-bg)}
+.tab.active{background:var(--accent);border-color:var(--accent);color:#06101f}
+.tab.add{border-style:dashed;background:none}
+
+/* Section header card */
+.section-card{padding:22px 24px;display:flex;align-items:center;gap:18px;margin-bottom:18px;flex-wrap:wrap}
+.section-card .where{font-size:12px;color:var(--muted);font-weight:700;margin-bottom:2px}
+.section-card .main{flex:1;min-width:220px}
+.section-title{width:100%;background:none;border:0;border-bottom:1px solid transparent;font-family:Outfit,Manrope,sans-serif;font-size:24px;font-weight:700;padding:2px 0}
+.section-title:focus{outline:none;border-bottom-color:var(--accent)}
+.section-card .from{font-size:13px;color:var(--muted)}
+.done-btn{border:1px solid var(--line2);background:var(--card2);color:var(--muted);border-radius:12px;padding:11px 18px;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;gap:8px}
+.done-btn.done{background:#1f9d57;border-color:#1f9d57;color:#fff}
+
+/* Notes for this client */
+.notes{margin-bottom:18px;overflow:hidden}
+.notes-head{padding:12px 20px;font-weight:700;color:var(--muted);border-bottom:1px solid var(--line);font-size:14px}
+.notes textarea{display:block;width:100%;min-height:96px;resize:vertical;background:none;border:0;padding:14px 20px;line-height:1.6}
+.notes textarea:focus{outline:none;background:var(--card2)}
+
+/* Checklist */
+.checklist{padding:20px 24px}
+.checklist-head{display:flex;align-items:center;gap:12px;margin-bottom:8px}
+.checklist-head h2{font-size:18px;flex:1}
+.checklist-head .count{color:var(--muted);font-weight:700;font-size:14px}
+.task{border-top:1px solid var(--line);padding:10px 0}
+.task-row{display:flex;align-items:center;gap:10px}
+.check{width:24px;height:24px;border-radius:50%;border:2px solid var(--good);background:none;cursor:pointer;flex-shrink:0;display:inline-flex;align-items:center;justify-content:center;color:#06101f;font-size:13px;font-weight:800;padding:0}
+.check.done{background:var(--good)}
+.task-title{flex:1;min-width:0;background:none;border:0;border-bottom:1px solid transparent;padding:4px 0}
+.task-title:focus{outline:none;border-bottom-color:var(--accent)}
+.task.done .task-title{color:var(--muted);text-decoration:line-through}
+.task .icon-btn{visibility:hidden}
+.task:hover .icon-btn,.task:focus-within .icon-btn{visibility:visible}
+.task .guide-btn{visibility:visible;color:var(--accent);font-weight:700}
+.task-detail{margin:10px 0 6px 34px;display:grid;gap:12px}
+.guide{border:1px solid var(--line);border-radius:12px;padding:4px 18px 14px;line-height:1.7;background:var(--card2)}
+.guide .from{font-size:12px;color:var(--muted);font-weight:700;margin-top:12px}
+.guide h1,.guide h2,.guide h3{margin:16px 0 6px;line-height:1.25}
+.guide h1{font-size:20px}.guide h2{font-size:18px}.guide h3{font-size:16px}
+.guide p{margin:8px 0}.guide ul,.guide ol{margin:8px 0;padding-left:22px}
+.guide code{background:var(--card);border-radius:5px;padding:1px 6px;font-size:.92em}
+.guide a{color:var(--accent)}
+.task-notes{width:100%;min-height:64px;resize:vertical;background:var(--card2);border:1px solid var(--line2);border-radius:10px;padding:10px 12px;line-height:1.55}
+.add-task{margin-top:12px}
+
+.empty{border:1px dashed var(--line2);border-radius:18px;padding:44px 20px;text-align:center;color:var(--muted)}
+.empty p{max-width:520px;margin:0 auto 16px}
+.plan-tools{display:flex;gap:10px;justify-content:flex-end;margin-top:18px;flex-wrap:wrap}
+#loading{min-height:100vh;display:flex;align-items:center;justify-content:center;color:var(--muted)}
+
+@media (max-width:640px){
+  .progress .bar{width:90px}
+  .section-title{font-size:20px}
+  .checklist,.section-card{padding:16px}
+  .task-detail{margin-left:0}
+}
+</style>
+</head>
+<body>
+
+<div id="loading">Loading…</div>
+
+<div id="app" class="hide">
+  <header class="top">
+    <div class="wrap">
+      <h1>GetForce SEO — Client plans</h1>
+      <div class="progress" id="progress" title="Tasks done for this client">
+        <span id="progress-count">0/0</span>
+        <span class="bar"><i id="progress-bar" style="width:0"></i></span>
+        <span class="pct" id="progress-pct">0%</span>
+      </div>
+      <span class="save-state" id="save-state"></span>
+      <a class="btn ghost small" href="/admin/">Master material</a>
+      <button class="btn small" id="signout-btn">Sign out</button>
+    </div>
+  </header>
+
+  <div class="page wrap">
+    <div class="panel client-bar">
+      <label for="client-select">Client</label>
+      <select id="client-select"></select>
+      <a class="site hide" id="client-site" target="_blank" rel="noopener noreferrer"></a>
+      <button class="btn small" id="add-client-btn">+ Add client</button>
+      <button class="btn small danger" id="delete-client-btn">Delete client</button>
+    </div>
+
+    <div class="empty hide" id="no-client">
+      <p>No clients yet. Add the first client to build their plan.</p>
+      <button class="btn primary" id="no-client-add">+ Add client</button>
+    </div>
+
+    <div class="empty hide" id="no-plan">
+      <p id="no-plan-text"></p>
+      <button class="btn primary" id="create-plan-btn">Create plan from master material</button>
+      <button class="btn" id="blank-section-btn" style="margin-left:8px">Start with an empty section</button>
+    </div>
+
+    <div class="hide" id="plan">
+      <div class="tabs" id="tabs" role="tablist" aria-label="Plan sections"></div>
+
+      <div class="panel section-card">
+        <div class="main">
+          <div class="where" id="section-where"></div>
+          <input class="section-title" id="section-title" aria-label="Section title" />
+          <div class="from" id="section-from"></div>
+        </div>
+        <button class="icon-btn" id="section-up" title="Move section left">←</button>
+        <button class="icon-btn" id="section-down" title="Move section right">→</button>
+        <button class="icon-btn del" id="section-delete" title="Delete this section from the client's plan">✕</button>
+        <button class="done-btn" id="section-done"></button>
+      </div>
+
+      <div class="panel notes">
+        <div class="notes-head">Notes for this client</div>
+        <textarea id="section-notes" aria-label="Notes for this client on this section" placeholder="Anything specific to this client for this section: access details, decisions, links, what was agreed."></textarea>
+      </div>
+
+      <div class="panel checklist">
+        <div class="checklist-head">
+          <h2>Checklist</h2>
+          <span class="count" id="section-count"></span>
+        </div>
+        <div id="tasks"></div>
+        <button class="btn small add-task" id="add-task-btn">+ Add task</button>
+      </div>
+
+      <div class="plan-tools">
+        <button class="btn small" id="sync-btn" title="Add sections and lessons that were written in the master material after this plan was created">Add new items from master</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="module">
+import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
+
+// Same backend project as the master material page (seo-getforce).
+const SUPABASE_URL = 'https://tgfwdwbnucblllszbojr.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_LsI-j94yxwlS7Hlm2ApYVg_Pt6jMe9I'; // publishable key: safe in the browser
+const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
+
+const $ = (id) => document.getElementById(id);
+const show = (el, on = true) => el.classList.toggle('hide', !on);
+const LAST_CLIENT_KEY = 'seo_admin_last_client';
+
+const state = {
+  clients: [],
+  categories: [],   // this client's plan sections
+  items: [],        // this client's tasks
+  masterSections: [],
+  masterLessons: [],
+  clientId: null,
+  categoryId: null,
+  openTaskId: null, // task whose guide and notes are expanded
+};
+
+function log(action, entity_type, entity_id, entity_label, metadata = {}) {
+  return supabase.rpc('log_activity', { _action: action, _entity_type: entity_type, _entity_id: entity_id, _entity_label: entity_label, _metadata: metadata });
+}
+function escapeHtml(s) {
+  return String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+}
+function fail(error) { $('save-state').textContent = 'Not saved'; alert(error.message); }
+
+// ---------- Start ----------
+async function init() {
+  const { data: { session } } = await supabase.auth.getSession();
+  if (!session) { location.replace('/admin/'); return; }
+  const { data: roles } = await supabase.from('user_roles').select('role').eq('user_id', session.user.id);
+  if (!roles?.some((r) => r.role === 'admin')) { location.replace('/admin/'); return; }
+
+  const [clients, sections, lessons] = await Promise.all([
+    supabase.from('seo_clients').select('*').order('order_index'),
+    supabase.from('material_sections').select('*').order('order_index'),
+    supabase.from('material_lessons').select('*').order('order_index'),
+  ]);
+  const error = clients.error || sections.error || lessons.error;
+  if (error) { $('loading').textContent = `Could not load: ${error.message}`; return; }
+  state.clients = clients.data || [];
+  state.masterSections = sections.data || [];
+  state.masterLessons = lessons.data || [];
+
+  let last = null;
+  try { last = localStorage.getItem(LAST_CLIENT_KEY); } catch (e) {}
+  state.clientId = state.clients.some((c) => c.id === last) ? last : state.clients[0]?.id ?? null;
+
+  show($('loading'), false);
+  show($('app'));
+  renderClients();
+  await loadPlan();
+}
+
+$('signout-btn').addEventListener('click', async () => {
+  await flushSaves();
+  await supabase.auth.signOut();
+  location.replace('/admin/');
+});
+
+// ---------- Clients ----------
+const currentClient = () => state.clients.find((c) => c.id === state.clientId) || null;
+
+function renderClients() {
+  const select = $('client-select');
+  select.innerHTML = state.clients.map((c) => `<option value="${c.id}">${escapeHtml(c.name)}</option>`).join('');
+  select.value = state.clientId ?? '';
+  select.disabled = state.clients.length === 0;
+  $('delete-client-btn').disabled = !state.clientId;
+  const client = currentClient();
+  const site = $('client-site');
+  const url = client?.website_url && /^https?:\/\//i.test(client.website_url) ? client.website_url : null;
+  show(site, !!url);
+  if (url) { site.href = url; site.textContent = url.replace(/^https?:\/\//i, '').replace(/\/$/, ''); }
+}
+
+$('client-select').addEventListener('change', async (e) => {
+  await flushSaves();
+  state.clientId = e.target.value;
+  state.categoryId = null;
+  state.openTaskId = null;
+  try { localStorage.setItem(LAST_CLIENT_KEY, state.clientId); } catch (err) {}
+  renderClients();
+  await loadPlan();
+});
+
+async function addClient() {
+  const name = prompt('Client name');
+  if (!name?.trim()) return;
+  let website_url = prompt('Client website (optional)', 'https://')?.trim() || null;
+  if (website_url === 'https://') website_url = null;
+  const { data, error } = await supabase.from('seo_clients').insert({ name: name.trim(), website_url, order_index: state.clients.length }).select().single();
+  if (error) return fail(error);
+  log('create', 'seo_client', data.id, data.name);
+  state.clients.push(data);
+  state.clientId = data.id;
+  state.categoryId = null;
+  try { localStorage.setItem(LAST_CLIENT_KEY, data.id); } catch (err) {}
+  renderClients();
+  await loadPlan();
+}
+$('add-client-btn').addEventListener('click', addClient);
+$('no-client-add').addEventListener('click', addClient);
+
+$('delete-client-btn').addEventListener('click', async () => {
+  const client = currentClient();
+  if (!client) return;
+  if (!confirm(`Delete the client “${client.name}” and their whole plan? This cannot be undone.`)) return;
+  await flushSaves();
+  const { error } = await supabase.from('seo_clients').delete().eq('id', client.id);
+  if (error) return fail(error);
+  log('delete', 'seo_client', client.id, client.name);
+  state.clients = state.clients.filter((c) => c.id !== client.id);
+  state.clientId = state.clients[0]?.id ?? null;
+  state.categoryId = null;
+  renderClients();
+  await loadPlan();
+});
+
+// ---------- Plan loading ----------
+async function loadPlan() {
+  state.categories = [];
+  state.items = [];
+  if (state.clientId) {
+    const { data: cats, error } = await supabase.from('seo_plan_categories').select('*').eq('client_id', state.clientId).order('order_index');
+    if (error) return fail(error);
+    state.categories = cats || [];
+    if (state.categories.length) {
+      const { data: items, error: e2 } = await supabase.from('seo_plan_items').select('*').in('category_id', state.categories.map((c) => c.id)).order('order_index');
+      if (e2) return fail(e2);
+      state.items = items || [];
+    }
+  }
+  if (!state.categories.some((c) => c.id === state.categoryId)) state.categoryId = state.categories[0]?.id ?? null;
+  render();
+}
+
+const itemsOf = (categoryId) => state.items.filter((i) => i.category_id === categoryId).sort((a, b) => a.order_index - b.order_index);
+const currentCategory = () => state.categories.find((c) => c.id === state.categoryId) || null;
+const isComplete = (categoryId) => { const items = itemsOf(categoryId); return items.length > 0 && items.every((i) => i.status === 'done'); };
+
+// ---------- Rendering ----------
+function render() {
+  const hasClient = !!state.clientId;
+  const hasPlan = state.categories.length > 0;
+  show($('no-client'), !hasClient);
+  show($('no-plan'), hasClient && !hasPlan);
+  show($('plan'), hasClient && hasPlan);
+  show($('progress'), hasClient && hasPlan);
+  if (hasClient && !hasPlan) {
+    const n = state.masterSections.length, m = state.masterLessons.length;
+    $('no-plan-text').textContent = n
+      ? `${currentClient().name} has no plan yet. Create one from the master material (${n} section${n === 1 ? '' : 's'}, ${m} lesson${m === 1 ? '' : 's'}), then adjust it for this client.`
+      : `${currentClient().name} has no plan yet, and the master material is empty. Write the master material first, or start this plan by hand.`;
+    $('create-plan-btn').disabled = n === 0;
+  }
+  renderProgress();
+  if (!hasPlan) return;
+  renderTabs();
+  renderSection();
+}
+
+function renderProgress() {
+  const total = state.items.length;
+  const done = state.items.filter((i) => i.status === 'done').length;
+  const pct = total ? Math.round((done / total) * 100) : 0;
+  $('progress-count').textContent = `${done}/${total}`;
+  $('progress-bar').style.width = `${pct}%`;
+  $('progress-pct').textContent = `${pct}%`;
+}
+
+function renderTabs() {
+  $('tabs').innerHTML = state.categories.map((c) => {
+    const done = isComplete(c.id);
+    const cls = ['tab', c.id === state.categoryId ? 'active' : '', done ? 'done' : ''].join(' ').trim();
+    return `<button class="${cls}" role="tab" aria-selected="${c.id === state.categoryId}" data-tab="${c.id}"><span class="ring">${done ? '✓' : ''}</span><span class="t">${escapeHtml(c.title)}</span></button>`;
+  }).join('') + '<button class="tab add" data-add-section="1">+ Section</button>';
+}
+
+$('tabs').addEventListener('click', async (e) => {
+  const el = e.target.closest('button');
+  if (!el) return;
+  if (el.dataset.addSection) return addSection();
+  if (el.dataset.tab && el.dataset.tab !== state.categoryId) {
+    await flushSaves();
+    state.categoryId = el.dataset.tab;
+    state.openTaskId = null;
+    renderTabs();
+    renderSection();
+  }
+});
+
+function renderSection() {
+  const cat = currentCategory();
+  if (!cat) return;
+  const index = state.categories.findIndex((c) => c.id === cat.id);
+  const items = itemsOf(cat.id);
+  const done = items.filter((i) => i.status === 'done').length;
+  $('section-where').textContent = `Section ${index + 1} of ${state.categories.length}`;
+  $('section-title').value = cat.title;
+  const master = state.masterSections.find((s) => s.id === cat.section_id);
+  $('section-from').textContent = master ? (master.title === cat.title ? 'From the master material' : `From the master material: ${master.title}`) : 'Added for this client';
+  $('section-notes').value = cat.notes || '';
+  $('section-up').disabled = index === 0;
+  $('section-down').disabled = index === state.categories.length - 1;
+  const complete = isComplete(cat.id);
+  const btn = $('section-done');
+  btn.className = `done-btn ${complete ? 'done' : ''}`;
+  btn.textContent = complete ? '✓ Done' : 'Mark all done';
+  btn.disabled = items.length === 0;
+  $('section-count').textContent = `${done}/${items.length}`;
+  renderTasks();
+}
+
+function renderTasks() {
+  const items = itemsOf(state.categoryId);
+  $('tasks').innerHTML = items.length ? items.map((item, i) => {
+    const lesson = state.masterLessons.find((l) => l.id === item.lesson_id);
+    const open = item.id === state.openTaskId;
+    return `
+      <div class="task ${item.status === 'done' ? 'done' : ''}">
+        <div class="task-row">
+          <button class="check ${item.status === 'done' ? 'done' : ''}" data-toggle="${item.id}" aria-label="${item.status === 'done' ? 'Mark as not done' : 'Mark as done'}">${item.status === 'done' ? '✓' : ''}</button>
+          <input class="task-title" data-title="${item.id}" value="${escapeHtml(item.title)}" aria-label="Task" />
+          <button class="icon-btn guide-btn" data-open="${item.id}" aria-expanded="${open}">${open ? 'Hide' : (lesson ? 'Guide' : 'Notes')}${item.notes && !open ? ' •' : ''}</button>
+          <button class="icon-btn" data-move="${item.id}" data-dir="-1" title="Move up" ${i === 0 ? 'disabled' : ''}>↑</button>
+          <button class="icon-btn" data-move="${item.id}" data-dir="1" title="Move down" ${i === items.length - 1 ? 'disabled' : ''}>↓</button>
+          <button class="icon-btn del" data-del="${item.id}" title="Remove from this client's plan">✕</button>
+        </div>
+        ${open ? `
+        <div class="task-detail">
+          ${lesson ? `<div class="guide"><div class="from">From the master material${lesson.status === 'ready' ? '' : ' (draft)'}</div>${renderMarkdown(lesson.content || '')}</div>` : ''}
+          <textarea class="task-notes" data-notes="${item.id}" aria-label="Notes for this task" placeholder="Notes for this client on this task">${escapeHtml(item.notes || '')}</textarea>
+        </div>` : ''}
+      </div>`;
+  }).join('') : '<p style="color:var(--muted);padding:10px 0">No tasks in this section yet.</p>';
+}
+
+// ---------- Saving text fields a moment after typing stops ----------
+const pending = new Map(); // key -> { table, id, fields }
+let saveTimer = null;
+function queueSave(table, id, fields) {
+  const key = `${table}:${id}`;
+  pending.set(key, { table, id, fields: { ...(pending.get(key)?.fields || {}), ...fields } });
+  $('save-state').textContent = 'Saving…';
+  clearTimeout(saveTimer);
+  saveTimer = setTimeout(flushSaves, 800);
+}
+async function flushSaves() {
+  clearTimeout(saveTimer);
+  if (!pending.size) return;
+  const jobs = [...pending.values()];
+  pending.clear();
+  const results = await Promise.all(jobs.map((j) => {
+    const fields = j.table === 'seo_plan_items' ? { ...j.fields, updated_at: new Date().toISOString() } : j.fields;
+    return supabase.from(j.table).update(fields).eq('id', j.id);
+  }));
+  const failed = results.find((r) => r.error);
+  if (failed) return fail(failed.error);
+  if (!pending.size) $('save-state').textContent = 'Saved';
+}
+window.addEventListener('beforeunload', (e) => { if (pending.size) { flushSaves(); e.preventDefault(); e.returnValue = ''; } });
+
+// ---------- Section actions ----------
+$('section-title').addEventListener('input', (e) => {
+  const cat = currentCategory();
+  cat.title = e.target.value;
+  queueSave('seo_plan_categories', cat.id, { title: e.target.value || 'Untitled section' });
+  const label = document.querySelector(`[data-tab="${cat.id}"] .t`);
+  if (label) label.textContent = e.target.value || 'Untitled section';
+});
+$('section-notes').addEventListener('input', (e) => {
+  const cat = currentCategory();
+  cat.notes = e.target.value;
+  queueSave('seo_plan_categories', cat.id, { notes: e.target.value });
+});
+
+async function addSection() {
+  await flushSaves();
+  const { data, error } = await supabase.from('seo_plan_categories').insert({ client_id: state.clientId, title: 'New section', order_index: state.categories.length }).select().single();
+  if (error) return fail(error);
+  log('create', 'seo_category', data.id, data.title);
+  state.categories.push(data);
+  state.categoryId = data.id;
+  render();
+  $('section-title').focus();
+  $('section-title').select();
+}
+$('blank-section-btn').addEventListener('click', addSection);
+
+async function moveSection(dir) {
+  await flushSaves();
+  const i = state.categories.findIndex((c) => c.id === state.categoryId);
+  const j = i + dir;
+  if (j < 0 || j >= state.categories.length) return;
+  [state.categories[i], state.categories[j]] = [state.categories[j], state.categories[i]];
+  state.categories.forEach((c, n) => { c.order_index = n; });
+  renderTabs();
+  renderSection();
+  const results = await Promise.all(state.categories.map((c) => supabase.from('seo_plan_categories').update({ order_index: c.order_index }).eq('id', c.id)));
+  const failed = results.find((r) => r.error);
+  if (failed) fail(failed.error);
+}
+$('section-up').addEventListener('click', () => moveSection(-1));
+$('section-down').addEventListener('click', () => moveSection(1));
+
+$('section-delete').addEventListener('click', async () => {
+  const cat = currentCategory();
+  const count = itemsOf(cat.id).length;
+  if (!confirm(`Remove the section “${cat.title}”${count ? ` and its ${count} task${count === 1 ? '' : 's'}` : ''} from ${currentClient().name}'s plan? The master material is not changed.`)) return;
+  pending.clear();
+  const { error } = await supabase.from('seo_plan_categories').delete().eq('id', cat.id);
+  if (error) return fail(error);
+  log('delete', 'seo_category', cat.id, cat.title);
+  state.items = state.items.filter((i) => i.category_id !== cat.id);
+  state.categories = state.categories.filter((c) => c.id !== cat.id);
+  state.categoryId = state.categories[0]?.id ?? null;
+  render();
+});
+
+// "Mark all done" completes the section; pressing it again when done reopens it.
+$('section-done').addEventListener('click', async () => {
+  const cat = currentCategory();
+  const items = itemsOf(cat.id);
+  const status = isComplete(cat.id) ? 'todo' : 'done';
+  const changed = items.filter((i) => i.status !== status);
+  changed.forEach((i) => { i.status = status; });
+  renderProgress(); renderTabs(); renderSection();
+  const { error } = await supabase.from('seo_plan_items').update({ status, updated_at: new Date().toISOString() }).in('id', changed.map((i) => i.id));
+  if (error) return fail(error);
+  log(status === 'done' ? 'complete' : 'update', 'seo_category', cat.id, cat.title, { status });
+});
+
+// ---------- Task actions ----------
+$('tasks').addEventListener('click', async (e) => {
+  const el = e.target.closest('button');
+  if (!el) return;
+  const d = el.dataset;
+  if (d.toggle) {
+    const item = state.items.find((i) => i.id === d.toggle);
+    item.status = item.status === 'done' ? 'todo' : 'done';
+    renderProgress(); renderTabs(); renderSection();
+    const { error } = await supabase.from('seo_plan_items').update({ status: item.status, updated_at: new Date().toISOString() }).eq('id', item.id);
+    if (error) return fail(error);
+    log(item.status === 'done' ? 'complete' : 'update', 'seo_item', item.id, item.title, { status: item.status });
+  } else if (d.open) {
+    await flushSaves();
+    state.openTaskId = state.openTaskId === d.open ? null : d.open;
+    renderTasks();
+  } else if (d.move) {
+    await flushSaves();
+    const items = itemsOf(state.categoryId);
+    const i = items.findIndex((x) => x.id === d.move);
+    const j = i + Number(d.dir);
+    if (j < 0 || j >= items.length) return;
+    [items[i], items[j]] = [items[j], items[i]];
+    items.forEach((x, n) => { x.order_index = n; });
+    renderTasks();
+    const results = await Promise.all(items.map((x) => supabase.from('seo_plan_items').update({ order_index: x.order_index }).eq('id', x.id)));
+    const failed = results.find((r) => r.error);
+    if (failed) fail(failed.error);
+  } else if (d.del) {
+    const item = state.items.find((i) => i.id === d.del);
+    if (!confirm(`Remove “${item.title}” from ${currentClient().name}'s plan? The master material is not changed.`)) return;
+    pending.delete(`seo_plan_items:${item.id}`);
+    const { error } = await supabase.from('seo_plan_items').delete().eq('id', item.id);
+    if (error) return fail(error);
+    log('delete', 'seo_item', item.id, item.title);
+    state.items = state.items.filter((i) => i.id !== item.id);
+    renderProgress(); renderTabs(); renderSection();
+  }
+});
+
+$('tasks').addEventListener('input', (e) => {
+  const d = e.target.dataset;
+  if (d.title) {
+    const item = state.items.find((i) => i.id === d.title);
+    item.title = e.target.value;
+    queueSave('seo_plan_items', item.id, { title: e.target.value || 'Untitled task' });
+  } else if (d.notes) {
+    const item = state.items.find((i) => i.id === d.notes);
+    item.notes = e.target.value;
+    queueSave('seo_plan_items', item.id, { notes: e.target.value });
+  }
+});
+
+$('add-task-btn').addEventListener('click', async () => {
+  await flushSaves();
+  const order_index = itemsOf(state.categoryId).length;
+  const { data, error } = await supabase.from('seo_plan_items').insert({ category_id: state.categoryId, title: 'New task', status: 'todo', order_index }).select().single();
+  if (error) return fail(error);
+  log('create', 'seo_item', data.id, data.title);
+  state.items.push(data);
+  renderProgress(); renderTabs(); renderSection();
+  const input = document.querySelector(`[data-title="${data.id}"]`);
+  input?.focus();
+  input?.select();
+});
+
+// ---------- Building the plan from the master material ----------
+// Copies every master section and lesson that this client's plan does not
+// have yet. On an empty plan that is the whole material; later it adds only
+// what was written since. Nothing already in the plan is changed.
+async function addFromMaster() {
+  await flushSaves();
+  let addedSections = 0, addedTasks = 0;
+  for (const section of state.masterSections) {
+    let cat = state.categories.find((c) => c.section_id === section.id);
+    if (!cat) {
+      const { data, error } = await supabase.from('seo_plan_categories')
+        .insert({ client_id: state.clientId, section_id: section.id, title: section.title, order_index: state.categories.length })
+        .select().single();
+      if (error) return fail(error);
+      cat = data;
+      state.categories.push(cat);
+      addedSections++;
+    }
+    const have = new Set(state.items.filter((i) => i.lesson_id).map((i) => i.lesson_id));
+    const missing = state.masterLessons.filter((l) => l.section_id === section.id && !have.has(l.id));
+    if (!missing.length) continue;
+    const start = itemsOf(cat.id).length;
+    const rows = missing.map((l, n) => ({ category_id: cat.id, lesson_id: l.id, title: l.title, status: 'todo', order_index: start + n }));
+    const { data: items, error: e2 } = await supabase.from('seo_plan_items').insert(rows).select();
+    if (e2) return fail(e2);
+    state.items.push(...items);
+    addedTasks += items.length;
+  }
+  if (addedSections || addedTasks) log('create', 'seo_plan', state.clientId, currentClient().name, { sections: addedSections, tasks: addedTasks });
+  if (!state.categoryId) state.categoryId = state.categories[0]?.id ?? null;
+  render();
+  return { addedSections, addedTasks };
+}
+
+$('create-plan-btn').addEventListener('click', async () => {
+  $('create-plan-btn').disabled = true;
+  await addFromMaster();
+  $('create-plan-btn').disabled = false;
+});
+
+// What the master material has that this plan does not.
+function missingFromMaster() {
+  const have = new Set(state.items.filter((i) => i.lesson_id).map((i) => i.lesson_id));
+  return {
+    sections: state.masterSections.filter((s) => !state.categories.some((c) => c.section_id === s.id)).length,
+    tasks: state.masterLessons.filter((l) => !have.has(l.id)).length,
+  };
+}
+
+$('sync-btn').addEventListener('click', async () => {
+  const missing = missingFromMaster();
+  if (!missing.sections && !missing.tasks) {
+    alert('This plan already has everything in the master material.');
+    return;
+  }
+  const what = `${missing.tasks} task${missing.tasks === 1 ? '' : 's'}${missing.sections ? ` and ${missing.sections} section${missing.sections === 1 ? '' : 's'}` : ''}`;
+  if (!confirm(`Add ${what} from the master material to ${currentClient().name}'s plan? This includes anything you removed from this plan earlier.`)) return;
+  $('sync-btn').disabled = true;
+  await addFromMaster();
+  $('sync-btn').disabled = false;
+});
+
+// ---------- Markdown for the lesson guide (same small, safe renderer as the master page) ----------
+function renderInline(text) {
+  return escapeHtml(text)
+    .replace(/`([^`]+)`/g, '<code>$1</code>')
+    .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+    .replace(/\*([^*]+)\*/g, '<em>$1</em>')
+    .replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>');
+}
+function renderMarkdown(source) {
+  if (!source.trim()) return '<p style="color:var(--muted)">This lesson has no content in the master material yet.</p>';
+  const out = [];
+  let list = null, para = [];
+  const closeList = () => { if (list) { out.push(`</${list}>`); list = null; } };
+  const closePara = () => { if (para.length) { out.push(`<p>${para.join('<br>')}</p>`); para = []; } };
+  for (const raw of source.split('\n')) {
+    const line = raw.trimEnd();
+    const heading = line.match(/^(#{1,3})\s+(.*)$/);
+    const bullet = line.match(/^\s*[-*]\s+(.*)$/);
+    const numbered = line.match(/^\s*\d+[.)]\s+(.*)$/);
+    if (heading) { closePara(); closeList(); out.push(`<h${heading[1].length}>${renderInline(heading[2])}</h${heading[1].length}>`); }
+    else if (bullet || numbered) {
+      closePara();
+      const tag = bullet ? 'ul' : 'ol';
+      if (list !== tag) { closeList(); out.push(`<${tag}>`); list = tag; }
+      out.push(`<li>${renderInline((bullet || numbered)[1])}</li>`);
+    } else if (!line.trim()) { closePara(); closeList(); }
+    else { closeList(); para.push(renderInline(line)); }
+  }
+  closePara(); closeList();
+  return out.join('\n');
+}
+
+init();
+</script>
+</body>
+</html>
