@@ -42,6 +42,9 @@ a{color:inherit}
 .btn:disabled{opacity:.6;cursor:default;transform:none}
 .mode-toggle{text-align:center;margin-top:14px;font-size:13px;color:var(--muted)}
 .mode-toggle button{background:none;border:0;color:var(--accent);font-weight:700;cursor:pointer;padding:0}
+.google-btn{width:100%;gap:10px;margin-bottom:4px}
+.or-line{display:flex;align-items:center;gap:12px;color:var(--muted);font-size:12px;margin:14px 0}
+.or-line::before,.or-line::after{content:"";flex:1;border-top:1px solid var(--line2)}
 .msg{font-size:13px;margin-top:10px;display:none}
 .msg.show{display:block}
 .msg.error{color:var(--bad)}
@@ -107,6 +110,11 @@ header.admin-top h1{font-size:17px;flex:1}
   <div class="login-card">
     <h1>GetForce SEO — Admin</h1>
     <p class="sub" id="login-sub">Sign in with your GetForce admin account.</p>
+    <button type="button" class="btn google-btn hide" id="google-btn">
+      <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="#4285F4" d="M23.5 12.3c0-.8-.1-1.6-.2-2.3H12v4.4h6.5a5.5 5.5 0 0 1-2.4 3.6v3h3.9c2.2-2.1 3.5-5.2 3.5-8.7z"/><path fill="#34A853" d="M12 24c3.2 0 6-1.1 8-2.9l-3.9-3c-1.1.7-2.5 1.2-4.1 1.2-3.1 0-5.8-2.1-6.7-5H1.2v3.1A12 12 0 0 0 12 24z"/><path fill="#FBBC05" d="M5.3 14.3a7.2 7.2 0 0 1 0-4.6V6.6H1.2a12 12 0 0 0 0 10.8l4.1-3.1z"/><path fill="#EA4335" d="M12 4.8c1.8 0 3.3.6 4.6 1.8l3.4-3.4A12 12 0 0 0 1.2 6.6l4.1 3.1c.9-2.9 3.6-4.9 6.7-4.9z"/></svg>
+      Continue with Google
+    </button>
+    <div class="or-line hide" id="or-line"><span>or</span></div>
     <form id="login-form">
       <div class="field">
         <label>Email</label>
@@ -175,10 +183,11 @@ header.admin-top h1{font-size:17px;flex:1}
 <script type="module">
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
 
-const supabase = createClient(
-  'https://wddvepbocmawvuhkzpuu.supabase.co',
-  'sb_publishable_tL8Uzh72AjHCzxOUCoHjdg_fHpIJJtT'
-);
+// This admin has its own backend project (seo-getforce), separate from the course sites.
+const SUPABASE_URL = 'https://tgfwdwbnucblllszbojr.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_LsI-j94yxwlS7Hlm2ApYVg_Pt6jMe9I'; // publishable key: safe in the browser
+const ADMIN_URL = location.origin + '/admin/';
+const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
 
 const $ = (id) => document.getElementById(id);
 const show = (el) => el.classList.remove('hide');
@@ -203,11 +212,41 @@ function log(action, entity_type, entity_id, entity_label, metadata = {}) {
 }
 
 // ---------- Auth ----------
+// The Google button appears only once Google sign-in is switched on in the
+// backend's settings, so the page never shows a button that cannot work.
+async function showGoogleButtonIfEnabled() {
+  try {
+    const res = await fetch(`${SUPABASE_URL}/auth/v1/settings`, { headers: { apikey: SUPABASE_KEY } });
+    const settings = await res.json();
+    if (settings?.external?.google) {
+      show($('google-btn'));
+      show($('or-line'));
+    }
+  } catch (e) { /* leave the button hidden */ }
+}
+
+$('google-btn').addEventListener('click', async () => {
+  const { error } = await supabase.auth.signInWithOAuth({ provider: 'google', options: { redirectTo: ADMIN_URL } });
+  if (error) {
+    $('login-msg').textContent = error.message;
+    $('login-msg').classList.add('show', 'error');
+  }
+});
+
 async function init() {
+  // A failed or cancelled Google sign-in comes back with an error in the address.
+  const returned = new URLSearchParams(location.hash.replace(/^#/, '') || location.search);
+  const returnError = returned.get('error_description') || returned.get('error');
+  if (returnError) history.replaceState(null, '', location.pathname);
   const { data: { session } } = await supabase.auth.getSession();
   if (!session) {
     hide($('loading'));
     show($('login-screen'));
+    showGoogleButtonIfEnabled();
+    if (returnError) {
+      $('login-msg').textContent = returnError.replace(/\+/g, ' ');
+      $('login-msg').classList.add('show', 'error');
+    }
     return;
   }
   state.userId = session.user.id;
@@ -243,7 +282,7 @@ $('login-form').addEventListener('submit', async (e) => {
   btn.disabled = true;
   try {
     if (authMode === 'signup') {
-      const { error } = await supabase.auth.signUp({ email, password });
+      const { error } = await supabase.auth.signUp({ email, password, options: { emailRedirectTo: ADMIN_URL } });
       if (error) throw error;
       msg.textContent = 'Account created. Check your email to confirm, then sign in.';
       msg.classList.add('show', 'success');
