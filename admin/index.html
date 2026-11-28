@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>GetForce SEO — Admin</title>
+<title>GetForce SEO — Master material</title>
 <meta name="robots" content="noindex, nofollow">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -97,6 +97,62 @@ header.admin-top h1{font-size:17px;flex:1}
 .add-item-row{padding-top:10px}
 .add-item-row .btn{font-size:13px;padding:8px 14px}
 
+/* Master material */
+.intro{color:var(--muted);max-width:720px;margin-bottom:24px}
+.save-state{color:var(--muted);font-size:13px;min-width:70px;text-align:right}
+.btn.small{font-size:13px;padding:7px 12px}
+.btn.danger:hover{border-color:var(--bad);color:var(--bad)}
+.material{display:grid;grid-template-columns:320px 1fr;gap:20px;align-items:start}
+.outline,.editor{background:var(--card);border:1px solid var(--line);border-radius:16px}
+.outline{padding:16px;position:sticky;top:78px;max-height:calc(100vh - 98px);overflow:auto}
+.outline-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.outline-head h2{font-size:16px}
+.outline-empty{color:var(--muted);font-size:14px;padding:8px 2px}
+.o-section{margin-bottom:14px}
+.o-section-head{display:flex;align-items:center;gap:4px}
+.o-section-head input{flex:1;min-width:0;background:none;border:0;border-bottom:1px solid transparent;font-weight:700;padding:5px 2px;color:var(--text)}
+.o-section-head input:focus{outline:none;border-bottom-color:var(--accent)}
+.icon-btn{background:none;border:0;color:var(--muted);cursor:pointer;padding:4px 5px;border-radius:6px;line-height:1;font-size:13px}
+.icon-btn:hover{color:var(--text);background:var(--card2)}
+.icon-btn.del:hover{color:var(--bad)}
+.icon-btn:disabled{opacity:.3;cursor:default;background:none}
+.o-lesson{display:flex;align-items:center;gap:2px;border-radius:9px;padding-left:6px}
+.o-lesson:hover{background:var(--card2)}
+.o-lesson.active{background:var(--accent-soft)}
+.o-lesson .open{flex:1;min-width:0;text-align:left;background:none;border:0;cursor:pointer;padding:7px 4px;display:flex;align-items:center;gap:8px;color:var(--text)}
+.o-lesson .open span.t{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.o-lesson .dot{width:8px;height:8px;border-radius:50%;background:var(--line2);flex-shrink:0}
+.o-lesson .dot.ready{background:var(--good)}
+.o-lesson .icon-btn{visibility:hidden}
+.o-lesson:hover .icon-btn,.o-lesson.active .icon-btn,.o-lesson:focus-within .icon-btn{visibility:visible}
+.o-add{background:none;border:0;color:var(--accent);font-weight:700;font-size:13px;cursor:pointer;padding:6px 10px}
+.editor{padding:22px;min-height:420px}
+.editor-empty{color:var(--muted);padding:60px 10px;text-align:center}
+.editor-top{display:flex;align-items:center;gap:12px;margin-bottom:14px;flex-wrap:wrap}
+.crumb{color:var(--muted);font-size:13px;flex:1;min-width:120px}
+.status-badge.draft{background:var(--card2);color:var(--muted)}
+.status-badge.ready{background:var(--good-bg);color:var(--good)}
+.tabs{display:flex;border:1px solid var(--line2);border-radius:10px;overflow:hidden}
+.tabs button{background:none;border:0;padding:6px 14px;font-weight:700;font-size:13px;color:var(--muted);cursor:pointer}
+.tabs button[aria-selected="true"]{background:var(--card2);color:var(--text)}
+.lesson-title{width:100%;background:none;border:0;border-bottom:1px solid var(--line);font-family:Outfit,Manrope,sans-serif;font-size:24px;font-weight:700;padding:6px 0 12px;margin-bottom:16px;color:var(--text)}
+.lesson-title:focus{outline:none;border-bottom-color:var(--accent)}
+.lesson-content{width:100%;min-height:420px;resize:vertical;background:var(--card2);border:1px solid var(--line2);border-radius:12px;padding:16px;line-height:1.65;color:var(--text)}
+.lesson-content:focus{outline:2px solid var(--accent);outline-offset:1px}
+.lesson-preview{min-height:420px;border:1px solid var(--line);border-radius:12px;padding:8px 20px 20px;line-height:1.7}
+.lesson-preview h1,.lesson-preview h2,.lesson-preview h3{margin:20px 0 8px;line-height:1.25}
+.lesson-preview h1{font-size:24px}.lesson-preview h2{font-size:20px}.lesson-preview h3{font-size:17px}
+.lesson-preview p{margin:10px 0}
+.lesson-preview ul,.lesson-preview ol{margin:10px 0;padding-left:24px}
+.lesson-preview code{background:var(--card2);border-radius:5px;padding:1px 6px;font-size:.92em}
+.lesson-preview a{color:var(--accent)}
+.lesson-preview .empty-note{color:var(--muted)}
+.editor-foot{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:14px;color:var(--muted);font-size:13px}
+@media (max-width:860px){
+  .material{grid-template-columns:1fr}
+  .outline{position:static;max-height:none}
+}
+
 @media (max-width:700px){
   .stats{grid-template-columns:repeat(2,1fr)}
 }
@@ -145,38 +201,62 @@ header.admin-top h1{font-size:17px;flex:1}
 <div id="dashboard" class="hide">
   <header class="admin-top">
     <div class="wrap">
-      <h1>GetForce SEO — Admin</h1>
+      <h1>GetForce SEO — Master material</h1>
+      <span class="save-state" id="save-state"></span>
       <a class="btn ghost" href="/" target="_blank" rel="noopener">↗ Site</a>
       <button class="btn" id="signout-btn">Sign out</button>
     </div>
   </header>
 
   <div class="dash wrap">
+    <p class="intro">The one teaching material for SEO and GEO. Write it once here, section by section. Work for individual clients will live on a separate implementation page.</p>
+
     <div class="stats">
-      <div class="stat"><div class="lbl">Clients</div><div class="val" id="stat-clients">0</div></div>
-      <div class="stat"><div class="lbl">Categories</div><div class="val" id="stat-categories">0</div></div>
-      <div class="stat"><div class="lbl">Tasks</div><div class="val" id="stat-items">0</div></div>
-      <div class="stat"><div class="lbl">Done</div><div class="val accent" id="stat-done">0</div></div>
+      <div class="stat"><div class="lbl">Sections</div><div class="val" id="stat-sections">0</div></div>
+      <div class="stat"><div class="lbl">Lessons</div><div class="val" id="stat-lessons">0</div></div>
+      <div class="stat"><div class="lbl">Ready</div><div class="val accent" id="stat-ready">0</div></div>
+      <div class="stat"><div class="lbl">Words</div><div class="val" id="stat-words">0</div></div>
     </div>
 
-    <div class="client-bar">
-      <span class="lbl">Client</span>
-      <select id="client-select"></select>
-      <button class="btn" id="add-client-btn">+ Add client</button>
-      <button class="btn" id="delete-client-btn">Delete client</button>
-    </div>
+    <div class="material">
+      <aside class="outline" aria-label="Outline">
+        <div class="outline-head">
+          <h2>Outline</h2>
+          <button class="btn small" id="add-section-btn">+ Section</button>
+        </div>
+        <div id="outline-list"></div>
+        <p class="outline-empty hide" id="outline-empty">No sections yet. Add the first one, for example “Technical SEO” or “GEO basics”.</p>
+      </aside>
 
-    <div class="section-head">
-      <h2>SEO/GEO Plan</h2>
-      <button class="btn primary" id="add-category-btn" style="width:auto">+ Add category</button>
-    </div>
+      <section class="editor" aria-label="Lesson editor">
+        <div class="editor-empty" id="editor-empty">
+          <p>Select a lesson in the outline, or add a section and a lesson to start writing.</p>
+        </div>
+        <div class="hide" id="editor-body">
+          <div class="editor-top">
+            <span class="crumb" id="editor-crumb"></span>
+            <button class="status-badge draft" id="lesson-status" title="Mark this lesson as ready when it can be taught"></button>
+            <div class="tabs" role="tablist">
+              <button role="tab" id="tab-write" aria-selected="true">Write</button>
+              <button role="tab" id="tab-preview" aria-selected="false">Preview</button>
+            </div>
+          </div>
+          <input class="lesson-title" id="lesson-title" placeholder="Lesson title" aria-label="Lesson title" />
+          <textarea class="lesson-content" id="lesson-content" aria-label="Lesson content" placeholder="Write the lesson here.
 
-    <div id="no-client-empty" class="empty hide">
-      <p>No client selected. Add a client to start building their SEO/GEO plan.</p>
-      <button class="btn primary" id="empty-add-client-btn" style="width:auto">+ Add client</button>
+# Heading
+**bold**, *italic*, `code`
+- list item
+1. numbered step
+[link text](https://example.com)"></textarea>
+          <div class="lesson-preview hide" id="lesson-preview"></div>
+          <div class="editor-foot">
+            <span id="lesson-meta"></span>
+            <button class="btn small danger" id="delete-lesson-btn">Delete lesson</button>
+          </div>
+        </div>
+      </section>
     </div>
-
-    <div id="categories-list"></div>
   </div>
 </div>
 
@@ -195,10 +275,9 @@ const hide = (el) => el.classList.add('hide');
 
 let state = {
   userId: null,
-  clients: [],
-  categories: [],
-  items: [],
-  currentClientId: null,
+  sections: [],
+  lessons: [],
+  currentLessonId: null,
 };
 
 function log(action, entity_type, entity_id, entity_label, metadata = {}) {
@@ -261,7 +340,7 @@ async function init() {
     return;
   }
   show($('dashboard'));
-  await loadClients();
+  await loadMaterial();
 }
 
 let authMode = 'signin';
@@ -308,265 +387,308 @@ $('signout-btn').addEventListener('click', async () => {
   location.reload();
 });
 
-// ---------- Data loading ----------
-async function loadClients() {
-  const { data } = await supabase.from('seo_clients').select('*').order('order_index');
-  state.clients = data || [];
-  renderClientSelect();
-  if (state.clients.length && !state.currentClientId) {
-    state.currentClientId = state.clients[0].id;
-  }
-  await loadPlan();
-  updateStats();
-}
-
-async function loadPlan() {
-  if (!state.currentClientId) {
-    state.categories = [];
-    state.items = [];
-    renderCategories();
-    return;
-  }
-  const { data: cats } = await supabase
-    .from('seo_plan_categories')
-    .select('*')
-    .eq('client_id', state.currentClientId)
-    .order('order_index');
-  state.categories = cats || [];
-  const catIds = state.categories.map((c) => c.id);
-  if (catIds.length) {
-    const { data: items } = await supabase
-      .from('seo_plan_items')
-      .select('*')
-      .in('category_id', catIds)
-      .order('order_index');
-    state.items = items || [];
-  } else {
-    state.items = [];
-  }
-  renderCategories();
-  updateStats();
-}
-
-function updateStats() {
-  $('stat-clients').textContent = state.clients.length;
-  $('stat-categories').textContent = state.categories.length;
-  $('stat-items').textContent = state.items.length;
-  $('stat-done').textContent = state.items.filter((i) => i.status === 'done').length;
-}
-
-// ---------- Render ----------
-function renderClientSelect() {
-  const sel = $('client-select');
-  sel.innerHTML = state.clients
-    .map((c) => `<option value="${c.id}">${escapeHtml(c.name)}</option>`)
-    .join('');
-  if (state.currentClientId) sel.value = state.currentClientId;
-  const hasClients = state.clients.length > 0;
-  if (hasClients) hide($('no-client-empty')); else show($('no-client-empty'));
-  $('categories-list').style.display = hasClients ? '' : 'none';
-  $('add-category-btn').disabled = !hasClients;
-  $('delete-client-btn').disabled = !hasClients;
-}
+// ---------- Master material ----------
+// One document: sections, each holding lessons. Lesson content is Markdown text.
+let saveTimer = null;
+let pendingSave = null;
 
 function escapeHtml(s) {
   return String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 }
 
-const openCategories = new Set();
+function setSaveState(text) { $('save-state').textContent = text; }
 
-function renderCategories() {
-  const list = $('categories-list');
-  if (state.categories.length === 0) {
-    list.innerHTML = state.clients.length
-      ? '<div class="empty"><p>No plan categories yet. Add one to start (e.g. "Technical SEO", "GEO / Structured data").</p></div>'
-      : '';
-    return;
+async function loadMaterial() {
+  const [{ data: sections, error: e1 }, { data: lessons, error: e2 }] = await Promise.all([
+    supabase.from('material_sections').select('*').order('order_index'),
+    supabase.from('material_lessons').select('*').order('order_index'),
+  ]);
+  if (e1 || e2) { setSaveState('Could not load'); alert((e1 || e2).message); return; }
+  state.sections = sections || [];
+  state.lessons = lessons || [];
+  renderOutline();
+  renderEditor();
+  updateStats();
+}
+
+const lessonsOf = (sectionId) => state.lessons.filter((l) => l.section_id === sectionId).sort((a, b) => a.order_index - b.order_index);
+const currentLesson = () => state.lessons.find((l) => l.id === state.currentLessonId) || null;
+const wordCount = (text) => (text.trim().match(/\S+/g) || []).length;
+
+function updateStats() {
+  $('stat-sections').textContent = state.sections.length;
+  $('stat-lessons').textContent = state.lessons.length;
+  $('stat-ready').textContent = state.lessons.filter((l) => l.status === 'ready').length;
+  $('stat-words').textContent = state.lessons.reduce((n, l) => n + wordCount(l.content || ''), 0).toLocaleString();
+}
+
+// ---------- Outline ----------
+function renderOutline() {
+  const list = $('outline-list');
+  $('outline-empty').classList.toggle('hide', state.sections.length > 0);
+  list.innerHTML = state.sections.map((s, si) => {
+    const lessons = lessonsOf(s.id);
+    return `
+      <div class="o-section">
+        <div class="o-section-head">
+          <input value="${escapeHtml(s.title)}" data-rename-section="${s.id}" aria-label="Section title" />
+          <button class="icon-btn" data-move-section="${s.id}" data-dir="-1" title="Move section up" ${si === 0 ? 'disabled' : ''}>↑</button>
+          <button class="icon-btn" data-move-section="${s.id}" data-dir="1" title="Move section down" ${si === state.sections.length - 1 ? 'disabled' : ''}>↓</button>
+          <button class="icon-btn del" data-del-section="${s.id}" title="Delete section">✕</button>
+        </div>
+        ${lessons.map((l, li) => `
+          <div class="o-lesson ${l.id === state.currentLessonId ? 'active' : ''}">
+            <button class="open" data-open-lesson="${l.id}">
+              <span class="dot ${l.status}" title="${l.status === 'ready' ? 'Ready' : 'Draft'}"></span>
+              <span class="t">${escapeHtml(l.title) || 'Untitled lesson'}</span>
+            </button>
+            <button class="icon-btn" data-move-lesson="${l.id}" data-dir="-1" title="Move lesson up" ${li === 0 ? 'disabled' : ''}>↑</button>
+            <button class="icon-btn" data-move-lesson="${l.id}" data-dir="1" title="Move lesson down" ${li === lessons.length - 1 ? 'disabled' : ''}>↓</button>
+          </div>`).join('')}
+        <button class="o-add" data-add-lesson="${s.id}">+ Lesson</button>
+      </div>`;
+  }).join('');
+}
+
+$('outline-list').addEventListener('click', async (e) => {
+  const el = e.target.closest('button');
+  if (!el) return;
+  if (el.dataset.openLesson) return openLesson(el.dataset.openLesson);
+  if (el.dataset.addLesson) return addLesson(el.dataset.addLesson);
+  if (el.dataset.delSection) return deleteSection(el.dataset.delSection);
+  if (el.dataset.moveSection) return move(state.sections, 'material_sections', el.dataset.moveSection, Number(el.dataset.dir));
+  if (el.dataset.moveLesson) {
+    const lesson = state.lessons.find((l) => l.id === el.dataset.moveLesson);
+    return move(lessonsOf(lesson.section_id), 'material_lessons', lesson.id, Number(el.dataset.dir));
   }
-  list.innerHTML = state.categories
-    .map((cat) => {
-      const catItems = state.items.filter((i) => i.category_id === cat.id);
-      const isOpen = openCategories.has(cat.id);
-      return `
-        <div class="category" data-cat="${cat.id}">
-          <div class="category-head ${isOpen ? 'open' : ''}" data-toggle="${cat.id}">
-            <span class="chev">▾</span>
-            <input class="title" data-rename-cat="${cat.id}" value="${escapeHtml(cat.title)}" style="background:none;border:0;color:inherit;font:inherit;font-weight:700;flex:1" />
-            <span class="count">${catItems.length}</span>
-            <button class="del" data-del-cat="${cat.id}" title="Delete category">🗑</button>
-          </div>
-          <div class="category-body ${isOpen ? 'open' : ''}">
-            ${catItems.map((item) => itemRowHtml(item)).join('')}
-            <div class="add-item-row">
-              <button class="btn" data-add-item="${cat.id}">+ Add task</button>
-            </div>
-          </div>
-        </div>`;
-    })
-    .join('');
-  wireCategoryEvents();
-}
-
-function itemRowHtml(item) {
-  return `
-    <div class="item-row" data-item="${item.id}">
-      <input class="title" data-rename-item="${item.id}" value="${escapeHtml(item.title)}" />
-      <button class="status-badge ${item.status}" data-cycle-status="${item.id}">${statusLabel(item.status)}</button>
-      <button class="del" data-del-item="${item.id}" title="Delete">🗑</button>
-    </div>`;
-}
-
-function statusLabel(s) {
-  return s === 'done' ? 'Done' : s === 'in_progress' ? 'In progress' : 'To do';
-}
-function nextStatus(s) {
-  return s === 'todo' ? 'in_progress' : s === 'in_progress' ? 'done' : 'todo';
-}
-
-function wireCategoryEvents() {
-  document.querySelectorAll('[data-toggle]').forEach((el) => {
-    el.addEventListener('click', (e) => {
-      if (e.target.closest('[data-del-cat]') || e.target.closest('[data-rename-cat]')) return;
-      const id = el.getAttribute('data-toggle');
-      if (openCategories.has(id)) openCategories.delete(id);
-      else openCategories.add(id);
-      renderCategories();
-    });
-  });
-  document.querySelectorAll('[data-rename-cat]').forEach((el) => {
-    el.addEventListener('click', (e) => e.stopPropagation());
-    el.addEventListener('change', async (e) => {
-      e.stopPropagation();
-      const id = el.getAttribute('data-rename-cat');
-      const title = el.value.trim() || 'Untitled';
-      await supabase.from('seo_plan_categories').update({ title }).eq('id', id);
-      const cat = state.categories.find((c) => c.id === id);
-      if (cat) cat.title = title;
-      log('update', 'seo_category', id, title);
-    });
-  });
-  document.querySelectorAll('[data-del-cat]').forEach((el) => {
-    el.addEventListener('click', async (e) => {
-      e.stopPropagation();
-      const id = el.getAttribute('data-del-cat');
-      const cat = state.categories.find((c) => c.id === id);
-      if (!confirm(`Delete category "${cat?.title}"? This also deletes all its tasks.`)) return;
-      await supabase.from('seo_plan_categories').delete().eq('id', id);
-      log('delete', 'seo_category', id, cat?.title || '');
-      await loadPlan();
-    });
-  });
-  document.querySelectorAll('[data-rename-item]').forEach((el) => {
-    el.addEventListener('change', async () => {
-      const id = el.getAttribute('data-rename-item');
-      const title = el.value.trim() || 'Untitled';
-      await supabase.from('seo_plan_items').update({ title, updated_at: new Date().toISOString() }).eq('id', id);
-      const item = state.items.find((i) => i.id === id);
-      if (item) item.title = title;
-      log('update', 'seo_item', id, title);
-    });
-  });
-  document.querySelectorAll('[data-cycle-status]').forEach((el) => {
-    el.addEventListener('click', async () => {
-      const id = el.getAttribute('data-cycle-status');
-      const item = state.items.find((i) => i.id === id);
-      if (!item) return;
-      const ns = nextStatus(item.status);
-      item.status = ns;
-      await supabase.from('seo_plan_items').update({ status: ns, updated_at: new Date().toISOString() }).eq('id', id);
-      log(ns === 'done' ? 'complete' : 'update', 'seo_item', id, item.title, { status: ns });
-      renderCategories();
-      updateStats();
-    });
-  });
-  document.querySelectorAll('[data-del-item]').forEach((el) => {
-    el.addEventListener('click', async () => {
-      const id = el.getAttribute('data-del-item');
-      const item = state.items.find((i) => i.id === id);
-      if (!confirm(`Delete task "${item?.title}"?`)) return;
-      await supabase.from('seo_plan_items').delete().eq('id', id);
-      log('delete', 'seo_item', id, item?.title || '');
-      state.items = state.items.filter((i) => i.id !== id);
-      renderCategories();
-      updateStats();
-    });
-  });
-  document.querySelectorAll('[data-add-item]').forEach((el) => {
-    el.addEventListener('click', async () => {
-      const catId = el.getAttribute('data-add-item');
-      const peers = state.items.filter((i) => i.category_id === catId);
-      const order_index = (peers.at(-1)?.order_index ?? -1) + 10;
-      const { data, error } = await supabase
-        .from('seo_plan_items')
-        .insert({ category_id: catId, title: 'New task', status: 'todo', order_index })
-        .select()
-        .single();
-      if (error) return alert(error.message);
-      state.items.push(data);
-      openCategories.add(catId);
-      log('create', 'seo_item', data.id, data.title);
-      renderCategories();
-      updateStats();
-    });
-  });
-}
-
-// ---------- Client controls ----------
-$('client-select').addEventListener('change', async (e) => {
-  state.currentClientId = e.target.value;
-  openCategories.clear();
-  await loadPlan();
 });
 
-async function addClient() {
-  const name = prompt('Client name:');
-  if (!name) return;
-  const website_url = prompt('Website URL (optional):') || null;
-  const order_index = (state.clients.at(-1)?.order_index ?? -1) + 10;
-  const { data, error } = await supabase
-    .from('seo_clients')
-    .insert({ name, website_url, order_index })
-    .select()
-    .single();
+$('outline-list').addEventListener('change', async (e) => {
+  const id = e.target.dataset.renameSection;
+  if (!id) return;
+  const title = e.target.value.trim() || 'Untitled section';
+  const section = state.sections.find((s) => s.id === id);
+  section.title = title;
+  e.target.value = title;
+  const { error } = await supabase.from('material_sections').update({ title }).eq('id', id);
   if (error) return alert(error.message);
-  state.clients.push(data);
-  state.currentClientId = data.id;
-  log('create', 'seo_client', data.id, data.name);
-  renderClientSelect();
-  await loadPlan();
-}
-$('add-client-btn').addEventListener('click', addClient);
-$('empty-add-client-btn').addEventListener('click', addClient);
-
-$('delete-client-btn').addEventListener('click', async () => {
-  const client = state.clients.find((c) => c.id === state.currentClientId);
-  if (!client) return;
-  if (!confirm(`Delete client "${client.name}"? This deletes their entire plan.`)) return;
-  await supabase.from('seo_clients').delete().eq('id', client.id);
-  log('delete', 'seo_client', client.id, client.name);
-  state.clients = state.clients.filter((c) => c.id !== client.id);
-  state.currentClientId = state.clients[0]?.id || null;
-  renderClientSelect();
-  await loadPlan();
+  log('update', 'material_section', id, title);
+  renderEditor();
 });
 
-$('add-category-btn').addEventListener('click', async () => {
-  if (!state.currentClientId) return;
-  const title = prompt('Category name (e.g. "Technical SEO"):');
-  if (!title) return;
-  const order_index = (state.categories.at(-1)?.order_index ?? -1) + 10;
-  const { data, error } = await supabase
-    .from('seo_plan_categories')
-    .insert({ client_id: state.currentClientId, title, order_index })
-    .select()
-    .single();
+// Swap a row with its neighbour and store the new order.
+async function move(rows, table, id, dir) {
+  const i = rows.findIndex((r) => r.id === id);
+  const j = i + dir;
+  if (i < 0 || j < 0 || j >= rows.length) return;
+  [rows[i], rows[j]] = [rows[j], rows[i]];
+  rows.forEach((r, n) => { r.order_index = n; });
+  if (table === 'material_sections') state.sections = rows;
+  renderOutline();
+  const results = await Promise.all(rows.map((r) => supabase.from(table).update({ order_index: r.order_index }).eq('id', r.id)));
+  const failed = results.find((r) => r.error);
+  if (failed) alert(failed.error.message);
+}
+
+$('add-section-btn').addEventListener('click', async () => {
+  const order_index = state.sections.length;
+  const { data, error } = await supabase.from('material_sections').insert({ title: 'New section', order_index }).select().single();
   if (error) return alert(error.message);
-  state.categories.push(data);
-  openCategories.add(data.id);
-  log('create', 'seo_category', data.id, data.title);
-  renderCategories();
+  state.sections.push(data);
+  log('create', 'material_section', data.id, data.title);
+  renderOutline();
+  updateStats();
+  const input = document.querySelector(`[data-rename-section="${data.id}"]`);
+  input?.focus();
+  input?.select();
+});
+
+async function deleteSection(id) {
+  const section = state.sections.find((s) => s.id === id);
+  const count = lessonsOf(id).length;
+  if (!confirm(`Delete the section “${section.title}”${count ? ` and its ${count} lesson${count === 1 ? '' : 's'}` : ''}? This cannot be undone.`)) return;
+  await flushSave();
+  const { error } = await supabase.from('material_sections').delete().eq('id', id);
+  if (error) return alert(error.message);
+  log('delete', 'material_section', id, section.title);
+  if (currentLesson()?.section_id === id) state.currentLessonId = null;
+  state.sections = state.sections.filter((s) => s.id !== id);
+  state.lessons = state.lessons.filter((l) => l.section_id !== id);
+  renderOutline();
+  renderEditor();
+  updateStats();
+}
+
+async function addLesson(sectionId) {
+  await flushSave();
+  const order_index = lessonsOf(sectionId).length;
+  const { data, error } = await supabase.from('material_lessons').insert({ section_id: sectionId, title: 'New lesson', order_index }).select().single();
+  if (error) return alert(error.message);
+  state.lessons.push(data);
+  log('create', 'material_lesson', data.id, data.title);
+  state.currentLessonId = data.id;
+  renderOutline();
+  renderEditor();
+  updateStats();
+  $('lesson-title').focus();
+  $('lesson-title').select();
+}
+
+async function openLesson(id) {
+  if (id === state.currentLessonId) return;
+  await flushSave();
+  state.currentLessonId = id;
+  renderOutline();
+  renderEditor();
+}
+
+// ---------- Editor ----------
+function renderEditor() {
+  const lesson = currentLesson();
+  $('editor-empty').classList.toggle('hide', !!lesson);
+  $('editor-body').classList.toggle('hide', !lesson);
+  if (!lesson) return;
+  const section = state.sections.find((s) => s.id === lesson.section_id);
+  $('editor-crumb').textContent = section ? section.title : '';
+  $('lesson-title').value = lesson.title;
+  $('lesson-content').value = lesson.content || '';
+  renderStatus(lesson);
+  renderMeta(lesson);
+  showTab('write');
+}
+
+function renderStatus(lesson) {
+  const badge = $('lesson-status');
+  badge.className = `status-badge ${lesson.status}`;
+  badge.textContent = lesson.status === 'ready' ? 'Ready' : 'Draft';
+}
+
+function renderMeta(lesson) {
+  const words = wordCount(lesson.content || '');
+  $('lesson-meta').textContent = `${words.toLocaleString()} word${words === 1 ? '' : 's'}`;
+}
+
+function showTab(tab) {
+  const preview = tab === 'preview';
+  $('tab-write').setAttribute('aria-selected', String(!preview));
+  $('tab-preview').setAttribute('aria-selected', String(preview));
+  $('lesson-content').classList.toggle('hide', preview);
+  $('lesson-preview').classList.toggle('hide', !preview);
+  if (preview) $('lesson-preview').innerHTML = renderMarkdown($('lesson-content').value);
+}
+$('tab-write').addEventListener('click', () => showTab('write'));
+$('tab-preview').addEventListener('click', () => showTab('preview'));
+
+// Save a moment after typing stops; flushSave() saves at once (before switching lessons or leaving).
+function queueSave(lesson, fields) {
+  Object.assign(lesson, fields);
+  pendingSave = { id: lesson.id, fields: { ...(pendingSave?.id === lesson.id ? pendingSave.fields : {}), ...fields } };
+  setSaveState('Saving…');
+  clearTimeout(saveTimer);
+  saveTimer = setTimeout(flushSave, 800);
+}
+
+async function flushSave() {
+  clearTimeout(saveTimer);
+  if (!pendingSave) return;
+  const { id, fields } = pendingSave;
+  pendingSave = null;
+  const { error } = await supabase.from('material_lessons').update({ ...fields, updated_at: new Date().toISOString() }).eq('id', id);
+  if (error) { setSaveState('Not saved'); alert(`Could not save: ${error.message}`); return; }
+  if (!pendingSave) setSaveState('Saved');
+}
+
+$('lesson-title').addEventListener('input', (e) => {
+  const lesson = currentLesson();
+  if (!lesson) return;
+  queueSave(lesson, { title: e.target.value });
+  const label = document.querySelector(`[data-open-lesson="${lesson.id}"] .t`);
+  if (label) label.textContent = e.target.value || 'Untitled lesson';
+});
+
+$('lesson-content').addEventListener('input', (e) => {
+  const lesson = currentLesson();
+  if (!lesson) return;
+  queueSave(lesson, { content: e.target.value });
+  renderMeta(lesson);
   updateStats();
 });
+
+$('lesson-status').addEventListener('click', async () => {
+  const lesson = currentLesson();
+  if (!lesson) return;
+  const status = lesson.status === 'ready' ? 'draft' : 'ready';
+  queueSave(lesson, { status });
+  await flushSave();
+  log(status === 'ready' ? 'complete' : 'update', 'material_lesson', lesson.id, lesson.title, { status });
+  renderStatus(lesson);
+  renderOutline();
+  updateStats();
+});
+
+$('delete-lesson-btn').addEventListener('click', async () => {
+  const lesson = currentLesson();
+  if (!lesson) return;
+  if (!confirm(`Delete the lesson “${lesson.title || 'Untitled lesson'}”? This cannot be undone.`)) return;
+  clearTimeout(saveTimer);
+  pendingSave = null;
+  const { error } = await supabase.from('material_lessons').delete().eq('id', lesson.id);
+  if (error) return alert(error.message);
+  log('delete', 'material_lesson', lesson.id, lesson.title);
+  state.lessons = state.lessons.filter((l) => l.id !== lesson.id);
+  state.currentLessonId = null;
+  setSaveState('');
+  renderOutline();
+  renderEditor();
+  updateStats();
+});
+
+// Warn before closing the tab while a change is still being saved.
+window.addEventListener('beforeunload', (e) => {
+  if (pendingSave) { flushSave(); e.preventDefault(); e.returnValue = ''; }
+});
+
+// ---------- Markdown preview ----------
+// A small, safe renderer: everything is escaped first, then a few patterns
+// are turned into tags. Headings, bold, italic, code, links and lists.
+function renderInline(text) {
+  return escapeHtml(text)
+    .replace(/`([^`]+)`/g, '<code>$1</code>')
+    .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+    .replace(/\*([^*]+)\*/g, '<em>$1</em>')
+    .replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>');
+}
+
+function renderMarkdown(source) {
+  if (!source.trim()) return '<p class="empty-note">Nothing written yet.</p>';
+  const out = [];
+  let list = null;
+  let para = [];
+  const closeList = () => { if (list) { out.push(`</${list}>`); list = null; } };
+  const closePara = () => { if (para.length) { out.push(`<p>${para.join('<br>')}</p>`); para = []; } };
+  for (const raw of source.split('\n')) {
+    const line = raw.trimEnd();
+    const heading = line.match(/^(#{1,3})\s+(.*)$/);
+    const bullet = line.match(/^\s*[-*]\s+(.*)$/);
+    const numbered = line.match(/^\s*\d+[.)]\s+(.*)$/);
+    if (heading) {
+      closePara(); closeList();
+      out.push(`<h${heading[1].length}>${renderInline(heading[2])}</h${heading[1].length}>`);
+    } else if (bullet || numbered) {
+      closePara();
+      const tag = bullet ? 'ul' : 'ol';
+      if (list !== tag) { closeList(); out.push(`<${tag}>`); list = tag; }
+      out.push(`<li>${renderInline((bullet || numbered)[1])}</li>`);
+    } else if (!line.trim()) {
+      closePara(); closeList();
+    } else {
+      closeList();
+      para.push(renderInline(line));
+    }
+  }
+  closePara(); closeList();
+  return out.join('\n');
+}
 
 init();
 </script>
